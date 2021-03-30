@@ -1,0 +1,1453 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="架构师技术图谱，助你早日成为架构师架构师技术图谱包括：分布式、前端、大数据、存储、微服务、推荐系统、框架 、消息队列、编程语言、设计模式、重构、集群等内容。">
+  <meta name="author" content="zkep">
+  <meta name="keywords" content="zkep">
+  
+  <title>架构师图谱 - 37℃灰</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zkep.github.io.git","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>37℃灰</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-category-fill"></i>
+                Go进阶
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/design/">
+                    <i class="iconfont icon-category-fill"></i>
+                    Go设计模式
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="架构师图谱">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-06-06 19:04" pubdate>
+        2018年6月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      13.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      145
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">架构师图谱</h1>
+            
+            <div class="markdown-body">
+              <h2 id="架构师技术图谱，助你早日成为架构师"><a href="#架构师技术图谱，助你早日成为架构师" class="headerlink" title="架构师技术图谱，助你早日成为架构师"></a>架构师技术图谱，助你早日成为架构师</h2><p><strong>架构师技术图谱包括</strong>：分布式、前端、大数据、存储、微服务、推荐系统、框架 、消息队列、编程语言、设计模式、重构、集群等内容。<br></p>
+<a id="more"></a>
+<ul>
+<li><a href="#分布式">分布式</a></li>
+<li><a href="#前端">前端</a></li>
+<li><a href="#大数据">大数据</a></li>
+<li><a href="#存储">存储</a></li>
+<li><a href="#微服务">微服务</a></li>
+<li><a href="#推荐系统">推荐系统</a></li>
+<li><a href="#框架">框架</a></li>
+<li><a href="#消息队列">消息队列</a></li>
+<li><a href="#编程语言">编程语言</a></li>
+<li><a href="#设计模式">设计模式</a></li>
+<li><a href="#重构">重构</a></li>
+<li><a href="#集群">集群</a></li>
+</ul>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnsv5xu&amp;aid=17015&amp;nid=271" target="_blank" rel="noopener">[译] 分布式系统经典论文：Google Bigtable 的设计和实现 (OSDI 2006)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhoonp5&amp;aid=17008&amp;nid=270" target="_blank" rel="noopener">[译] 分布式系统经典论文：Amazon Dynamo 的设计和实现 (SOSP 2007)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4jtfat&amp;aid=16979&amp;nid=270" target="_blank" rel="noopener">Apollo 配置中心：分布式部署</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5popmw&amp;aid=16859&amp;nid=269" target="_blank" rel="noopener">分布式系统原理介绍</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhp43pq&amp;aid=16685&amp;nid=267" target="_blank" rel="noopener">高并发场景下分布式实时信令系统的架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft421lk&amp;aid=16627&amp;nid=266" target="_blank" rel="noopener">8 个月打磨，一份送给程序员的 “分布式系统” 合集</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1tyy60&amp;aid=16540&amp;nid=265" target="_blank" rel="noopener">分布式系统关注点：360° 的全方位监控</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F99ydes&amp;aid=16414&amp;nid=264" target="_blank" rel="noopener">分布式时序数据库 QTSDB 的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2ml4xz&amp;aid=16474&amp;nid=264" target="_blank" rel="noopener">分布式系统关注点：构建易测试系统的 “六脉神剑”</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo84er8&amp;aid=16470&amp;nid=264" target="_blank" rel="noopener">轻松构建微服务之分布式配置中心</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F56ji5m&amp;aid=16443&amp;nid=264" target="_blank" rel="noopener">个推基于 Zipkin 的分布式链路追踪实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdret83&amp;aid=16439&amp;nid=264" target="_blank" rel="noopener">设计一个分布式 RPC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx0yb12&amp;aid=16378&amp;nid=263" target="_blank" rel="noopener">MXNet 结合 kubeflow 进行分布式训练</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmndgeq&amp;aid=16293&amp;nid=262" target="_blank" rel="noopener">分布式数据缓存中的一致性哈希算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnpum4m&amp;aid=16291&amp;nid=262" target="_blank" rel="noopener">聊一聊分布式对象存储解决方案</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcczcuh&amp;aid=16290&amp;nid=262" target="_blank" rel="noopener">分布式系统关注点：阻塞与非阻塞有什么区别？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxhcewg&amp;aid=16120&amp;nid=260" target="_blank" rel="noopener">UidGenerator：百度开源的分布式 ID 服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flmuvic&amp;aid=16085&amp;nid=260" target="_blank" rel="noopener">如何设计一个优秀的分布式系统？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2jy9rw&amp;aid=16040&amp;nid=259" target="_blank" rel="noopener">分布式 ID 生成策略</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8yxaot&amp;aid=16021&amp;nid=259" target="_blank" rel="noopener">从一个真实的分布式 ID 案例看如何做架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fs1kxx2&amp;aid=16004&amp;nid=259" target="_blank" rel="noopener">近万字长文，设计分布式系统需要考虑因素的都在这里</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F36j135&amp;aid=15949&amp;nid=258" target="_blank" rel="noopener">分布式 TensorFlow 编程模型演进</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F88u0ec&amp;aid=15883&amp;nid=257" target="_blank" rel="noopener">基于 Redis 和 Lua 的分布式限流</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgu0vn2&amp;aid=15786&amp;nid=255" target="_blank" rel="noopener">Aloha：一个分布式调度框架的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fc63w76&amp;aid=15773&amp;nid=255" target="_blank" rel="noopener">可线性化检查：与 NP 完全问题做斗争</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0v90x2&amp;aid=15664&amp;nid=254" target="_blank" rel="noopener">分布式架构设计之架构演进之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fc94mq1&amp;aid=15707&amp;nid=254" target="_blank" rel="noopener">分布式系统设计经典论文</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo5ng3q&amp;aid=15647&amp;nid=253" target="_blank" rel="noopener">Leaf：美团分布式 ID 生成服务开源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx7ls8w&amp;aid=15568&amp;nid=252" target="_blank" rel="noopener">宜信分布式安全服务编排实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fanbf4z&amp;aid=15506&amp;nid=251" target="_blank" rel="noopener">xxl-registry：轻量级分布式服务注册中心</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn7c6kj&amp;aid=15424&amp;nid=250" target="_blank" rel="noopener">CAP 一致性协议及应用实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqnm4xm&amp;aid=15406&amp;nid=250" target="_blank" rel="noopener">分布式系统关注点：弹性架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhneodn&amp;aid=15343&amp;nid=249" target="_blank" rel="noopener">Etcd Raft 使用入门及原理解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjyot9s&amp;aid=15280&amp;nid=248" target="_blank" rel="noopener">滴滴开源分布式消息中间件产品 DDMQ</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqdc5bq&amp;aid=15271&amp;nid=248" target="_blank" rel="noopener">企业实施分布式架构的挑战以及应对建议</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxsxyl5&amp;aid=15240&amp;nid=248" target="_blank" rel="noopener">云端分布式架构下的编程语言：elixir; pattern matching</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr7nlaa&amp;aid=15210&amp;nid=247" target="_blank" rel="noopener">让 Raft 变快 100 倍：Dragonboat 的写优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fds18q6&amp;aid=15197&amp;nid=247" target="_blank" rel="noopener">GMKV：分布式 kv 在更美 App 的落地</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqk23db&amp;aid=15148&amp;nid=247" target="_blank" rel="noopener">基于 Licode 的 WebRTC 全球分布式架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxf4vhf&amp;aid=15133&amp;nid=246" target="_blank" rel="noopener">手绘 raft 一致性算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqh17sc&amp;aid=15134&amp;nid=246" target="_blank" rel="noopener">为自己搭建一个分布式 IM（即时通讯）系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flwb5b3&amp;aid=15139&amp;nid=246" target="_blank" rel="noopener">kingbus：基于 Raft 的分布式 MySQL binlog 存储系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdos8cl&amp;aid=15072&amp;nid=245" target="_blank" rel="noopener">[译] 伯克利开源多数据流实时分布式分析系统 Confluo，吞吐超 Kafka 4-10 倍</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu4c7lv&amp;aid=15068&amp;nid=245" target="_blank" rel="noopener">分布式系统的基石：深入浅出共识算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl8oghr&amp;aid=14990&amp;nid=244" target="_blank" rel="noopener">Ambry：LinkedIn 对象存储论文翻译</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fetrnyn&amp;aid=14984&amp;nid=244" target="_blank" rel="noopener">Go 分布式实时服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsmpor6&amp;aid=14918&amp;nid=243" target="_blank" rel="noopener">自己写分布式配置中心（上）：单机模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqlz79l&amp;aid=14878&amp;nid=242" target="_blank" rel="noopener">唯品会分布式强一致日志存储系统 VDL 正式对外开源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu97o5l&amp;aid=14876&amp;nid=242" target="_blank" rel="noopener">浅谈分布式最终一致性</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgpg6tz&amp;aid=14873&amp;nid=242" target="_blank" rel="noopener">MIT 6.824 学习笔记（一）：MapReduce 详解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fubh2z8&amp;aid=14811&amp;nid=241" target="_blank" rel="noopener">用 Redis 实现分布式幂等服务中间件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4ujc6y&amp;aid=14662&amp;nid=239" target="_blank" rel="noopener">[译] 深度神经网络的分布式训练概述：常用方法和技巧全面总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbb4qwr&amp;aid=14585&amp;nid=238" target="_blank" rel="noopener">分布式系统关注点：做了负载均衡就可以随便加机器了吗？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Frnojsa&amp;aid=14628&amp;nid=238" target="_blank" rel="noopener">分布式基础，通俗易懂 CAP？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvx5em2&amp;aid=14543&amp;nid=237" target="_blank" rel="noopener">自己写分布式限流组件：基于 Redis 的 RateLimter</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1kid2f&amp;aid=14510&amp;nid=237" target="_blank" rel="noopener">大规模 MySQL 运维陷阱之基于 MyCat 的伪分布式架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyosx21&amp;aid=14551&amp;nid=237" target="_blank" rel="noopener">分布式之消息队列复习精讲</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffxnlcx&amp;aid=14485&amp;nid=236" target="_blank" rel="noopener">分布式高性能 Redis 集群线上常见问题</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnmeenq&amp;aid=14366&amp;nid=234" target="_blank" rel="noopener">详解分布式协调服务 ZooKeeper</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4uqsp5&amp;aid=14346&amp;nid=234" target="_blank" rel="noopener">如果再有人问你分布式 ID，这篇文章丢给他</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsd7ohp&amp;aid=14295&amp;nid=233" target="_blank" rel="noopener">带着问题学习分布式系统之数据分片</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwe1x5r&amp;aid=14184&amp;nid=232" target="_blank" rel="noopener">[译] 构建大型支付系统时学到的分布式体系结构概念</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F99yztm&amp;aid=14086&amp;nid=230" target="_blank" rel="noopener">分布式数据库 MVCC 技术探秘（二）：混合逻辑时钟</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpglb72&amp;aid=14028&amp;nid=229" target="_blank" rel="noopener">分布式系统关注点：通过 “共识” 达成数据一致性</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqbsr5a&amp;aid=14017&amp;nid=229" target="_blank" rel="noopener">如何设计分布式系统开关</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4jr8iz&amp;aid=14016&amp;nid=229" target="_blank" rel="noopener">分布式系统与消息的投递</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F09bshx&amp;aid=13957&amp;nid=228" target="_blank" rel="noopener">使用开源技术构建有赞分布式 KV 存储服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fy9caq7&amp;aid=13878&amp;nid=227" target="_blank" rel="noopener">美图分布式 Bitmap 实践：Naix</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flqz7i8&amp;aid=13806&amp;nid=226" target="_blank" rel="noopener">Node.js：浅析高并发与分布式集群</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2cvy58&amp;aid=13813&amp;nid=226" target="_blank" rel="noopener">分布式数据库 MVCC 技术探秘（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzphvz1&amp;aid=13747&amp;nid=225" target="_blank" rel="noopener">扯什么区块链，应该是分布式账本和面向通证架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fifnec1&amp;aid=13705&amp;nid=224" target="_blank" rel="noopener">学习分布式不得不会的 CAP 理论</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqjw2zk&amp;aid=13528&amp;nid=222" target="_blank" rel="noopener">知乎十万级容器规模的分布式镜像仓库实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F08bm31&amp;aid=13448&amp;nid=221" target="_blank" rel="noopener">主流分布式架构的风流韵事</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqxec8r&amp;aid=13436&amp;nid=220" target="_blank" rel="noopener">如何快速开发一个 Dubbo 应用？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7w2ccy&amp;aid=13428&amp;nid=220" target="_blank" rel="noopener">Google F1 是如何做 Schema 变更的</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8tgl38&amp;aid=13398&amp;nid=220" target="_blank" rel="noopener">[译] 浅显易懂的分布式 TensorFlow 入门教程</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6jvkbu&amp;aid=13297&amp;nid=218" target="_blank" rel="noopener">Raft 协议学习笔记</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F28xhz5&amp;aid=13190&amp;nid=217" target="_blank" rel="noopener">基于可靠消息方案的分布式事务（二）：Java 中的事务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh4do84&amp;aid=13023&amp;nid=214" target="_blank" rel="noopener">青云新一代分布式数据库 RadonDB 开源了</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftgun7k&amp;aid=13007&amp;nid=214" target="_blank" rel="noopener">分布式跟踪工具 Pinpoint 初探</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcptbrx&amp;aid=13020&amp;nid=214" target="_blank" rel="noopener">一个 Raft 开源项目的结构分析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3kiiw1&amp;aid=12877&amp;nid=212" target="_blank" rel="noopener">分布式强一致性数据库的灵魂：Raft 算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv74dxm&amp;aid=12826&amp;nid=211" target="_blank" rel="noopener">分布式系统：一致性 hash 算法的应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flwkoz4&amp;aid=12754&amp;nid=210" target="_blank" rel="noopener">分布式单点登录框架 XXL-SSO</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2a9ayg&amp;aid=12667&amp;nid=209" target="_blank" rel="noopener">MPP 的进化：深入理解 Batch 和 MPP 优缺点</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6cr0xa&amp;aid=12661&amp;nid=209" target="_blank" rel="noopener">同为分布式缓存，为何 Redis 更胜一筹？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd0szfl&amp;aid=12628&amp;nid=209" target="_blank" rel="noopener">[译] Uber 是如何用 Kafka 构建可靠的重试处理保证数据不丢失</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Frc9df3&amp;aid=12597&amp;nid=208" target="_blank" rel="noopener">Zookeeper 源码：总体流程概览</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr0izu8&amp;aid=12580&amp;nid=208" target="_blank" rel="noopener">分布式系统设计：批处理模式之作业队列系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm73fu0&amp;aid=12579&amp;nid=208" target="_blank" rel="noopener">分布式理论：CAP 是三选二吗？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fehk25r&amp;aid=12525&amp;nid=207" target="_blank" rel="noopener">GlusterFS 纠删码最佳实践应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsox15f&amp;aid=12505&amp;nid=207" target="_blank" rel="noopener">加密货币和区块链（二）：分布式共识与去中心化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqvrp0i&amp;aid=12406&amp;nid=206" target="_blank" rel="noopener">饿了么异地多活技术实现（三）：GZS &amp; DAL</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnucswn&amp;aid=12333&amp;nid=205" target="_blank" rel="noopener">分布式技术集锦</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdbunl6&amp;aid=12267&amp;nid=204" target="_blank" rel="noopener">漫谈分布式系统、拜占庭将军问题与区块链</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fe0h0tu&amp;aid=12254&amp;nid=203" target="_blank" rel="noopener">Zeppelin：奇虎 360 出品的高性能分布式 KV 存储平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm0se1z&amp;aid=12191&amp;nid=203" target="_blank" rel="noopener">分布式系统数据层设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnqxt5d&amp;aid=12177&amp;nid=202" target="_blank" rel="noopener">跟繁琐的命令行说拜拜，Gerapy 分布式爬虫管理框架来袭</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu64f4z&amp;aid=12116&amp;nid=202" target="_blank" rel="noopener">分布式 Redis 架构设计简介</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fk8b72k&amp;aid=11995&amp;nid=200" target="_blank" rel="noopener">分布式文件系统 FastDFS 详解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft5avsp&amp;aid=11925&amp;nid=199" target="_blank" rel="noopener">ELK 6.0 部署：Elasticsearch + Logstash + Kibana 搭建分布式日志平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpjgx6k&amp;aid=11861&amp;nid=198" target="_blank" rel="noopener">VDL：唯品会强一致、高可用、高性能分布式日志存储介绍</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3j0nur&amp;aid=11857&amp;nid=198" target="_blank" rel="noopener">分布式一致性与共识算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdqfevp&amp;aid=11851&amp;nid=198" target="_blank" rel="noopener">RAID 6 应用于消息队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm45adb&amp;aid=11764&amp;nid=197" target="_blank" rel="noopener">分布式系统中的必备良药：RPC</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjpxhgu&amp;aid=11701&amp;nid=196" target="_blank" rel="noopener">区块链：利用 IPFS 构建自己的去中心化分布式 Wiki 系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fenlfg4&amp;aid=11707&amp;nid=196" target="_blank" rel="noopener">分布式消息队列实现概要</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fij76vu&amp;aid=11631&amp;nid=195" target="_blank" rel="noopener">分布式实时日志分析解决方案 ELK 部署架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyz54cq&amp;aid=11634&amp;nid=195" target="_blank" rel="noopener">dedid：为分布式数据库而设计的全局唯一 ID（主键）生成器</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fltrkvn&amp;aid=11592&amp;nid=195" target="_blank" rel="noopener">OceanBase 1.0 分布式技术架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5j581f&amp;aid=11551&amp;nid=194" target="_blank" rel="noopener">分布式数据库的故障和常见处理机制</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1w3gk0&amp;aid=11537&amp;nid=194" target="_blank" rel="noopener">日志：分布式系统的核心</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxmm8rr&amp;aid=11403&amp;nid=192" target="_blank" rel="noopener">Netflix Archaius 分布式配置管理依赖构件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7yen01&amp;aid=11351&amp;nid=191" target="_blank" rel="noopener">Pegasus：小米出品的分布式 Key-Value 存储系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8408lv&amp;aid=11348&amp;nid=191" target="_blank" rel="noopener">XXL-CRAWLER：灵活高效、面向对象的分布式爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8h65sd&amp;aid=11335&amp;nid=191" target="_blank" rel="noopener">使用 Redis 实现分布式锁及其优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F46dmov&amp;aid=11333&amp;nid=191" target="_blank" rel="noopener">Kafka 的复制机制</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fseveyq&amp;aid=11328&amp;nid=191" target="_blank" rel="noopener">Zookeeper：分布式过程协同技术详解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvnqayf&amp;aid=11281&amp;nid=191" target="_blank" rel="noopener">浅谈大规模分布式系统中那些技术点</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgkwe82&amp;aid=11251&amp;nid=190" target="_blank" rel="noopener">分布式键值存储 Dynamo 的实现原理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5fktt9&amp;aid=11242&amp;nid=190" target="_blank" rel="noopener">浅谈分布式存储系统中的数据一致性要求</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F890p4c&amp;aid=11124&amp;nid=188" target="_blank" rel="noopener">[译] 创建一个分布式网络爬虫的故事</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm7g6fg&amp;aid=11125&amp;nid=188" target="_blank" rel="noopener">分布式文件管理系统 JDFS（五）：整体架构描述</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7vtyw7&amp;aid=11092&amp;nid=187" target="_blank" rel="noopener">使用 Chaos 测试分布式系统线性一致性</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv74im8&amp;aid=11090&amp;nid=187" target="_blank" rel="noopener">分布式搜索数据库性能探究</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9hmeq6&amp;aid=10935&amp;nid=185" target="_blank" rel="noopener">微信开源 PhxQueue：高可用、高可靠、高性能的分布式队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmdp3vq&amp;aid=10751&amp;nid=183" target="_blank" rel="noopener">一文教你迅速解决分布式事务 XA 一致性问题</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F020ikb&amp;aid=10749&amp;nid=183" target="_blank" rel="noopener">分布式 ID 生成方案概述</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fe1q2rc&amp;aid=10640&amp;nid=182" target="_blank" rel="noopener">分布式系统架构设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsntl6i&amp;aid=10587&amp;nid=181" target="_blank" rel="noopener">如何用 Go 打造亿级实时分布式出行平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6hslm0&amp;aid=10545&amp;nid=180" target="_blank" rel="noopener">分布式流式处理的新贵 Kafka Stream</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdk2by4&amp;aid=10486&amp;nid=180" target="_blank" rel="noopener">微服务架构上云最佳实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3ijcsx&amp;aid=10558&amp;nid=180" target="_blank" rel="noopener">molten：PHP 应用透明链路追踪工具</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fa2vhin&amp;aid=10427&amp;nid=179" target="_blank" rel="noopener">[译] 如何选择合适的分布式机器学习平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnthju4&amp;aid=10454&amp;nid=179" target="_blank" rel="noopener">漫谈分布式系统：三种通信范型</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fceqbdy&amp;aid=10470&amp;nid=179" target="_blank" rel="noopener">如何在 Spring Cloud 分布式系统中实现分布式锁？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftvnj08&amp;aid=10398&amp;nid=178" target="_blank" rel="noopener">Hystrix 实现分布式系统中的故障容错</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcbmvci&amp;aid=10381&amp;nid=178" target="_blank" rel="noopener">浅谈分布式服务协调技术 Zookeeper</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fve6tex&amp;aid=10323&amp;nid=177" target="_blank" rel="noopener">[译] Metrics, tracing 和 logging 的关系</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3egyo2&amp;aid=10243&amp;nid=176" target="_blank" rel="noopener">使用 DDAL 快速构建分布式数据库应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqky7vp&amp;aid=10242&amp;nid=176" target="_blank" rel="noopener">etcd raft 如何实现成员变更</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgqu0j2&amp;aid=10237&amp;nid=176" target="_blank" rel="noopener">单体中心代码库 vs. 分布式代码库</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo9e9gh&amp;aid=10095&amp;nid=174" target="_blank" rel="noopener">Laravel + go-micro + grpc 实践基于 Zipkin 的分布式链路追踪系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgja08a&amp;aid=10092&amp;nid=174" target="_blank" rel="noopener">分布式系统概念</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5vo24o&amp;aid=10048&amp;nid=173" target="_blank" rel="noopener">例解 Poxos 算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd1vrcq&amp;aid=10059&amp;nid=173" target="_blank" rel="noopener">jd_spider：两只蠢萌京东的分布式爬虫</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0p8zys&amp;aid=9932&amp;nid=172" target="_blank" rel="noopener">Angel：腾讯出品的基于参数服务器理念开发的高性能分布式机器学习平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fopdnzv&amp;aid=9960&amp;nid=172" target="_blank" rel="noopener">分布式调用链监控资源总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F462xte&amp;aid=9698&amp;nid=168" target="_blank" rel="noopener">针对 PHP 做的 Ragnar Fiery 分布式性能跟踪系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fckl80f&amp;aid=9696&amp;nid=168" target="_blank" rel="noopener">GFS 阅读笔记</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4hoeqi&amp;aid=9681&amp;nid=168" target="_blank" rel="noopener">自己动手扩展分布式调用链</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F66jwr8&amp;aid=9640&amp;nid=167" target="_blank" rel="noopener">分布式系统常见的事务处理机制</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fz5bsmr&amp;aid=9619&amp;nid=167" target="_blank" rel="noopener">[译] 再谈 CAP 理论</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjj0kd7&amp;aid=9601&amp;nid=167" target="_blank" rel="noopener">KAFKA：如何做到 1 秒发布百万级条消息</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd9f2pk&amp;aid=9554&amp;nid=166" target="_blank" rel="noopener">Kudu：一个融合低延迟写入和高性能分析的存储系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffyq4pz&amp;aid=9423&amp;nid=164" target="_blank" rel="noopener">Leaf：美团点评分布式 ID 生成系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsf3p9s&amp;aid=9412&amp;nid=164" target="_blank" rel="noopener">MapReduce 阅读笔记</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu894hm&amp;aid=9229&amp;nid=162" target="_blank" rel="noopener">微博百万用户分布式压测实践手记</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fliwba6&amp;aid=9228&amp;nid=162" target="_blank" rel="noopener">如何打造支撑百万用户的分布式代码托管平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fubeub6&amp;aid=9197&amp;nid=161" target="_blank" rel="noopener">Spark 自己的分布式存储系统：BlockManager</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1ej2bx&amp;aid=9150&amp;nid=161" target="_blank" rel="noopener">最大努力通知？No，事务消息</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Faclw19&amp;aid=9215&amp;nid=161" target="_blank" rel="noopener">Voyage：Java 实现的基于 Netty 的轻量、高性能分布式 RPC 服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fs6wy1e&amp;aid=9078&amp;nid=160" target="_blank" rel="noopener">分布式服务化系统一致性的 “最佳实干”</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg0j0hh&amp;aid=9114&amp;nid=160" target="_blank" rel="noopener">分布式事务之聊聊 TCC</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Futsyhi&amp;aid=9119&amp;nid=160" target="_blank" rel="noopener">分布式任务队列 Celery 介绍</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fozty3i&amp;aid=9043&amp;nid=159" target="_blank" rel="noopener">一个简单的分布式 Web 扫描器的设计与实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F90t7zh&amp;aid=9005&amp;nid=159" target="_blank" rel="noopener">微服务架构下的分布式数据管理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgrr0d3&amp;aid=8993&amp;nid=158" target="_blank" rel="noopener">XXL-JOB：分布式任务调度平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgxhx9w&amp;aid=8978&amp;nid=158" target="_blank" rel="noopener">Spark 分布式的基础：通信系统 rpc</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn7qpkw&amp;aid=8945&amp;nid=158" target="_blank" rel="noopener">腾讯云分布式高可靠消息队列 CMQ 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5wma7d&amp;aid=8911&amp;nid=157" target="_blank" rel="noopener">Golang 高性能分布式游戏服务器框架 mqant</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdufjn5&amp;aid=8893&amp;nid=157" target="_blank" rel="noopener">分布式系统研发心得</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0w8lyo&amp;aid=8776&amp;nid=155" target="_blank" rel="noopener">Antares：分布式任务调度平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2ifjzc&amp;aid=8763&amp;nid=155" target="_blank" rel="noopener">RPC 基本原理与 Apache Thrift 初体验</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp21ck6&amp;aid=8646&amp;nid=154" target="_blank" rel="noopener">OceanBase 1.0 分布式技术架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmnuuvd&amp;aid=8579&amp;nid=153" target="_blank" rel="noopener">万亿级数据洪峰下的分布式消息引擎</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fexoywq&amp;aid=8356&amp;nid=149" target="_blank" rel="noopener">分布式系统调用链监控</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzqe5ru&amp;aid=8310&amp;nid=148" target="_blank" rel="noopener">从 ACID 到 CAP/BASE</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgfsopo&amp;aid=8224&amp;nid=147" target="_blank" rel="noopener">NewSQL 究竟新在哪里？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv1fi3e&amp;aid=8118&amp;nid=145" target="_blank" rel="noopener">分布式系统本质论（3/3）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fk0srwe&amp;aid=8054&amp;nid=144" target="_blank" rel="noopener">不妥协：分布式事务的一致性、可用性和性能</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqziz1m&amp;aid=8042&amp;nid=144" target="_blank" rel="noopener">CAP 初窥</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fttqk69&amp;aid=7995&amp;nid=143" target="_blank" rel="noopener">一名分布式存储工程师的技能树是怎样的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcu6dnv&amp;aid=7993&amp;nid=143" target="_blank" rel="noopener">分布式锁总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fi5raq9&amp;aid=7980&amp;nid=143" target="_blank" rel="noopener">深度剖析开源分布式监控 CAT</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjdlch0&amp;aid=7914&amp;nid=142" target="_blank" rel="noopener">浅析分布式系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F864at1&amp;aid=7871&amp;nid=141" target="_blank" rel="noopener">RSF 分布式 RPC 服务框架的分层设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjgeeg9&amp;aid=7777&amp;nid=140" target="_blank" rel="noopener">自己动手写分布式 KV 存储引擎（二）：网络框架中的定时器原理和实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2nh7g6&amp;aid=7761&amp;nid=139" target="_blank" rel="noopener">JLiteSpider：轻量级的分布式 Java 爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffmco5p&amp;aid=7708&amp;nid=139" target="_blank" rel="noopener">分布式会话跟踪系统架构设计与实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fepyfg1&amp;aid=7094&amp;nid=130" target="_blank" rel="noopener">分布式队列编程（优化篇）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb8cwtq&amp;aid=7138&amp;nid=130" target="_blank" rel="noopener">分布式事务（一）：两阶段提交及 JTA</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqaxd7m&amp;aid=7046&amp;nid=129" target="_blank" rel="noopener">探秘阿里分布式任务调度服务 SchedulerX</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5llwer&amp;aid=7035&amp;nid=129" target="_blank" rel="noopener">分布式队列编程：模型、实战</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fblkw89&amp;aid=7001&amp;nid=128" target="_blank" rel="noopener">Dora RPC：PHP 的分布式 RPC，支持微服务、服务发现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fw5dp8u&amp;aid=6908&amp;nid=127" target="_blank" rel="noopener">不懂点 CAP 理论，你好意思说你是做分布式的吗？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft70i21&amp;aid=6809&amp;nid=125" target="_blank" rel="noopener">SeimiCrawler：敏捷、独立部署、支持分布式的 Java 爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fs1tb5m&amp;aid=6748&amp;nid=125" target="_blank" rel="noopener">分布式系统设计的求生之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbj8f2u&amp;aid=6724&amp;nid=124" target="_blank" rel="noopener">[PPT] 一次重构引发的分布式服务管理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsf6ol6&amp;aid=6661&amp;nid=123" target="_blank" rel="noopener">基于 Dubbo 框架构建分布式服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkvr7zf&amp;aid=6492&amp;nid=121" target="_blank" rel="noopener">深入理解分布式系统的 2PC 和 3PC</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fprwrns&amp;aid=6399&amp;nid=120" target="_blank" rel="noopener">分布式搜索引擎（二）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzyeuuk&amp;aid=6443&amp;nid=120" target="_blank" rel="noopener">RPCX：类似 Dubbo 的分布式 RPC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffbb5j5&amp;aid=6258&amp;nid=118" target="_blank" rel="noopener">可靠分布式系统基础 Paxos 的直观解释</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F95qo0b&amp;aid=6060&amp;nid=116" target="_blank" rel="noopener">高性能分布式 Mock 平台的框架与设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1kmh7y&amp;aid=6047&amp;nid=115" target="_blank" rel="noopener">Zipkin：分布式追踪系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbowh0f&amp;aid=6010&amp;nid=115" target="_blank" rel="noopener">一名分布式存储工程师的技能树是怎样的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F45m47x&amp;aid=5696&amp;nid=111" target="_blank" rel="noopener">使用 DRPC 构建分布式多语言编程架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F73xmbk&amp;aid=5559&amp;nid=109" target="_blank" rel="noopener">美团云分布式块存储系统 Ursa 的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fagpnck&amp;aid=5541&amp;nid=109" target="_blank" rel="noopener">Sky Walking：对 Java 分布式应用程序集群业务运行情况进行追踪、告警和分析的系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8uhegb&amp;aid=5463&amp;nid=108" target="_blank" rel="noopener">几个分布式基础算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdebq0t&amp;aid=5181&amp;nid=104" target="_blank" rel="noopener">zerg：基于 Docker 的分布式爬虫服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq9mtan&amp;aid=5146&amp;nid=104" target="_blank" rel="noopener">微博分布式存储考试题：案例讲解及作业精选</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fuu90n0&amp;aid=5099&amp;nid=104" target="_blank" rel="noopener">[译] Dapper，大规模分布式系统的跟踪系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fes7m4x&amp;aid=4864&amp;nid=101" target="_blank" rel="noopener">日志系统之基于 Zookeeper 的分布式协同设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvs2yhz&amp;aid=4769&amp;nid=100" target="_blank" rel="noopener">[译] 当讨论分布式系统时，我们都会讨论些什么？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdwli3k&amp;aid=4453&amp;nid=97" target="_blank" rel="noopener">[译] 设计全球级的分布式、任务关键型应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F64hdc0&amp;aid=4143&amp;nid=94" target="_blank" rel="noopener">分布式文件系统 FastDFS 架构剖析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft9ytxc&amp;aid=4079&amp;nid=93" target="_blank" rel="noopener">.NET 大型分布式电子商务架构说明</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F94etx&amp;aid=3946&amp;nid=91" target="_blank" rel="noopener">开源分布式计算系统框架比较</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7sjbj&amp;aid=3930&amp;nid=91" target="_blank" rel="noopener">系统分布式情况下最终一致性方案梳理</a></li>
+</ul>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8sctee&amp;aid=17145&amp;nid=272" target="_blank" rel="noopener">Serverless 掀起新的前端技术变革</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnzomb0&amp;aid=17135&amp;nid=272" target="_blank" rel="noopener">前端要知道的 RESTful API 架构风格</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp20k50&amp;aid=16887&amp;nid=269" target="_blank" rel="noopener">记一次前端项目重构要点总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcosds3&amp;aid=16432&amp;nid=264" target="_blank" rel="noopener">大型项目前端架构浅谈</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzm5v0z&amp;aid=15137&amp;nid=246" target="_blank" rel="noopener">简单高性能的 JavaScript 组件框架 Ale.js</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1f9hjy&amp;aid=14289&amp;nid=233" target="_blank" rel="noopener">前端重构范式之 position</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyw7ikn&amp;aid=14232&amp;nid=232" target="_blank" rel="noopener">面向体验的重构优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj6ow58&amp;aid=14152&amp;nid=231" target="_blank" rel="noopener">用微前端的方式搭建类单页应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fif6kcd&amp;aid=13886&amp;nid=227" target="_blank" rel="noopener">前端重构范式之 float layout</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdjks43&amp;aid=13835&amp;nid=226" target="_blank" rel="noopener">[译] Uber 开源 Fusion.js：一个基于插件架构的通用 Web 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flqz7i8&amp;aid=13806&amp;nid=226" target="_blank" rel="noopener">Node.js：浅析高并发与分布式集群</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftevbzv&amp;aid=13837&amp;nid=226" target="_blank" rel="noopener">size-sensor：开源高性能 DOM 元素尺寸监听器</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg2nb3j&amp;aid=13703&amp;nid=224" target="_blank" rel="noopener">微前端快速选型指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fctjcpt&amp;aid=13580&amp;nid=223" target="_blank" rel="noopener">移动应用架构演变及泛前端趋势下移动团队破局</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fz50khd&amp;aid=13525&amp;nid=222" target="_blank" rel="noopener">实施前端微服务化的六七种方式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpmw8k9&amp;aid=13468&amp;nid=221" target="_blank" rel="noopener">重构 React 组件的实用清单</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1orta0&amp;aid=13207&amp;nid=217" target="_blank" rel="noopener">[译] 你需要了解的 23 种 JavaScript 设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo3pp4d&amp;aid=13206&amp;nid=217" target="_blank" rel="noopener">Web 框架的架构模式探讨（JavaScript 语言）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0bdvnn&amp;aid=12942&amp;nid=213" target="_blank" rel="noopener">Webpack 基本架构浅析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn96o20&amp;aid=12747&amp;nid=210" target="_blank" rel="noopener">浅谈 Chromium 中的设计模式（一）：Chromium 中模块分层和进程模型</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7lfr8v&amp;aid=12317&amp;nid=204" target="_blank" rel="noopener">技术雷达之 “微前端”：将微服务理念扩展到前端开发</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq3q80x&amp;aid=12083&amp;nid=201" target="_blank" rel="noopener">从 Nuxt.js 学习到了什么</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgjtz0e&amp;aid=11921&amp;nid=199" target="_blank" rel="noopener">React 应用架构设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Farjm1p&amp;aid=11928&amp;nid=199" target="_blank" rel="noopener">技术雷达之 “微前端”：将微服务理念扩展到前端开发</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbkm8ln&amp;aid=11862&amp;nid=198" target="_blank" rel="noopener">基于 Egg 的高可靠高性能 React 同构解决方案 beidou 开源了</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft3rpu2&amp;aid=11127&amp;nid=188" target="_blank" rel="noopener">当 Web 前端架构方案遇上《金瓶梅》</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F009rtd&amp;aid=11072&amp;nid=187" target="_blank" rel="noopener">[译] 实现达到 60FPS 的高性能交互动画</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F78clyh&amp;aid=10593&amp;nid=181" target="_blank" rel="noopener">[译] 探索 ReactJS 中的 CSS 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9cmumb&amp;aid=10467&amp;nid=179" target="_blank" rel="noopener">[译] 如何实现前端微服务化？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgwys2d&amp;aid=10401&amp;nid=178" target="_blank" rel="noopener">webpack 多页应用架构系列（十六）：善用浏览器缓存，该去则去，该留则留</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvzmo7j&amp;aid=10088&amp;nid=174" target="_blank" rel="noopener">你了解 CSS 设计模式吗？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fz3a1xm&amp;aid=10034&amp;nid=173" target="_blank" rel="noopener">前端高并发策略的更深层思考</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0vgh5v&amp;aid=9614&amp;nid=167" target="_blank" rel="noopener">美团点评酒旅前端的技术体系</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu9fwu3&amp;aid=9469&amp;nid=165" target="_blank" rel="noopener">[译] 解析 Twitter 前端架构，学习复杂场景数据设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6lihs5&amp;aid=9296&amp;nid=163" target="_blank" rel="noopener">[译] Twitter Lite 以及大规模的高性能 React 渐进式网络应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0v0kpa&amp;aid=9079&amp;nid=160" target="_blank" rel="noopener">小程序底层框架实现原理解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn0gdvg&amp;aid=8790&amp;nid=156" target="_blank" rel="noopener">[译] Google 是如何开发 Web 框架的</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F54dv15&amp;aid=8823&amp;nid=156" target="_blank" rel="noopener">API 设计之道</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu4ugs5&amp;aid=7881&amp;nid=141" target="_blank" rel="noopener">《webpack 多页应用架构系列》电子书</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpq17kb&amp;aid=7739&amp;nid=139" target="_blank" rel="noopener">在重构脚手架中掌握 React / Redux / Webpack2 基本套路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fspvwfm&amp;aid=6833&amp;nid=126" target="_blank" rel="noopener">支付宝前端应用架构的发展和选择</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Foqk60t&amp;aid=6813&amp;nid=126" target="_blank" rel="noopener">[译] Node.js 架构概览</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvypknr&amp;aid=6604&amp;nid=123" target="_blank" rel="noopener">如何重构一个大型历史项目：百度经验改版总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb6vsm5&amp;aid=6008&amp;nid=115" target="_blank" rel="noopener">公司前端开发架构改造</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fc4gdsh&amp;aid=5764&amp;nid=112" target="_blank" rel="noopener">58 同城前后端分离开发模式实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwt0rm6&amp;aid=5734&amp;nid=111" target="_blank" rel="noopener">[译] Redux：一个启发自 Flux 的架构风格</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1kk7rx&amp;aid=5504&amp;nid=109" target="_blank" rel="noopener">从两个角度，一个小例子浅析 Node.js 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwuj4vg&amp;aid=5151&amp;nid=104" target="_blank" rel="noopener">前端也应该了解点 Docker 知识：Docker 架构（上）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fihikv&amp;aid=2710&amp;nid=77" target="_blank" rel="noopener">前端技能训练：重构一 (@Phodal)</a></li>
+</ul>
+<h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkpzid9&amp;aid=16684&amp;nid=267" target="_blank" rel="noopener">每秒千万级的实时数据处理是怎么实现的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0lqb9u&amp;aid=16615&amp;nid=266" target="_blank" rel="noopener">流沙：宜信安全数据平台实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F621wdc&amp;aid=16469&amp;nid=264" target="_blank" rel="noopener">数据与广告系列（七）：广告与推荐系统技术架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmndgeq&amp;aid=16293&amp;nid=262" target="_blank" rel="noopener">分布式数据缓存中的一致性哈希算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb78d1l&amp;aid=16277&amp;nid=262" target="_blank" rel="noopener">从零开始入门推荐算法工程师</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmlh95d&amp;aid=16009&amp;nid=259" target="_blank" rel="noopener">Alluxio 创始成员范斌：AI 与开源背景下数据架构的演变</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F88u0ec&amp;aid=15883&amp;nid=257" target="_blank" rel="noopener">基于 Redis 和 Lua 的分布式限流</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpadg21&amp;aid=15650&amp;nid=253" target="_blank" rel="noopener">NutsDB：纯 Go 编写的高性能内嵌型 KV 数据库</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbx4tiy&amp;aid=15297&amp;nid=249" target="_blank" rel="noopener">那些年用过的 Redis 集群架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F44rb55&amp;aid=15000&amp;nid=244" target="_blank" rel="noopener">为什么使用主数据思维构建微服务是一种好方式？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmp156e&amp;aid=14893&amp;nid=243" target="_blank" rel="noopener">业务库负载翻了百倍，我做了什么来拯救 MySQL 架构？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Frm0hc6&amp;aid=14832&amp;nid=242" target="_blank" rel="noopener">毫秒级从百亿大表任意维度筛选数据是怎么做到的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgpg6tz&amp;aid=14873&amp;nid=242" target="_blank" rel="noopener">MIT 6.824 学习笔记（一）：MapReduce 详解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fubh2z8&amp;aid=14811&amp;nid=241" target="_blank" rel="noopener">用 Redis 实现分布式幂等服务中间件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1w7ee1&amp;aid=14650&amp;nid=239" target="_blank" rel="noopener">携程数据库高可用和容灾架构演进</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvx5em2&amp;aid=14543&amp;nid=237" target="_blank" rel="noopener">自己写分布式限流组件：基于 Redis 的 RateLimter</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1kid2f&amp;aid=14510&amp;nid=237" target="_blank" rel="noopener">大规模 MySQL 运维陷阱之基于 MyCat 的伪分布式架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffxnlcx&amp;aid=14485&amp;nid=236" target="_blank" rel="noopener">分布式高性能 Redis 集群线上常见问题</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3ki1zs&amp;aid=14383&amp;nid=235" target="_blank" rel="noopener">海量数据的挑战：微博直播答题架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkwdn9d&amp;aid=14382&amp;nid=235" target="_blank" rel="noopener">大数据推荐系统实时架构和离线架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7klmai&amp;aid=14358&amp;nid=234" target="_blank" rel="noopener">ZooKeeper 架构设计与角色分工</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzpyhlq&amp;aid=14251&amp;nid=233" target="_blank" rel="noopener">从单机到 2000 万 QPS：知乎 Redis 平台发展与演进之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fw8pn06&amp;aid=14250&amp;nid=233" target="_blank" rel="noopener">阿里如何实现秒级百万 TPS？搜索离线大数据平台架构解读</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F99yztm&amp;aid=14086&amp;nid=230" target="_blank" rel="noopener">分布式数据库 MVCC 技术探秘（二）：混合逻辑时钟</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkwj7pg&amp;aid=13979&amp;nid=229" target="_blank" rel="noopener">美图大数据平台架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F114cq1&amp;aid=13916&amp;nid=228" target="_blank" rel="noopener">360 大数据中心平台化的演进与实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqbsxb1&amp;aid=13850&amp;nid=227" target="_blank" rel="noopener">金融级数据库的多活架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2cvy58&amp;aid=13813&amp;nid=226" target="_blank" rel="noopener">分布式数据库 MVCC 技术探秘（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2wekdm&amp;aid=13792&amp;nid=226" target="_blank" rel="noopener">58 速运架构实战：拆分服务与 DB，突破 “中心化” 瓶颈</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsvnpvi&amp;aid=13694&amp;nid=224" target="_blank" rel="noopener">[译] Flink 创始人谈流计算核心架构演化和现状</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzvkt04&amp;aid=13657&amp;nid=224" target="_blank" rel="noopener">面向机器学习数据平台的设计与搭建</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpdwme8&amp;aid=13581&amp;nid=223" target="_blank" rel="noopener">京东推荐系统架构揭秘：大数据时代下的智能化改造</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr6hzop&amp;aid=13536&amp;nid=222" target="_blank" rel="noopener">HBase 高性能随机查询之道：HFile 原理解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4sc1s0&amp;aid=13520&amp;nid=222" target="_blank" rel="noopener">沪江订单系统分表项目实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjoh2qt&amp;aid=13484&amp;nid=221" target="_blank" rel="noopener">快速理解 OpenTSDB 的 Schema 设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7w2ccy&amp;aid=13428&amp;nid=220" target="_blank" rel="noopener">Google F1 是如何做 Schema 变更的</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxgjvf4&amp;aid=13357&amp;nid=219" target="_blank" rel="noopener">理解索引：HBase 介绍和架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbbcpjn&amp;aid=13252&amp;nid=218" target="_blank" rel="noopener">PB 级海量数据服务平台架构设计实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcazqgv&amp;aid=13222&amp;nid=217" target="_blank" rel="noopener">MySQL 高可用集群方案之 PXC</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh4do84&amp;aid=13023&amp;nid=214" target="_blank" rel="noopener">青云新一代分布式数据库 RadonDB 开源了</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1usznh&amp;aid=12949&amp;nid=213" target="_blank" rel="noopener">[译] 使用 Redis 实现高流量的限速器</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhf599t&amp;aid=12902&amp;nid=213" target="_blank" rel="noopener">BigTable 系统的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3kiiw1&amp;aid=12877&amp;nid=212" target="_blank" rel="noopener">分布式强一致性数据库的灵魂：Raft 算法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft7jma7&amp;aid=12769&amp;nid=211" target="_blank" rel="noopener">史上最全 Redis 高可用技术解决方案大全</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2a9ayg&amp;aid=12667&amp;nid=209" target="_blank" rel="noopener">MPP 的进化：深入理解 Batch 和 MPP 优缺点</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6cr0xa&amp;aid=12661&amp;nid=209" target="_blank" rel="noopener">同为分布式缓存，为何 Redis 更胜一筹？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fezmax6&amp;aid=12626&amp;nid=209" target="_blank" rel="noopener">每天数百亿用户行为数据，美团点评怎么实现秒级转化分析？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Frpo5x5&amp;aid=12584&amp;nid=208" target="_blank" rel="noopener">浅谈大数据平台基建的逻辑</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm0se1z&amp;aid=12191&amp;nid=203" target="_blank" rel="noopener">分布式系统数据层设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu64f4z&amp;aid=12116&amp;nid=202" target="_blank" rel="noopener">分布式 Redis 架构设计简介</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwvm2jp&amp;aid=11879&amp;nid=199" target="_blank" rel="noopener">Hulu 大数据架构与应用经验</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyz54cq&amp;aid=11634&amp;nid=195" target="_blank" rel="noopener">dedid：为分布式数据库而设计的全局唯一 ID（主键）生成器</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fltrkvn&amp;aid=11592&amp;nid=195" target="_blank" rel="noopener">OceanBase 1.0 分布式技术架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5j581f&amp;aid=11551&amp;nid=194" target="_blank" rel="noopener">分布式数据库的故障和常见处理机制</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj0n7id&amp;aid=11517&amp;nid=194" target="_blank" rel="noopener">如何打造千万级 Feed 流系统？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flztm2c&amp;aid=11432&amp;nid=193" target="_blank" rel="noopener">基于 Redis 的限流系统的设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8h65sd&amp;aid=11335&amp;nid=191" target="_blank" rel="noopener">使用 Redis 实现分布式锁及其优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5fktt9&amp;aid=11242&amp;nid=190" target="_blank" rel="noopener">浅谈分布式存储系统中的数据一致性要求</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv74im8&amp;aid=11090&amp;nid=187" target="_blank" rel="noopener">分布式搜索数据库性能探究</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpf86r4&amp;aid=10955&amp;nid=186" target="_blank" rel="noopener">人工智能在线特征系统中的生产调度</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2znejs&amp;aid=10488&amp;nid=180" target="_blank" rel="noopener">Redis 在京东到家的订单中的使用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm7wnyn&amp;aid=10411&amp;nid=179" target="_blank" rel="noopener">PhxSQL 设计与实现（详细版）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2tvmmk&amp;aid=10205&amp;nid=176" target="_blank" rel="noopener">基于大数据平台的实时质量监控平台的架构设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd7b2z4&amp;aid=10260&amp;nid=176" target="_blank" rel="noopener">1 对多业务，数据库水平切分架构一次搞定</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3egyo2&amp;aid=10243&amp;nid=176" target="_blank" rel="noopener">使用 DDAL 快速构建分布式数据库应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ficvg0r&amp;aid=10159&amp;nid=175" target="_blank" rel="noopener">一张思维导图学会如何构建高性能 MySQL 系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5bst03&amp;aid=10065&amp;nid=174" target="_blank" rel="noopener">美团点评数据库高可用架构的演进与设想</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdlkoz9&amp;aid=9897&amp;nid=171" target="_blank" rel="noopener">揭秘网易大数据实践与基于微服务的应用架构设计实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjo3rvs&amp;aid=9812&amp;nid=170" target="_blank" rel="noopener">典型数据库架构设计与实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3bfosy&amp;aid=9715&amp;nid=169" target="_blank" rel="noopener">360 海量数据存储 Zeppelin 设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb3mj7w&amp;aid=9655&amp;nid=168" target="_blank" rel="noopener">搭建一个 Redis 高可用系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fk5vzku&amp;aid=9654&amp;nid=168" target="_blank" rel="noopener">滴滴出行海量数据背后的高可用架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq1j0l1&amp;aid=9611&amp;nid=167" target="_blank" rel="noopener">大数据环境下该如何优雅地设计数据分层</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj4639h&amp;aid=9588&amp;nid=167" target="_blank" rel="noopener">iOS 无埋点数据 SDK 的整体设计与技术实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F73n6pb&amp;aid=9519&amp;nid=166" target="_blank" rel="noopener">美团的大数据平台架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F131fd5&amp;aid=9446&amp;nid=165" target="_blank" rel="noopener">日处理 20 亿数据，实时用户行为服务系统架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fio6pkb&amp;aid=9472&amp;nid=165" target="_blank" rel="noopener">CRS：腾讯云 Redis 产品架构解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F90t7zh&amp;aid=9005&amp;nid=159" target="_blank" rel="noopener">微服务架构下的分布式数据管理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4j5kpq&amp;aid=9003&amp;nid=159" target="_blank" rel="noopener">中华万年历大数据平台演进</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flteldm&amp;aid=9038&amp;nid=159" target="_blank" rel="noopener">京东发布 MySQL Group Replication 官方文档中文版</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5in72j&amp;aid=8791&amp;nid=156" target="_blank" rel="noopener">微店索引数据 dump 架构演进</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp21ck6&amp;aid=8646&amp;nid=154" target="_blank" rel="noopener">OceanBase 1.0 分布式技术架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmnuuvd&amp;aid=8579&amp;nid=153" target="_blank" rel="noopener">万亿级数据洪峰下的分布式消息引擎</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpts7bc&amp;aid=8569&amp;nid=152" target="_blank" rel="noopener">Gores：Go 语言编写的基于 Redis 的消息队列系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fucy4jn&amp;aid=8289&amp;nid=148" target="_blank" rel="noopener">MySQL 高性能存储引擎：TokuDB 初探</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftsuyz4&amp;aid=8226&amp;nid=147" target="_blank" rel="noopener">[译] 不使用 Trigger 的设计理念</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgfsopo&amp;aid=8224&amp;nid=147" target="_blank" rel="noopener">NewSQL 究竟新在哪里？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0bmanu&amp;aid=8016&amp;nid=144" target="_blank" rel="noopener">神策分析的技术选型与架构实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7iewb4&amp;aid=7125&amp;nid=130" target="_blank" rel="noopener">MySQL 数据库中间件的高可用方案</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgx5hfc&amp;aid=6965&amp;nid=128" target="_blank" rel="noopener">用 MHA 轻松实现 MySQL 高可用（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Feonf0v&amp;aid=6971&amp;nid=128" target="_blank" rel="noopener">数据系统架构：Lambda architecture</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8u2o1a&amp;aid=6973&amp;nid=128" target="_blank" rel="noopener">大数据环境下互联网行业数据仓库/数据平台的架构之漫谈（续）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0kzpxa&amp;aid=6811&amp;nid=126" target="_blank" rel="noopener">海量高性能列式数据库 HiStore 技术架构解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9y8l7q&amp;aid=6713&amp;nid=124" target="_blank" rel="noopener">MySQL 架构优化实战系列（二）：主从复制同步与查询性能调优</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8b4zfw&amp;aid=6311&amp;nid=119" target="_blank" rel="noopener">iOS MVVM 架构：界面与数据 I/O 逻辑分离的实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6cx07b&amp;aid=6248&amp;nid=118" target="_blank" rel="noopener">Redis 字符串类型实现内幕</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm1z3dv&amp;aid=6138&amp;nid=117" target="_blank" rel="noopener">乐视秒杀：每秒十万笔交易的数据架构解读</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmgyqgq&amp;aid=6096&amp;nid=116" target="_blank" rel="noopener">从日志统计到大数据分析（十六）：元</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb5wu4n&amp;aid=6019&amp;nid=115" target="_blank" rel="noopener">秒级处理海量数据，浙江移动大数据平台是怎么做到的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3tr1ro&amp;aid=5901&amp;nid=114" target="_blank" rel="noopener">Hadoop NameNode 高可用 (High Availability) 实现解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flf5p2m&amp;aid=5361&amp;nid=107" target="_blank" rel="noopener">用 Swift 搭建数据驱动型 iOS 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx4459x&amp;aid=5329&amp;nid=106" target="_blank" rel="noopener">[译] 数据处理平台架构中的 SMACK 组合</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fynunyg&amp;aid=4857&amp;nid=101" target="_blank" rel="noopener">大数据 / 数据挖掘 / 推荐系统 / 机器学习相关资源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnb0fio&amp;aid=4299&amp;nid=95" target="_blank" rel="noopener">我所理解的大数据个性化推荐</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm5b8fh&amp;aid=4063&amp;nid=93" target="_blank" rel="noopener">数据库软件架构设计些什么</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fi7s7se&amp;aid=4062&amp;nid=93" target="_blank" rel="noopener">基于用户画像大数据的电商防刷架构</a></li>
+</ul>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl8oghr&amp;aid=14990&amp;nid=244" target="_blank" rel="noopener">Ambry：LinkedIn 对象存储论文翻译</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqlz79l&amp;aid=14878&amp;nid=242" target="_blank" rel="noopener">唯品会分布式强一致日志存储系统 VDL 正式对外开源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F09bshx&amp;aid=13957&amp;nid=228" target="_blank" rel="noopener">使用开源技术构建有赞分布式 KV 存储服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F505qkj&amp;aid=13851&amp;nid=227" target="_blank" rel="noopener">天池中间件大赛：单机百万消息队列存储分享</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fehk25r&amp;aid=12525&amp;nid=207" target="_blank" rel="noopener">GlusterFS 纠删码最佳实践应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fe0h0tu&amp;aid=12254&amp;nid=203" target="_blank" rel="noopener">Zeppelin：奇虎 360 出品的高性能分布式 KV 存储平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpjgx6k&amp;aid=11861&amp;nid=198" target="_blank" rel="noopener">VDL：唯品会强一致、高可用、高性能分布式日志存储介绍</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7yen01&amp;aid=11351&amp;nid=191" target="_blank" rel="noopener">Pegasus：小米出品的分布式 Key-Value 存储系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgkwe82&amp;aid=11251&amp;nid=190" target="_blank" rel="noopener">分布式键值存储 Dynamo 的实现原理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5fktt9&amp;aid=11242&amp;nid=190" target="_blank" rel="noopener">浅谈分布式存储系统中的数据一致性要求</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Famj0xn&amp;aid=11203&amp;nid=189" target="_blank" rel="noopener">badger：一个高性能的 LSM K/V store</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5qqd3w&amp;aid=10990&amp;nid=186" target="_blank" rel="noopener">我跟存储的这 10 年</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3bfosy&amp;aid=9715&amp;nid=169" target="_blank" rel="noopener">360 海量数据存储 Zeppelin 设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd9f2pk&amp;aid=9554&amp;nid=166" target="_blank" rel="noopener">Kudu：一个融合低延迟写入和高性能分析的存储系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fubeub6&amp;aid=9197&amp;nid=161" target="_blank" rel="noopener">Spark 自己的分布式存储系统：BlockManager</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8v4dgh&amp;aid=8647&amp;nid=154" target="_blank" rel="noopener">微信红包订单存储架构变迁的最佳实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fucy4jn&amp;aid=8289&amp;nid=148" target="_blank" rel="noopener">MySQL 高性能存储引擎：TokuDB 初探</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fttqk69&amp;aid=7995&amp;nid=143" target="_blank" rel="noopener">一名分布式存储工程师的技能树是怎样的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjgeeg9&amp;aid=7777&amp;nid=140" target="_blank" rel="noopener">自己动手写分布式 KV 存储引擎（二）：网络框架中的定时器原理和实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh1z7r3&amp;aid=7020&amp;nid=129" target="_blank" rel="noopener">Android 存储系统之架构篇</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbowh0f&amp;aid=6010&amp;nid=115" target="_blank" rel="noopener">一名分布式存储工程师的技能树是怎样的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F73xmbk&amp;aid=5559&amp;nid=109" target="_blank" rel="noopener">美团云分布式块存储系统 Ursa 的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq9mtan&amp;aid=5146&amp;nid=104" target="_blank" rel="noopener">微博分布式存储考试题：案例讲解及作业精选</a></li>
+</ul>
+<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftq492f&amp;aid=17102&amp;nid=272" target="_blank" rel="noopener">微服务中使用 OpenJ9 JVM 内存占用降 60%（相对 HotSpot）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhn0ni4&amp;aid=17003&amp;nid=270" target="_blank" rel="noopener">高性能微服务网关 .NETCore 客户端 Kong.Net 开源发布</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft5kl7a&amp;aid=16740&amp;nid=267" target="_blank" rel="noopener">微服务任务调度平台 SIA-TASK 入手实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0iwp7w&amp;aid=16601&amp;nid=266" target="_blank" rel="noopener">[译] 为什么微服务适合我们</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F527e3y&amp;aid=16600&amp;nid=266" target="_blank" rel="noopener">微服务架构与领域驱动设计应用实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp54rbk&amp;aid=16547&amp;nid=265" target="_blank" rel="noopener">[译] 容器、微服务和服务网格简史</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F56ji5m&amp;aid=16443&amp;nid=264" target="_blank" rel="noopener">个推基于 Zipkin 的分布式链路追踪实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvwjg5c&amp;aid=16440&amp;nid=264" target="_blank" rel="noopener">可落地的 DDD（三）：如何利用 DDD 进行微服务的划分</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo84er8&amp;aid=16470&amp;nid=264" target="_blank" rel="noopener">轻松构建微服务之分布式配置中心</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F57dduv&amp;aid=16356&amp;nid=263" target="_blank" rel="noopener">轻松构建微服务之远程调用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx7mni2&amp;aid=16287&amp;nid=262" target="_blank" rel="noopener">微服务架构下的配置管理：Apollo</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmeg1cl&amp;aid=16252&amp;nid=262" target="_blank" rel="noopener">土味微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7q0a3u&amp;aid=16189&amp;nid=261" target="_blank" rel="noopener">微服务化后缓存怎么做</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flzegj5&amp;aid=16108&amp;nid=260" target="_blank" rel="noopener">最全的微服务知识科普</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ff1k7wv&amp;aid=16052&amp;nid=259" target="_blank" rel="noopener">聊一聊微服务网关 kong 近期的模型变迁</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F37u12h&amp;aid=16020&amp;nid=259" target="_blank" rel="noopener">小团队微服务落地实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6018jy&amp;aid=15887&amp;nid=257" target="_blank" rel="noopener">[译] 混合微服务模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Foopku4&amp;aid=15866&amp;nid=257" target="_blank" rel="noopener">[译] 未来我们对微服务和 Serverless 架构有什么期望</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffnp7wn&amp;aid=15727&amp;nid=255" target="_blank" rel="noopener">微保 API 网关的探索与实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fawfudg&amp;aid=15641&amp;nid=253" target="_blank" rel="noopener">[译] 使用 Grab 的实验平台进行混沌实验编排</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F74yprd&amp;aid=15520&amp;nid=252" target="_blank" rel="noopener">离不开的微服务架构，脱不开的 RPC 细节</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjldsgp&amp;aid=15500&amp;nid=251" target="_blank" rel="noopener">小团队的微服务之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F43p70f&amp;aid=15428&amp;nid=250" target="_blank" rel="noopener">对没有监控的微服务 Say No</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6ymuhx&amp;aid=15401&amp;nid=250" target="_blank" rel="noopener">虎牙直播在微服务改造方面的实践和总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fodbfuv&amp;aid=15397&amp;nid=250" target="_blank" rel="noopener">B 站基于大仓库的 CI/CD 及微服务实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ff0uwf1&amp;aid=15360&amp;nid=250" target="_blank" rel="noopener">从 “挖光缆” 到 “剪网线”：蚂蚁金服异地多活单元化架构下的微服务体系</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F65zho9&amp;aid=15186&amp;nid=247" target="_blank" rel="noopener">重新理解 Martin Fowler 对微服务的定义</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fz1n2qv&amp;aid=15086&amp;nid=246" target="_blank" rel="noopener">小型系统如何 “微服务” 开发</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpiiy8y&amp;aid=15057&amp;nid=245" target="_blank" rel="noopener">Kafka 如何解决常见的微服务通信问题</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F44rb55&amp;aid=15000&amp;nid=244" target="_blank" rel="noopener">为什么使用主数据思维构建微服务是一种好方式？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvnvqk7&amp;aid=14937&amp;nid=243" target="_blank" rel="noopener">[译] 微服务通信的设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcai7gs&amp;aid=14932&amp;nid=243" target="_blank" rel="noopener">随行付微服务之数据同步 Porter</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4ju4tg&amp;aid=14892&amp;nid=243" target="_blank" rel="noopener">[译] 微服务设计指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyp0jtz&amp;aid=14874&amp;nid=242" target="_blank" rel="noopener">走进 Service Mesh</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjzn3sg&amp;aid=14801&amp;nid=241" target="_blank" rel="noopener">Restful API 监控实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fms81by&amp;aid=14770&amp;nid=241" target="_blank" rel="noopener">DAGOR：微信微服务过载控制系统（附论文）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcwhh48&amp;aid=14714&amp;nid=240" target="_blank" rel="noopener">基于 Spring Cloud 的微服务架构演变史</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4gy52r&amp;aid=14747&amp;nid=240" target="_blank" rel="noopener">微服务测试的思考与实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fodkk8i&amp;aid=14651&amp;nid=239" target="_blank" rel="noopener">致传统企业朋友：不够痛就别微服务，有坑</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F39utp2&amp;aid=14561&amp;nid=237" target="_blank" rel="noopener">讨论微服务之前，你知道微服务的 4 个定义吗？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3n201x&amp;aid=14549&amp;nid=237" target="_blank" rel="noopener">个推基于 Docker 和 Kubernetes 的微服务实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9o4d71&amp;aid=14311&amp;nid=234" target="_blank" rel="noopener">爱奇艺视频后台从 “单兵作战” 到 “团队协作” 的微服务实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl2jvii&amp;aid=14234&amp;nid=232" target="_blank" rel="noopener">基于 consul 实现微服务的服务发现和负载均衡</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd7394m&amp;aid=14161&amp;nid=231" target="_blank" rel="noopener">认证鉴权与 API 权限控制在微服务架构中的设计与实现：升级</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqu5cwp&amp;aid=14160&amp;nid=231" target="_blank" rel="noopener">SOFA 微服务多语言演进</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj6ow58&amp;aid=14152&amp;nid=231" target="_blank" rel="noopener">用微前端的方式搭建类单页应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyrntvt&amp;aid=14052&amp;nid=230" target="_blank" rel="noopener">为啥我用了微服务架构，软件还是不好修改啊？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6vcdxh&amp;aid=14032&amp;nid=229" target="_blank" rel="noopener">携程微服务架构下的测试浅谈</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbcqfzr&amp;aid=13918&amp;nid=228" target="_blank" rel="noopener">[译] 微服务的 10 个挑战和解决方案</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmwhpkm&amp;aid=13968&amp;nid=228" target="_blank" rel="noopener">[译] 推荐 30 个用于微服务的顶级工具</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fe35r0j&amp;aid=13769&amp;nid=225" target="_blank" rel="noopener">服务框架的技术栈</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0hkfi4&amp;aid=13706&amp;nid=224" target="_blank" rel="noopener">Spring Cloud 微服务版本灰度发布新神器</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg2nb3j&amp;aid=13703&amp;nid=224" target="_blank" rel="noopener">微前端快速选型指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn15ny2&amp;aid=13692&amp;nid=224" target="_blank" rel="noopener">如何构建安全的微服务应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcy05s1&amp;aid=13687&amp;nid=224" target="_blank" rel="noopener">深入解读 Service Mesh 背后的技术细节</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2bho18&amp;aid=13613&amp;nid=223" target="_blank" rel="noopener">微服务设计模式之 API 网关</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu5779u&amp;aid=13529&amp;nid=222" target="_blank" rel="noopener">微服务架构实践：API Gateway</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvtdynn&amp;aid=13513&amp;nid=222" target="_blank" rel="noopener">蚂蚁金服大规模微服务架构下的 Service Mesh 探索之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fs4e7gh&amp;aid=13539&amp;nid=222" target="_blank" rel="noopener">基于 Restful 的微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fz50khd&amp;aid=13525&amp;nid=222" target="_blank" rel="noopener">实施前端微服务化的六七种方式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpa4438&amp;aid=13449&amp;nid=221" target="_blank" rel="noopener">苏宁数据中台基于 Spring Cloud 微服务架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzjf7v8&amp;aid=13390&amp;nid=220" target="_blank" rel="noopener">微服务化的基石：持续集成</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fng7jym&amp;aid=13356&amp;nid=219" target="_blank" rel="noopener">Go 微服务实战汇总</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3ew1fe&amp;aid=13331&amp;nid=219" target="_blank" rel="noopener">基于微服务的日志中心设计、实现与关键配置</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8fhmhg&amp;aid=13253&amp;nid=218" target="_blank" rel="noopener">微服务化之缓存的设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fw2hntl&amp;aid=13224&amp;nid=217" target="_blank" rel="noopener">API 管理的正确姿势：API Gateway</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdymu8x&amp;aid=13212&amp;nid=217" target="_blank" rel="noopener">Netflix 的微服务是如何分层的</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F15f6ny&amp;aid=13111&amp;nid=216" target="_blank" rel="noopener">微服务 2.0 技术栈选型手册</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbkh1sp&amp;aid=13122&amp;nid=216" target="_blank" rel="noopener">如何基于 Golang 设计一套微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fglzqvq&amp;aid=13131&amp;nid=216" target="_blank" rel="noopener">Eureka + Zuul + Feign + Hystrix 构建微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1ragmw&amp;aid=13098&amp;nid=215" target="_blank" rel="noopener">从跨语言调用到 dubbo2.js</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flv7vry&amp;aid=13042&amp;nid=215" target="_blank" rel="noopener">51 信用卡在微服务架构下的监控平台架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fi5wznu&amp;aid=12970&amp;nid=214" target="_blank" rel="noopener">[译] 事件溯源|日志记录：一个基础的微服务模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhipgg3&amp;aid=12969&amp;nid=214" target="_blank" rel="noopener">无服务器架构下的运维</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Frsa4iv&amp;aid=12947&amp;nid=213" target="_blank" rel="noopener">从零搭建一个基于 Istio 的服务网格</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhiwdeq&amp;aid=12943&amp;nid=213" target="_blank" rel="noopener">Service Mesh 及其主流开源实现解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1kjbj5&amp;aid=12924&amp;nid=213" target="_blank" rel="noopener">罗辑思维 Go 语言微服务改造实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx9ffwo&amp;aid=12828&amp;nid=211" target="_blank" rel="noopener">腾讯出品的微服务框架的名字服务解决方案 TSeer 正式开源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6xqcpp&amp;aid=12789&amp;nid=211" target="_blank" rel="noopener">基于 Spring Cloud 的 Microservices 架构实战案例：配置文件属性内容加解密</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhkawin&amp;aid=12817&amp;nid=211" target="_blank" rel="noopener">为什么 Kubernetes 天然适合微服务？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F206sbe&amp;aid=12739&amp;nid=210" target="_blank" rel="noopener">从 Spring Cloud 看一个微服务框架的 “五脏六腑”</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwozb21&amp;aid=12750&amp;nid=210" target="_blank" rel="noopener">微服务化的不同阶段 Kubernetes 的不同玩法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzpvlor&amp;aid=12710&amp;nid=210" target="_blank" rel="noopener">基于 Spring Cloud 的 Microservices 架构实战案例：架构拆解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx0w7ai&amp;aid=12709&amp;nid=210" target="_blank" rel="noopener">基于 Spring Cloud 的微服务落地</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwdgigp&amp;aid=12691&amp;nid=210" target="_blank" rel="noopener">认证鉴权与 API 权限控制在微服务架构中的设计与实现：授权码模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8284lx&amp;aid=12512&amp;nid=207" target="_blank" rel="noopener">微网关与服务啮合</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9t19hj&amp;aid=12446&amp;nid=206" target="_blank" rel="noopener">手把手教你搭建一套可自动化构建的微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2jqfk6&amp;aid=12407&amp;nid=206" target="_blank" rel="noopener">微服务架构下的立体监控系统设计和实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F38d3c9&amp;aid=12405&amp;nid=206" target="_blank" rel="noopener">全面解析京东微服务平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7lfr8v&amp;aid=12317&amp;nid=204" target="_blank" rel="noopener">技术雷达之 “微前端”：将微服务理念扩展到前端开发</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmfs5yn&amp;aid=12312&amp;nid=204" target="_blank" rel="noopener">基于 Sanic 的微服务基础架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F46f4t0&amp;aid=12248&amp;nid=203" target="_blank" rel="noopener">使用 Istio 治理微服务入门</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh7i1x8&amp;aid=11888&amp;nid=199" target="_blank" rel="noopener">TDD 开发容器化的 Python 微服务应用（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Farjm1p&amp;aid=11928&amp;nid=199" target="_blank" rel="noopener">技术雷达之 “微前端”：将微服务理念扩展到前端开发</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9we6bi&amp;aid=11532&amp;nid=194" target="_blank" rel="noopener">Go 使用 grpc + http 打造高性能微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyuww62&amp;aid=11355&amp;nid=192" target="_blank" rel="noopener">[译] 如何设计实现真正的响应式微服务系统？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8s8pwz&amp;aid=11344&amp;nid=191" target="_blank" rel="noopener">腾讯与阅文技术合作，微服务框架 Tars 再添 PHP</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyxd30b&amp;aid=11170&amp;nid=189" target="_blank" rel="noopener">阿里云基于 Go 的微服务架构分享</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvii7xj&amp;aid=11077&amp;nid=187" target="_blank" rel="noopener">[译] 微服务从设计到部署（七）：重构单体为微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0wtw8o&amp;aid=10992&amp;nid=186" target="_blank" rel="noopener">Kubernetes、微服务以及 Service Mesh</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvwuc9h&amp;aid=11008&amp;nid=186" target="_blank" rel="noopener">[译] 微服务生态系统的 4 层模型</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fttmk3n&amp;aid=10790&amp;nid=184" target="_blank" rel="noopener">微服务 API 级权限的技术架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbq83y1&amp;aid=10789&amp;nid=184" target="_blank" rel="noopener">微服务的 4 个设计原则和 19 个解决方案</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbbht62&amp;aid=10855&amp;nid=184" target="_blank" rel="noopener">php-msf：基于 Swoole 的工程级企业微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg5t9sg&amp;aid=10715&amp;nid=183" target="_blank" rel="noopener">轻量级微服务架构及最佳部署</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv1bkhw&amp;aid=10752&amp;nid=183" target="_blank" rel="noopener">[译] 微服务从设计到部署（二）：使用 API 网关</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2ah8ig&amp;aid=10694&amp;nid=182" target="_blank" rel="noopener">连接管理安全化微服务的利器 Istio</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm8aqw3&amp;aid=10673&amp;nid=182" target="_blank" rel="noopener">[译] 微服务从设计到部署（一）：微服务简介 </a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fuxkvw4&amp;aid=10639&amp;nid=182" target="_blank" rel="noopener">[译] 设计一个容错的微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fiu24f0&amp;aid=10565&amp;nid=181" target="_blank" rel="noopener">如何构建微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdk2by4&amp;aid=10486&amp;nid=180" target="_blank" rel="noopener">微服务架构上云最佳实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fy7w5yu&amp;aid=10553&amp;nid=180" target="_blank" rel="noopener">swoft：基于 Swoole 协程 2.x 的高性能 PHP 微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9cmumb&amp;aid=10467&amp;nid=179" target="_blank" rel="noopener">[译] 如何实现前端微服务化？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpkmy3j&amp;aid=10457&amp;nid=179" target="_blank" rel="noopener">[译] 使用 Spring Cloud 和 Docker 构建微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8ds6fl&amp;aid=10390&amp;nid=178" target="_blank" rel="noopener">微服务注册发现集群搭建：Registrator + Consul + Consul-template + nginx</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4p2ebe&amp;aid=10375&amp;nid=178" target="_blank" rel="noopener">几种常见的微服务架构方案简述：ZeroC IceGrid、Spring Cloud、基于消息队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb9yrio&amp;aid=10206&amp;nid=176" target="_blank" rel="noopener">[译] REST？RPC？是时候改变你对微服务的认知了</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyhnr3d&amp;aid=10148&amp;nid=175" target="_blank" rel="noopener">京麦微服务技术架构演变之下的 618 备战实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr6w3t5&amp;aid=10117&amp;nid=174" target="_blank" rel="noopener">NHMicro：脚本化微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8f7m6l&amp;aid=10091&amp;nid=174" target="_blank" rel="noopener">详解微服务实践从架构到部署</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2nfcfl&amp;aid=10058&amp;nid=173" target="_blank" rel="noopener">Istio：Google、IBM 和 Lyft 联合开源的微服务 Service Mesh 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwlbiz6&amp;aid=10001&amp;nid=173" target="_blank" rel="noopener">微服务初级设计指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl7pnoz&amp;aid=9929&amp;nid=172" target="_blank" rel="noopener">多研究些架构，少谈些框架（二）：微服务和充血模型</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdlkoz9&amp;aid=9897&amp;nid=171" target="_blank" rel="noopener">揭秘网易大数据实践与基于微服务的应用架构设计实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3sly7l&amp;aid=9762&amp;nid=169" target="_blank" rel="noopener">解析微软微服务架构 eShopOnContainers（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4hoeqi&amp;aid=9681&amp;nid=168" target="_blank" rel="noopener">自己动手扩展分布式调用链</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fver9l5&amp;aid=9669&amp;nid=168" target="_blank" rel="noopener">[译] 为了更好地支持微服务，我们从 PHP 迁移到了 Go</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2hkd12&amp;aid=9594&amp;nid=167" target="_blank" rel="noopener">华尔街见闻基于 Golang 的微服务实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqhtx0d&amp;aid=9480&amp;nid=165" target="_blank" rel="noopener">《微服务设计》之演化式架构师</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo010bl&amp;aid=9477&amp;nid=165" target="_blank" rel="noopener">基于 Spring Cloud 的微服务架构 v1.0</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3twx8z&amp;aid=9411&amp;nid=164" target="_blank" rel="noopener">StatsD 使用小结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvf4npv&amp;aid=9335&amp;nid=163" target="_blank" rel="noopener">《微服务设计》读书笔记之微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd56pib&amp;aid=9275&amp;nid=162" target="_blank" rel="noopener">腾讯自用的微服务架构 Tars 正式开源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F15dua9&amp;aid=9277&amp;nid=162" target="_blank" rel="noopener">为基于 Spring Boot 的微服务架构搭建一套自动化、集中管理的 API 文档中心</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F90t7zh&amp;aid=9005&amp;nid=159" target="_blank" rel="noopener">微服务架构下的分布式数据管理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj99pg0&amp;aid=8947&amp;nid=158" target="_blank" rel="noopener">使用微服务架构重构支付网关</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqazq46&amp;aid=8910&amp;nid=157" target="_blank" rel="noopener">Faas，又一个未来？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpzx5mb&amp;aid=8789&amp;nid=156" target="_blank" rel="noopener">[译] Uber 微服务经验谈</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj224c4&amp;aid=8692&amp;nid=154" target="_blank" rel="noopener">Spring Cloud 构建微服务架构（一）：服务注册与发现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fizkqoe&amp;aid=8678&amp;nid=154" target="_blank" rel="noopener">微服务部署：蓝绿部署、滚动部署、灰度发布等部署方案对比与总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm124s5&amp;aid=8292&amp;nid=148" target="_blank" rel="noopener">微服务架构的基础框架选择：Spring Cloud 还是 Dubbo？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9s7cua&amp;aid=8014&amp;nid=144" target="_blank" rel="noopener">微服务的反模式和陷阱</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fc9i3ia&amp;aid=7979&amp;nid=143" target="_blank" rel="noopener">阿里巴巴前架构师 360 度无死角剖析微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr2tazu&amp;aid=7947&amp;nid=142" target="_blank" rel="noopener">spring-cloud-netflix-example：基于 Spring Cloud 的微服务实例</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffya6n5&amp;aid=7775&amp;nid=140" target="_blank" rel="noopener">产品级微服务的八大原则</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5hs6kt&amp;aid=7728&amp;nid=139" target="_blank" rel="noopener">微服务场景下的自动化测试</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdcn6tj&amp;aid=7118&amp;nid=130" target="_blank" rel="noopener">[译] REST 和微服务：用异步交互分解单体系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhpzb3p&amp;aid=7056&amp;nid=129" target="_blank" rel="noopener">[译] 微服务到头了？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fblkw89&amp;aid=7001&amp;nid=128" target="_blank" rel="noopener">Dora RPC：PHP 的分布式 RPC，支持微服务、服务发现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0jbmp8&amp;aid=6992&amp;nid=128" target="_blank" rel="noopener">[译] 用 Spring Cloud 治理微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fw0loo0&amp;aid=6924&amp;nid=127" target="_blank" rel="noopener">微服务的团队应对之道</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4v4dms&amp;aid=6880&amp;nid=127" target="_blank" rel="noopener">[译] NGINX 微服务参考架构简介</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5aqvuh&amp;aid=6654&amp;nid=123" target="_blank" rel="noopener">微服务独家笔记</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgkij7u&amp;aid=6464&amp;nid=121" target="_blank" rel="noopener">[译] 微服务即演进式架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8u3bb8&amp;aid=6358&amp;nid=119" target="_blank" rel="noopener">[译] 介绍 Nginx 微服务参考架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fowysr9&amp;aid=6261&amp;nid=118" target="_blank" rel="noopener">[译] 从微服务同步 REST 的天然缺陷说起</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3nzj6y&amp;aid=5603&amp;nid=110" target="_blank" rel="noopener">[译] Cookpad 基于 Docker 的微服务经验总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1d5zn4&amp;aid=5405&amp;nid=107" target="_blank" rel="noopener">Golang 微服务工具包</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhroumz&amp;aid=4904&amp;nid=102" target="_blank" rel="noopener">实施微服务，我们需要哪些基础框架？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgrxphx&amp;aid=4569&amp;nid=98" target="_blank" rel="noopener">[译] Rails 微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1kndxf&amp;aid=4106&amp;nid=93" target="_blank" rel="noopener">[译] 无服务器的微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgmaes&amp;aid=3588&amp;nid=87" target="_blank" rel="noopener">极速切入 Spring Boot 微服务框架 (float.lu)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6v74s&amp;aid=3136&amp;nid=82" target="_blank" rel="noopener">谈谈微服务 (王福强)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqfusw&amp;aid=2889&amp;nid=79" target="_blank" rel="noopener">[译] Martin Folwer 谈微服务的优缺点 (黄帅)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0bsp4&amp;aid=2796&amp;nid=78" target="_blank" rel="noopener">[译] 构建微服务：使用 API Gateway (陈杰)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F80pg6&amp;aid=2430&amp;nid=73" target="_blank" rel="noopener">[译] 微服务实战（一）：微服务架构的优势与不足 (杨峰)</a></li>
+</ul>
+<h2 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxv0mpu&amp;aid=17031&amp;nid=271" target="_blank" rel="noopener">《推荐系统开发实战》之冷启动问题</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwhj4eb&amp;aid=16980&amp;nid=270" target="_blank" rel="noopener">《推荐系统开发实战》之推荐系统的灵魂伴侣：数据挖掘</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1whved&amp;aid=16953&amp;nid=270" target="_blank" rel="noopener">基于 Erlang 语言的视频相似推荐系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzf3wie&amp;aid=16543&amp;nid=265" target="_blank" rel="noopener">推荐系统之矩阵分解模型（原理篇）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F621wdc&amp;aid=16469&amp;nid=264" target="_blank" rel="noopener">数据与广告系列（七）：广告与推荐系统技术架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Foj35u4&amp;aid=16450&amp;nid=264" target="_blank" rel="noopener">构建可解释的推荐系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb78d1l&amp;aid=16277&amp;nid=262" target="_blank" rel="noopener">从零开始入门推荐算法工程师</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Feo59x2&amp;aid=15891&amp;nid=257" target="_blank" rel="noopener">推荐系统冷启动</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu5o1mp&amp;aid=15670&amp;nid=254" target="_blank" rel="noopener">深度召回模型在 QQ 看点推荐中的应用实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyc6ldf&amp;aid=15599&amp;nid=253" target="_blank" rel="noopener">机器学习在微博信息流推荐中的应用实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fw1rb09&amp;aid=15256&amp;nid=248" target="_blank" rel="noopener">推荐系统融合排序之 LR</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvwad6r&amp;aid=15084&amp;nid=246" target="_blank" rel="noopener">重读 YouTube 深度学习推荐系统论文</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwvtv9f&amp;aid=14547&amp;nid=237" target="_blank" rel="noopener">58 部落帖子推荐系统的抬手动作</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkwdn9d&amp;aid=14382&amp;nid=235" target="_blank" rel="noopener">大数据推荐系统实时架构和离线架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl21nbg&amp;aid=14220&amp;nid=232" target="_blank" rel="noopener">2018 年最全的推荐系统干货</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhszitv&amp;aid=13611&amp;nid=223" target="_blank" rel="noopener">[译] 2018 年推荐系统入门指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpdwme8&amp;aid=13581&amp;nid=223" target="_blank" rel="noopener">京东推荐系统架构揭秘：大数据时代下的智能化改造</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1tmfmy&amp;aid=13326&amp;nid=219" target="_blank" rel="noopener">推荐系统遇上深度学习（十五）：强化学习在京东推荐中的探索</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcm6hka&amp;aid=13187&amp;nid=217" target="_blank" rel="noopener">推荐系统遇上深度学习（十一）：神经协同过滤 NCF 原理及实战</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9t354k&amp;aid=12819&amp;nid=211" target="_blank" rel="noopener">从先进走向普遍的广告和推荐系统方法之一：在线学习</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4l1kex&amp;aid=12282&amp;nid=204" target="_blank" rel="noopener">微软亚洲研究院论文解读：GAN 在网络特征学习中的应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fthubku&amp;aid=12278&amp;nid=204" target="_blank" rel="noopener">深度学习在 58 同城智能推荐系统中的应用实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpmd2v1&amp;aid=12203&amp;nid=203" target="_blank" rel="noopener">深度学习在推荐系统上的应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvm05h0&amp;aid=12157&amp;nid=202" target="_blank" rel="noopener">今日头条推荐算法原理全文详解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn2powm&amp;aid=12115&amp;nid=202" target="_blank" rel="noopener">从原理到策略算法再到架构产品看推荐系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6jz32a&amp;aid=11998&amp;nid=200" target="_blank" rel="noopener">[译] 一分钟整明白 Netflix 的 Contextual Bandits 的推荐探索策略</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp5z08l&amp;aid=11855&amp;nid=198" target="_blank" rel="noopener">融合了用户兴趣的推荐系统才更具个性</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv62411&amp;aid=11761&amp;nid=197" target="_blank" rel="noopener">就算是非技术人员也都有必要了解的一些推荐系统常识</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbgzhaw&amp;aid=11724&amp;nid=197" target="_blank" rel="noopener">推荐系统之用户行为分析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3wkrrg&amp;aid=10953&amp;nid=186" target="_blank" rel="noopener">推荐系统那些事儿</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqfijcf&amp;aid=10816&amp;nid=184" target="_blank" rel="noopener">3 亿会员、4 亿商品，深度学习在大型电商商品推荐的应用实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fthx7o8&amp;aid=10348&amp;nid=178" target="_blank" rel="noopener">深度学习在美团点评推荐平台排序中的运用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F35tpcy&amp;aid=10176&amp;nid=175" target="_blank" rel="noopener">蘑菇街推荐工程实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh1peov&amp;aid=10147&amp;nid=175" target="_blank" rel="noopener">[译] 亚马逊推荐二十年</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnvao7r&amp;aid=10146&amp;nid=175" target="_blank" rel="noopener">今日头条成功的核心技术秘诀是什么？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdn9rsm&amp;aid=9865&amp;nid=171" target="_blank" rel="noopener">写给设计师的人工智能指南：推荐系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F44yl8e&amp;aid=9862&amp;nid=171" target="_blank" rel="noopener">Pinterest 推荐系统四年进化之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh1ey0b&amp;aid=9850&amp;nid=170" target="_blank" rel="noopener">深度学习在推荐领域的应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvlgip3&amp;aid=9732&amp;nid=169" target="_blank" rel="noopener">Deep Learning for Recommendation Systems</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7uziol&amp;aid=9559&amp;nid=166" target="_blank" rel="noopener">Bandit 算法与推荐系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9x52nx&amp;aid=9463&amp;nid=165" target="_blank" rel="noopener">深度学习在推荐算法上的应用进展</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx4c15d&amp;aid=9445&amp;nid=165" target="_blank" rel="noopener">魅族推荐平台的架构演进之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqpp7e2&amp;aid=8803&amp;nid=156" target="_blank" rel="noopener">淘宝搜索/推荐系统背后深度强化学习与自适应在线学习的实践之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmunr12&amp;aid=8369&amp;nid=149" target="_blank" rel="noopener">[译] 工作职位推荐系统的算法与架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fd9s3vx&amp;aid=8240&amp;nid=147" target="_blank" rel="noopener">基于用户画像的实时异步化视频推荐系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzjt9kg&amp;aid=8079&amp;nid=145" target="_blank" rel="noopener">兴趣 Feed 技术架构与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fupftbt&amp;aid=8036&amp;nid=144" target="_blank" rel="noopener">推荐系统老司机的十条经验</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8pyzkt&amp;aid=7139&amp;nid=130" target="_blank" rel="noopener">推荐系统的苟且和远方</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3cvjl9&amp;aid=4928&amp;nid=102" target="_blank" rel="noopener">[译] 如何从零构建实时的个性化推荐系统？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fynunyg&amp;aid=4857&amp;nid=101" target="_blank" rel="noopener">大数据 / 数据挖掘 / 推荐系统 / 机器学习相关资源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh6dlgb&amp;aid=4602&amp;nid=98" target="_blank" rel="noopener">为豆瓣电影实现 User-based 协同过滤的推荐系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0za23w&amp;aid=4393&amp;nid=96" target="_blank" rel="noopener">推荐系统基础知识</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjq47s&amp;aid=3239&amp;nid=84" target="_blank" rel="noopener">美团推荐系统整体框架与关键工作 (沈国阳)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcfc1t&amp;aid=2132&amp;nid=67" target="_blank" rel="noopener">使用 Python 实现一个简单的推荐系统 (Kai Zhou)</a></li>
+</ul>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdret83&amp;aid=16439&amp;nid=264" target="_blank" rel="noopener">设计一个分布式 RPC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fetr6qg&amp;aid=16096&amp;nid=260" target="_blank" rel="noopener">[译] Linkerd or Istio？哪个 Service Mesh 框架更适合你？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwmwus4&amp;aid=15910&amp;nid=257" target="_blank" rel="noopener">Golang 轻量级高并发 socket 框架 chitchat</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgu0vn2&amp;aid=15786&amp;nid=255" target="_blank" rel="noopener">Aloha：一个分布式调度框架的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsgkxah&amp;aid=15556&amp;nid=252" target="_blank" rel="noopener">架构认知（二）：企业架构的框架和作用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzm5v0z&amp;aid=15137&amp;nid=246" target="_blank" rel="noopener">简单高性能的 JavaScript 组件框架 Ale.js</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F17gc7q&amp;aid=14690&amp;nid=239" target="_blank" rel="noopener">[译] 评估 Kubernetes 中的 Serverless 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdjks43&amp;aid=13835&amp;nid=226" target="_blank" rel="noopener">[译] Uber 开源 Fusion.js：一个基于插件架构的通用 Web 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fe35r0j&amp;aid=13769&amp;nid=225" target="_blank" rel="noopener">服务框架的技术栈</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F44ltuw&amp;aid=13276&amp;nid=218" target="_blank" rel="noopener">Scala 实现 DSL 的框架案例</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo3pp4d&amp;aid=13206&amp;nid=217" target="_blank" rel="noopener">Web 框架的架构模式探讨（JavaScript 语言）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx9ffwo&amp;aid=12828&amp;nid=211" target="_blank" rel="noopener">腾讯出品的微服务框架的名字服务解决方案 TSeer 正式开源</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flwkoz4&amp;aid=12754&amp;nid=210" target="_blank" rel="noopener">分布式单点登录框架 XXL-SSO</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fgs1tff&amp;aid=12748&amp;nid=210" target="_blank" rel="noopener">蚂蚁通信框架实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F206sbe&amp;aid=12739&amp;nid=210" target="_blank" rel="noopener">从 Spring Cloud 看一个微服务框架的 “五脏六腑”</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpm3wgu&amp;aid=12535&amp;nid=207" target="_blank" rel="noopener">swoolefy：基于 Swoole 扩展实现的高性能 MVC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9t19hj&amp;aid=12446&amp;nid=206" target="_blank" rel="noopener">手把手教你搭建一套可自动化构建的微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnqxt5d&amp;aid=12177&amp;nid=202" target="_blank" rel="noopener">跟繁琐的命令行说拜拜，Gerapy 分布式爬虫管理框架来袭</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxd00zo&amp;aid=12081&amp;nid=201" target="_blank" rel="noopener">设计和实现一款轻量级的爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl8iqmy&amp;aid=11784&amp;nid=197" target="_blank" rel="noopener">Blade：高性能、简洁优雅的 Java Web 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1dr63d&amp;aid=11715&amp;nid=196" target="_blank" rel="noopener">Log4a：基于 mmap 的高性能、高可用的 Android 日志收集框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv04t13&amp;aid=11576&amp;nid=195" target="_blank" rel="noopener">Android 高级进阶（源码剖析篇）：Twitter 的高性能序列化框架 Serial（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8408lv&amp;aid=11348&amp;nid=191" target="_blank" rel="noopener">XXL-CRAWLER：灵活高效、面向对象的分布式爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8s8pwz&amp;aid=11344&amp;nid=191" target="_blank" rel="noopener">腾讯与阅文技术合作，微服务框架 Tars 再添 PHP</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx5mx32&amp;aid=11269&amp;nid=190" target="_blank" rel="noopener">TSF：腾讯出品的基于协程和 Swoole 驱动的高性能 PHP 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fltj9um&amp;aid=11140&amp;nid=188" target="_blank" rel="noopener">Colly：Go 实现的快速、优雅的高性能网页采集框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpixeg9&amp;aid=11099&amp;nid=187" target="_blank" rel="noopener">Biny：腾讯出品的高性能的超轻量级 PHP 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbbht62&amp;aid=10855&amp;nid=184" target="_blank" rel="noopener">php-msf：基于 Swoole 的工程级企业微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffc0f0p&amp;aid=10731&amp;nid=183" target="_blank" rel="noopener">基于 Java、Kafka、ElasticSearch 的搜索框架的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fy7w5yu&amp;aid=10553&amp;nid=180" target="_blank" rel="noopener">swoft：基于 Swoole 协程 2.x 的高性能 PHP 微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr7yjio&amp;aid=10214&amp;nid=176" target="_blank" rel="noopener">iOS 从 0 到 1 搭建高可用 App 框架（二）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr6w3t5&amp;aid=10117&amp;nid=174" target="_blank" rel="noopener">NHMicro：脚本化微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2nfcfl&amp;aid=10058&amp;nid=173" target="_blank" rel="noopener">Istio：Google、IBM 和 Lyft 联合开源的微服务 Service Mesh 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2d8ovt&amp;aid=9974&amp;nid=172" target="_blank" rel="noopener">Google 应用框架实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl7pnoz&amp;aid=9929&amp;nid=172" target="_blank" rel="noopener">多研究些架构，少谈些框架（二）：微服务和充血模型</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo010bl&amp;aid=9477&amp;nid=165" target="_blank" rel="noopener">基于 Spring Cloud 的微服务架构 v1.0</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg7ion2&amp;aid=9189&amp;nid=161" target="_blank" rel="noopener">[译] 用分层结构打造苗条 MVC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Faclw19&amp;aid=9215&amp;nid=161" target="_blank" rel="noopener">Voyage：Java 实现的基于 Netty 的轻量、高性能分布式 RPC 服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0v0kpa&amp;aid=9079&amp;nid=160" target="_blank" rel="noopener">小程序底层框架实现原理解析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5wma7d&amp;aid=8911&amp;nid=157" target="_blank" rel="noopener">Golang 高性能分布式游戏服务器框架 mqant</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn0gdvg&amp;aid=8790&amp;nid=156" target="_blank" rel="noopener">[译] Google 是如何开发 Web 框架的</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg5ghje&amp;aid=8708&amp;nid=154" target="_blank" rel="noopener">FastD：PHP 高性能 API 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm124s5&amp;aid=8292&amp;nid=148" target="_blank" rel="noopener">微服务架构的基础框架选择：Spring Cloud 还是 Dubbo？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2nh7g6&amp;aid=7761&amp;nid=139" target="_blank" rel="noopener">JLiteSpider：轻量级的分布式 Java 爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft70i21&amp;aid=6809&amp;nid=125" target="_blank" rel="noopener">SeimiCrawler：敏捷、独立部署、支持分布式的 Java 爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsf6ol6&amp;aid=6661&amp;nid=123" target="_blank" rel="noopener">基于 Dubbo 框架构建分布式服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzyeuuk&amp;aid=6443&amp;nid=120" target="_blank" rel="noopener">RPCX：类似 Dubbo 的分布式 RPC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6fdzp6&amp;aid=6383&amp;nid=120" target="_blank" rel="noopener">魅族 C++ 协程框架 Kiev 技术内幕</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F95qo0b&amp;aid=6060&amp;nid=116" target="_blank" rel="noopener">高性能分布式 Mock 平台的框架与设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fatdywd&amp;aid=5746&amp;nid=112" target="_blank" rel="noopener">深入分析 iBATIS 框架之系统架构与映射原理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhroumz&amp;aid=4904&amp;nid=102" target="_blank" rel="noopener">实施微服务，我们需要哪些基础框架？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo1pgk&amp;aid=1996&amp;nid=63" target="_blank" rel="noopener">kiteq - 一个多种持久化方案的 MQ 框架 (@Beta版厨子)</a></li>
+</ul>
+<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fov5cay&amp;aid=15449&amp;nid=251" target="_blank" rel="noopener">金融行业消息队列选型及实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3qehx7&amp;aid=14951&amp;nid=243" target="_blank" rel="noopener">QMQ：去哪儿网内部广泛使用的消息中间件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyosx21&amp;aid=14551&amp;nid=237" target="_blank" rel="noopener">分布式之消息队列复习精讲</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F505qkj&amp;aid=13851&amp;nid=227" target="_blank" rel="noopener">天池中间件大赛：单机百万消息队列存储分享</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq348q1&amp;aid=13764&amp;nid=225" target="_blank" rel="noopener">消息队列实现概要：深度解读分区 Topic 的实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fafyqe5&amp;aid=13148&amp;nid=216" target="_blank" rel="noopener">消息队列事务型消息原理浅析</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdqfevp&amp;aid=11851&amp;nid=198" target="_blank" rel="noopener">RAID 6 应用于消息队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fenlfg4&amp;aid=11707&amp;nid=196" target="_blank" rel="noopener">分布式消息队列实现概要</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4p2ebe&amp;aid=10375&amp;nid=178" target="_blank" rel="noopener">几种常见的微服务架构方案简述：ZeroC IceGrid、Spring Cloud、基于消息队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fctccgi&amp;aid=10177&amp;nid=175" target="_blank" rel="noopener">LocalMQ：从零构建类 RocketMQ 高性能消息队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvvw3eq&amp;aid=9763&amp;nid=169" target="_blank" rel="noopener">消息队列的对比调研</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsiyjen&amp;aid=9151&amp;nid=161" target="_blank" rel="noopener">Message Queue 的设计和实现（七）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn7qpkw&amp;aid=8945&amp;nid=158" target="_blank" rel="noopener">腾讯云分布式高可靠消息队列 CMQ 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2jr0pt&amp;aid=8862&amp;nid=157" target="_blank" rel="noopener">Message Queue 的设计和实现（三）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpts7bc&amp;aid=8569&amp;nid=152" target="_blank" rel="noopener">Gores：Go 语言编写的基于 Redis 的消息队列系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4tr157&amp;aid=7892&amp;nid=141" target="_blank" rel="noopener">php-queue：PHP 开发的磁盘存储消息队列服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq5p960&amp;aid=7023&amp;nid=129" target="_blank" rel="noopener">PHP 高级编程之消息队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7bcgog&amp;aid=6747&amp;nid=125" target="_blank" rel="noopener">消息队列设计精要</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3cszs&amp;aid=2230&amp;nid=69" target="_blank" rel="noopener">Disque - 一个分布式消息队列 (antirez)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6742y&amp;aid=2148&amp;nid=67" target="_blank" rel="noopener">可靠消息队列浅谈 (@招牌疯子)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo1pgk&amp;aid=1996&amp;nid=63" target="_blank" rel="noopener">kiteq - 一个多种持久化方案的 MQ 框架 (@Beta版厨子)</a></li>
+</ul>
+<h2 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftq492f&amp;aid=17102&amp;nid=272" target="_blank" rel="noopener">微服务中使用 OpenJ9 JVM 内存占用降 60%（相对 HotSpot）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fasw5qp&amp;aid=17073&amp;nid=271" target="_blank" rel="noopener">Go 并发设计模式之 Active Object</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo09i73&amp;aid=16878&amp;nid=269" target="_blank" rel="noopener">函数式编程让你忘记设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F88qvcp&amp;aid=16648&amp;nid=266" target="_blank" rel="noopener">AAC 系列（四）：深入理解架构组件 ViewModel</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7ko3iw&amp;aid=16434&amp;nid=264" target="_blank" rel="noopener">自治对象才是好对象</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4r2m99&amp;aid=16389&amp;nid=263" target="_blank" rel="noopener">iOS、Swift 基础开发架构思考</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F57dduv&amp;aid=16356&amp;nid=263" target="_blank" rel="noopener">轻松构建微服务之远程调用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx5qrda&amp;aid=16336&amp;nid=263" target="_blank" rel="noopener">拍拍贷消息系统原理与应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7q0a3u&amp;aid=16189&amp;nid=261" target="_blank" rel="noopener">微服务化后缓存怎么做</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fep1en9&amp;aid=16148&amp;nid=260" target="_blank" rel="noopener">Golang Failpoint 的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwmwus4&amp;aid=15910&amp;nid=257" target="_blank" rel="noopener">Golang 轻量级高并发 socket 框架 chitchat</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmacdlu&amp;aid=15921&amp;nid=257" target="_blank" rel="noopener">[译] 高性能 Go 服务的内存优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbu5td2&amp;aid=15817&amp;nid=256" target="_blank" rel="noopener">马蜂窝搜索基于 Golang 并发代理的一次架构升级</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6jrqfl&amp;aid=15745&amp;nid=255" target="_blank" rel="noopener">Android 技术架构演进与未来</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0qt8jk&amp;aid=15678&amp;nid=254" target="_blank" rel="noopener">Android 架构组件：让天下没有难做的 App</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpadg21&amp;aid=15650&amp;nid=253" target="_blank" rel="noopener">NutsDB：纯 Go 编写的高性能内嵌型 KV 数据库</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbrbe04&amp;aid=15306&amp;nid=249" target="_blank" rel="noopener">指令集架构、机器码与 Go 语言</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fw8yenz&amp;aid=15231&amp;nid=248" target="_blank" rel="noopener">Android 架构之高可用移动网络连接</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr7nlaa&amp;aid=15210&amp;nid=247" target="_blank" rel="noopener">让 Raft 变快 100 倍：Dragonboat 的写优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwn7eo5&amp;aid=15047&amp;nid=245" target="_blank" rel="noopener">Flutter 混合开发组件化与工程化架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fetrnyn&amp;aid=14984&amp;nid=244" target="_blank" rel="noopener">Go 分布式实时服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fheduhs&amp;aid=14905&amp;nid=243" target="_blank" rel="noopener">Android 架构之长连接技术</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpgarge&amp;aid=14906&amp;nid=243" target="_blank" rel="noopener">被滥用的 GUI 设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj7nzmk&amp;aid=14837&amp;nid=242" target="_blank" rel="noopener">Android Architecture Component 和架构升级在铭师堂的实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fs16bsw&amp;aid=13843&amp;nid=239" target="_blank" rel="noopener">杭州有赞招聘资深 Java 开发工程师/垂直业务架构师</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2qyv4h&amp;aid=14640&amp;nid=238" target="_blank" rel="noopener">gorouter：简单高性能的 Go router</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpuxwzs&amp;aid=14066&amp;nid=230" target="_blank" rel="noopener">最佳实践：重构 AppDelegate（iOS）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb7eq8v&amp;aid=14065&amp;nid=230" target="_blank" rel="noopener">Android 架构：ViewModel 与 View 之间的通信</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fegpgxv&amp;aid=13936&amp;nid=228" target="_blank" rel="noopener">从 Go 高性能日志库 zap 看如何实现高性能 Go 组件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbftpm0&amp;aid=13930&amp;nid=228" target="_blank" rel="noopener">Android 架构组件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbcqfzr&amp;aid=13918&amp;nid=228" target="_blank" rel="noopener">[译] 微服务的 10 个挑战和解决方案</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxcvqdy&amp;aid=13803&amp;nid=226" target="_blank" rel="noopener">天池中间件大赛 Golang 版 Service Mesh 思路分享</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffn4v62&amp;aid=13774&amp;nid=225" target="_blank" rel="noopener">MyPerf4J：针对高并发、低延迟应用设计的高性能且无侵入的实时 Java 方法性能监控和统计工具</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0hkfi4&amp;aid=13706&amp;nid=224" target="_blank" rel="noopener">Spring Cloud 微服务版本灰度发布新神器</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv3s2la&amp;aid=13674&amp;nid=224" target="_blank" rel="noopener">Python 后端架构演进</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsdb5jf&amp;aid=13668&amp;nid=224" target="_blank" rel="noopener">使用 Android 架构组件实现 MVVM 模式的应用</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9808ju&amp;aid=13591&amp;nid=223" target="_blank" rel="noopener">Go 代码重构：23 倍的性能爆增</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F09oh4x&amp;aid=13551&amp;nid=222" target="_blank" rel="noopener">继承和面向接口（iOS 架构思想篇）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpa4438&amp;aid=13449&amp;nid=221" target="_blank" rel="noopener">苏宁数据中台基于 Spring Cloud 微服务架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fng7jym&amp;aid=13356&amp;nid=219" target="_blank" rel="noopener">Go 微服务实战汇总</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F28xhz5&amp;aid=13190&amp;nid=217" target="_blank" rel="noopener">基于可靠消息方案的分布式事务（二）：Java 中的事务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbkh1sp&amp;aid=13122&amp;nid=216" target="_blank" rel="noopener">如何基于 Golang 设计一套微服务架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbeyk5y&amp;aid=13075&amp;nid=215" target="_blank" rel="noopener">什么时候能用上设计模式？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1ragmw&amp;aid=13098&amp;nid=215" target="_blank" rel="noopener">从跨语言调用到 dubbo2.js</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzavy6s&amp;aid=12999&amp;nid=214" target="_blank" rel="noopener">秒杀架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1kjbj5&amp;aid=12924&amp;nid=213" target="_blank" rel="noopener">罗辑思维 Go 语言微服务改造实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fw0d16z&amp;aid=12922&amp;nid=213" target="_blank" rel="noopener">[译] PHP-FPM 调优：为了高性能使用 pm static</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxq9rcw&amp;aid=12846&amp;nid=212" target="_blank" rel="noopener">Android 工程模块化平台的设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F155gol&amp;aid=12800&amp;nid=211" target="_blank" rel="noopener">Golang 高性能实战</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdvul4d&amp;aid=12795&amp;nid=211" target="_blank" rel="noopener">浅析 iOS 中的设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fi992v2&amp;aid=12792&amp;nid=211" target="_blank" rel="noopener">苏宁易购 Android 架构演进史</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx0w7ai&amp;aid=12709&amp;nid=210" target="_blank" rel="noopener">基于 Spring Cloud 的微服务落地</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjz9zjj&amp;aid=12744&amp;nid=210" target="_blank" rel="noopener">跨平台长连接组件设计及可插拔改造</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F206sbe&amp;aid=12739&amp;nid=210" target="_blank" rel="noopener">从 Spring Cloud 看一个微服务框架的 “五脏六腑”</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzpvlor&amp;aid=12710&amp;nid=210" target="_blank" rel="noopener">基于 Spring Cloud 的 Microservices 架构实战案例：架构拆解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fuimy8i&amp;aid=12675&amp;nid=209" target="_blank" rel="noopener">MMKV：基于 mmap 的 iOS 高性能通用 key-value 组件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqikhdp&amp;aid=12559&amp;nid=208" target="_blank" rel="noopener">阿里架构师分享的 Java 程序员需要突破的技术要点</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpm3wgu&amp;aid=12535&amp;nid=207" target="_blank" rel="noopener">swoolefy：基于 Swoole 扩展实现的高性能 MVC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F38d3c9&amp;aid=12405&amp;nid=206" target="_blank" rel="noopener">全面解析京东微服务平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmfs5yn&amp;aid=12312&amp;nid=204" target="_blank" rel="noopener">基于 Sanic 的微服务基础架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxvtqse&amp;aid=12287&amp;nid=204" target="_blank" rel="noopener">Android Architecture Component 解析之 ViewModel</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fi3wyqv&amp;aid=12214&amp;nid=203" target="_blank" rel="noopener">Android Architecture Components 和可测试代码</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr0qfju&amp;aid=12180&amp;nid=202" target="_blank" rel="noopener">guard：高性能熔断器 + 代理服务器（Golang）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3vleiv&amp;aid=12037&amp;nid=201" target="_blank" rel="noopener">Dubbo 作者聊设计原则（2011）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjllh7k&amp;aid=12054&amp;nid=201" target="_blank" rel="noopener">Android 应用架构前世今生</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh7i1x8&amp;aid=11888&amp;nid=199" target="_blank" rel="noopener">TDD 开发容器化的 Python 微服务应用（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcqhkb2&amp;aid=11892&amp;nid=199" target="_blank" rel="noopener">[译] 2018 PHP 应用程序安全设计指北</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkenqnn&amp;aid=11814&amp;nid=198" target="_blank" rel="noopener">探索 Android 架构组件 Room</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl8iqmy&amp;aid=11784&amp;nid=197" target="_blank" rel="noopener">Blade：高性能、简洁优雅的 Java Web 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft6jibs&amp;aid=11767&amp;nid=197" target="_blank" rel="noopener">搭建 Keepalived + Nginx + Tomcat 的高可用负载均衡架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnf3zsh&amp;aid=11744&amp;nid=197" target="_blank" rel="noopener">读懂唱吧 KTVHTTPCache 设计思想（iOS）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3jmpx4&amp;aid=11786&amp;nid=197" target="_blank" rel="noopener">MultiHttp：高性能 PHP 封装的 HTTP Restful 多线程并发请求库</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1dr63d&amp;aid=11715&amp;nid=196" target="_blank" rel="noopener">Log4a：基于 mmap 的高性能、高可用的 Android 日志收集框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv04t13&amp;aid=11576&amp;nid=195" target="_blank" rel="noopener">Android 高级进阶（源码剖析篇）：Twitter 的高性能序列化框架 Serial（一）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmy98uz&amp;aid=11518&amp;nid=194" target="_blank" rel="noopener">gkvdb 的介绍及设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9we6bi&amp;aid=11532&amp;nid=194" target="_blank" rel="noopener">Go 使用 grpc + http 打造高性能微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnickqt&amp;aid=11530&amp;nid=194" target="_blank" rel="noopener">一文读懂连接池技术原理、设计与实现（Python）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8h65sd&amp;aid=11335&amp;nid=191" target="_blank" rel="noopener">使用 Redis 实现分布式锁及其优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnxrzow&amp;aid=11323&amp;nid=191" target="_blank" rel="noopener">gRPC &amp; Protocol Buffer 构建高性能接口实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8s8pwz&amp;aid=11344&amp;nid=191" target="_blank" rel="noopener">腾讯与阅文技术合作，微服务框架 Tars 再添 PHP</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fx5mx32&amp;aid=11269&amp;nid=190" target="_blank" rel="noopener">TSF：腾讯出品的基于协程和 Swoole 驱动的高性能 PHP 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fajuu54&amp;aid=11192&amp;nid=189" target="_blank" rel="noopener">带你领略 Clean 架构的魅力</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyxd30b&amp;aid=11170&amp;nid=189" target="_blank" rel="noopener">阿里云基于 Go 的微服务架构分享</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fltj9um&amp;aid=11140&amp;nid=188" target="_blank" rel="noopener">Colly：Go 实现的快速、优雅的高性能网页采集框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpixeg9&amp;aid=11099&amp;nid=187" target="_blank" rel="noopener">Biny：腾讯出品的高性能的超轻量级 PHP 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fri3tnj&amp;aid=11097&amp;nid=187" target="_blank" rel="noopener">MultiHttp：高性能的 PHP 封装的 HTTP Restful 多线程并发请求库</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg6a3fw&amp;aid=11000&amp;nid=186" target="_blank" rel="noopener">dubbo 源码解析：集群容错架构设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fu6hhfn&amp;aid=10977&amp;nid=186" target="_blank" rel="noopener">用 500 行 Golang 代码实现高性能的消息回调中间件</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbbht62&amp;aid=10855&amp;nid=184" target="_blank" rel="noopener">php-msf：基于 Swoole 的工程级企业微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffc0f0p&amp;aid=10731&amp;nid=183" target="_blank" rel="noopener">基于 Java、Kafka、ElasticSearch 的搜索框架的设计与实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6kb78y&amp;aid=10737&amp;nid=183" target="_blank" rel="noopener">深入理解 iOS 设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmp85ri&amp;aid=10653&amp;nid=182" target="_blank" rel="noopener">Android 应用架构组件实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsntl6i&amp;aid=10587&amp;nid=181" target="_blank" rel="noopener">如何用 Go 打造亿级实时分布式出行平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fuk2he1&amp;aid=10582&amp;nid=181" target="_blank" rel="noopener">[译] 基于 Android Architecture Components 的应用架构指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3ijcsx&amp;aid=10558&amp;nid=180" target="_blank" rel="noopener">molten：PHP 应用透明链路追踪工具</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fy7w5yu&amp;aid=10553&amp;nid=180" target="_blank" rel="noopener">swoft：基于 Swoole 协程 2.x 的高性能 PHP 微服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fy2np6x&amp;aid=10539&amp;nid=180" target="_blank" rel="noopener">浅谈 MVC、MVP 和 MVVM 架构模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhhl4bd&amp;aid=10314&amp;nid=177" target="_blank" rel="noopener">谈谈 Tomcat 架构及启动过程</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fr7yjio&amp;aid=10214&amp;nid=176" target="_blank" rel="noopener">iOS 从 0 到 1 搭建高可用 App 框架（二）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdnygab&amp;aid=10166&amp;nid=175" target="_blank" rel="noopener">再谈 WebSocket，论架构设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fjzvfgf&amp;aid=10083&amp;nid=174" target="_blank" rel="noopener">两年 PHPer 聊下架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo9e9gh&amp;aid=10095&amp;nid=174" target="_blank" rel="noopener">Laravel + go-micro + grpc 实践基于 Zipkin 的分布式链路追踪系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqji3ft&amp;aid=10003&amp;nid=173" target="_blank" rel="noopener">Base 封装（一）：我的最简 MVP 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2x5xil&amp;aid=10007&amp;nid=173" target="_blank" rel="noopener">iOS 架构实践：The Right Way to Architect iOS App with Swift</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7k6g5g&amp;aid=9945&amp;nid=172" target="_blank" rel="noopener">iOS 动态功能部署我们是这样实现的：理论设计篇</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ff42gp4&amp;aid=9879&amp;nid=171" target="_blank" rel="noopener">iOS 架构设计：URL 缓存</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbun0rg&amp;aid=9747&amp;nid=169" target="_blank" rel="noopener">[译] Google 官方推出应用开发架构指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F462xte&amp;aid=9698&amp;nid=168" target="_blank" rel="noopener">针对 PHP 做的 Ragnar Fiery 分布式性能跟踪系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fver9l5&amp;aid=9669&amp;nid=168" target="_blank" rel="noopener">[译] 为了更好地支持微服务，我们从 PHP 迁移到了 Go</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj4639h&amp;aid=9588&amp;nid=167" target="_blank" rel="noopener">iOS 无埋点数据 SDK 的整体设计与技术实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2hkd12&amp;aid=9594&amp;nid=167" target="_blank" rel="noopener">华尔街见闻基于 Golang 的微服务实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvtovqv&amp;aid=9591&amp;nid=167" target="_blank" rel="noopener">PHP 应用性能优化指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6ch3h7&amp;aid=9385&amp;nid=164" target="_blank" rel="noopener">58 同城 iOS 客户端组件化演变历程</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4grbn9&amp;aid=9310&amp;nid=163" target="_blank" rel="noopener">沪江学习 Android 端应用架构重构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqoz4i6&amp;aid=9313&amp;nid=163" target="_blank" rel="noopener">天弘基金 iOS App 架构优化之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Faclw19&amp;aid=9215&amp;nid=161" target="_blank" rel="noopener">Voyage：Java 实现的基于 Netty 的轻量、高性能分布式 RPC 服务框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1f5d0d&amp;aid=9203&amp;nid=161" target="_blank" rel="noopener">iOS 设计模式资料整理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg7ion2&amp;aid=9189&amp;nid=161" target="_blank" rel="noopener">[译] 用分层结构打造苗条 MVC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fljxg0a&amp;aid=9167&amp;nid=161" target="_blank" rel="noopener">[译] GitHub 上 star 超过 2k 的 Android MVP 架构指南</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Futsyhi&amp;aid=9119&amp;nid=160" target="_blank" rel="noopener">分布式任务队列 Celery 介绍</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0qntq9&amp;aid=8930&amp;nid=158" target="_blank" rel="noopener">安居客 Android 项目架构演进</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5wma7d&amp;aid=8911&amp;nid=157" target="_blank" rel="noopener">Golang 高性能分布式游戏服务器框架 mqant</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F215rg8&amp;aid=8738&amp;nid=155" target="_blank" rel="noopener">Android 架构思考</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0w8lyo&amp;aid=8776&amp;nid=155" target="_blank" rel="noopener">Antares：分布式任务调度平台</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj224c4&amp;aid=8692&amp;nid=154" target="_blank" rel="noopener">Spring Cloud 构建微服务架构（一）：服务注册与发现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg5ghje&amp;aid=8708&amp;nid=154" target="_blank" rel="noopener">FastD：PHP 高性能 API 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpts7bc&amp;aid=8569&amp;nid=152" target="_blank" rel="noopener">Gores：Go 语言编写的基于 Redis 的消息队列系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fz8sdtl&amp;aid=8512&amp;nid=152" target="_blank" rel="noopener">人人车 Android 客户端架构演进实录</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyua3wh&amp;aid=8459&amp;nid=151" target="_blank" rel="noopener">后台任务处理系统的架构演进和优化（Golang）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm124s5&amp;aid=8292&amp;nid=148" target="_blank" rel="noopener">微服务架构的基础框架选择：Spring Cloud 还是 Dubbo？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fba1gvr&amp;aid=8275&amp;nid=148" target="_blank" rel="noopener">PHP 完整实战 23 种设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsvue4s&amp;aid=8266&amp;nid=148" target="_blank" rel="noopener">Mybatis 源码解读：设计模式总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fa654o2&amp;aid=8201&amp;nid=147" target="_blank" rel="noopener">你知道途牛 Android 客户端架构是怎么优化的吗？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fatxbdh&amp;aid=8142&amp;nid=146" target="_blank" rel="noopener">如何使用 PHP 构建一个高性能的弹幕后端服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6b2lsp&amp;aid=8093&amp;nid=145" target="_blank" rel="noopener">The Clean Architecture in PHP 读书笔记（九）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9c7psr&amp;aid=8059&amp;nid=144" target="_blank" rel="noopener">没有单元测试，何谈重构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4tr157&amp;aid=7892&amp;nid=141" target="_blank" rel="noopener">php-queue：PHP 开发的磁盘存储消息队列服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2nh7g6&amp;aid=7761&amp;nid=139" target="_blank" rel="noopener">JLiteSpider：轻量级的分布式 Java 爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F7dmd30&amp;aid=7133&amp;nid=130" target="_blank" rel="noopener">MVP 架构系列：豆瓣电影 Top 250</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fq5p960&amp;aid=7023&amp;nid=129" target="_blank" rel="noopener">PHP 高级编程之消息队列</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fh1z7r3&amp;aid=7020&amp;nid=129" target="_blank" rel="noopener">Android 存储系统之架构篇</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fblkw89&amp;aid=7001&amp;nid=128" target="_blank" rel="noopener">Dora RPC：PHP 的分布式 RPC，支持微服务、服务发现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Faja47z&amp;aid=6868&amp;nid=126" target="_blank" rel="noopener">BLog4go：Go 实现的高性能日志库</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft70i21&amp;aid=6809&amp;nid=125" target="_blank" rel="noopener">SeimiCrawler：敏捷、独立部署、支持分布式的 Java 爬虫框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ft65e9q&amp;aid=6792&amp;nid=125" target="_blank" rel="noopener">Android 架构资源集合</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Figxyp5&amp;aid=6781&amp;nid=125" target="_blank" rel="noopener">用设计模式解析 RecyclerView</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2bmhmb&amp;aid=6741&amp;nid=124" target="_blank" rel="noopener">HackerNews_Kotlin：Google MVP 架构的 Kotlin 实践 Hacker News Android 客户端</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fepgdgs&amp;aid=6519&amp;nid=121" target="_blank" rel="noopener">设计模式：PHP 和 Go 语言实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzyeuuk&amp;aid=6443&amp;nid=120" target="_blank" rel="noopener">RPCX：类似 Dubbo 的分布式 RPC 框架</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8b4zfw&amp;aid=6311&amp;nid=119" target="_blank" rel="noopener">iOS MVVM 架构：界面与数据 I/O 逻辑分离的实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5jrs39&amp;aid=5827&amp;nid=113" target="_blank" rel="noopener">[译] PHP 中的设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbw0v4g&amp;aid=5773&amp;nid=112" target="_blank" rel="noopener">[译] 面向协议的 MVVM 架构介绍</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2kdmng&amp;aid=5752&amp;nid=112" target="_blank" rel="noopener">App 环境分离的实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcvphc9&amp;aid=5751&amp;nid=112" target="_blank" rel="noopener">Service Oriented 的 iOS 应用架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffuoqeh&amp;aid=5747&amp;nid=112" target="_blank" rel="noopener">微信 Android 客户端后台保活经验分享</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fatdywd&amp;aid=5746&amp;nid=112" target="_blank" rel="noopener">深入分析 iBATIS 框架之系统架构与映射原理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fi5mf23&amp;aid=5725&amp;nid=111" target="_blank" rel="noopener">实践移动端的 Flux 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0jkeod&amp;aid=5665&amp;nid=111" target="_blank" rel="noopener">Java 单例真的写对了么？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnlyfll&amp;aid=5563&amp;nid=110" target="_blank" rel="noopener">滴滴出行 iOS 客户端架构演进之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F72fu1o&amp;aid=5569&amp;nid=110" target="_blank" rel="noopener">Android App 的设计架构：MVC, MVP, MVVM 与架构经验谈</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fs9jf1i&amp;aid=5546&amp;nid=109" target="_blank" rel="noopener">iOS 应用架构谈：组件化方案</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fagpnck&amp;aid=5541&amp;nid=109" target="_blank" rel="noopener">Sky Walking：对 Java 分布式应用程序集群业务运行情况进行追踪、告警和分析的系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fb5947s&amp;aid=5431&amp;nid=108" target="_blank" rel="noopener">iOS 开发性能提高</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1d5zn4&amp;aid=5405&amp;nid=107" target="_blank" rel="noopener">Golang 微服务工具包</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flf5p2m&amp;aid=5361&amp;nid=107" target="_blank" rel="noopener">用 Swift 搭建数据驱动型 iOS 架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzfu1m1&amp;aid=5237&amp;nid=105" target="_blank" rel="noopener">设计模式实现（Java、C++、Golang）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo92cr2&amp;aid=5223&amp;nid=105" target="_blank" rel="noopener">端游、手游服务端常用的架构是什么样的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ficutt3&amp;aid=5222&amp;nid=105" target="_blank" rel="noopener">微信红包的随机算法是怎样实现的？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fuu90n0&amp;aid=5099&amp;nid=104" target="_blank" rel="noopener">[译] Dapper，大规模分布式系统的跟踪系统</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxtl4i9&amp;aid=5175&amp;nid=104" target="_blank" rel="noopener">Nucleus - 一个 Android MVP 架构库</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6qjp90&amp;aid=5009&amp;nid=103" target="_blank" rel="noopener">[译] iOS 架构模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn9rpfr&amp;aid=4990&amp;nid=103" target="_blank" rel="noopener">Android 应用开发架构概述</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkj0g4l&amp;aid=4655&amp;nid=99" target="_blank" rel="noopener">[译] 如何利用 Python 中的 @property 装饰器快速重构代码？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqptaph&amp;aid=4459&amp;nid=97" target="_blank" rel="noopener">Java Web 架构知识整理：记一次阿里面试经历</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fv339kl&amp;aid=4152&amp;nid=94" target="_blank" rel="noopener">Java 应用一般架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg6l2kb&amp;aid=4068&amp;nid=93" target="_blank" rel="noopener">[译] Android 架构演化之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fnn74b&amp;aid=3907&amp;nid=91" target="_blank" rel="noopener">iOS 高性能图片架构与设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqck4b&amp;aid=3347&amp;nid=85" target="_blank" rel="noopener">如何实现支持数亿用户的长连消息系统 (周洋)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzkdfq&amp;aid=2489&amp;nid=74" target="_blank" rel="noopener">Android 系统架构之微服务架构 (MrSimple)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F213vr&amp;aid=2431&amp;nid=73" target="_blank" rel="noopener">iOS 应用架构谈：网络层设计方案 (CasaTaloyum)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzb6d8&amp;aid=2168&amp;nid=68" target="_blank" rel="noopener">iOS 应用架构谈：view 层的组织和调用方案 (@CasaTaloyum)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzrno2&amp;aid=2124&amp;nid=67" target="_blank" rel="noopener">iOS 应用架构谈 (@CasaTaloyum)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqpbmg&amp;aid=2006&amp;nid=64" target="_blank" rel="noopener">Android 源码设计模式分析 (@MrSimp1e)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp60yz&amp;aid=3&amp;nid=1" target="_blank" rel="noopener">iOS 设计模式解析</a></li>
+</ul>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Feq68nw&amp;aid=17116&amp;nid=272" target="_blank" rel="noopener">Go 并发设计模式之 Half-Sync/Half-Async</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fasw5qp&amp;aid=17073&amp;nid=271" target="_blank" rel="noopener">Go 并发设计模式之 Active Object</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fo09i73&amp;aid=16878&amp;nid=269" target="_blank" rel="noopener">函数式编程让你忘记设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvnvqk7&amp;aid=14937&amp;nid=243" target="_blank" rel="noopener">[译] 微服务通信的设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpgarge&amp;aid=14906&amp;nid=243" target="_blank" rel="noopener">被滥用的 GUI 设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2bho18&amp;aid=13613&amp;nid=223" target="_blank" rel="noopener">微服务设计模式之 API 网关</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1orta0&amp;aid=13207&amp;nid=217" target="_blank" rel="noopener">[译] 你需要了解的 23 种 JavaScript 设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbeyk5y&amp;aid=13075&amp;nid=215" target="_blank" rel="noopener">什么时候能用上设计模式？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fdvul4d&amp;aid=12795&amp;nid=211" target="_blank" rel="noopener">浅析 iOS 中的设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fn96o20&amp;aid=12747&amp;nid=210" target="_blank" rel="noopener">浅谈 Chromium 中的设计模式（一）：Chromium 中模块分层和进程模型</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm0se1z&amp;aid=12191&amp;nid=203" target="_blank" rel="noopener">分布式系统数据层设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6kb78y&amp;aid=10737&amp;nid=183" target="_blank" rel="noopener">深入理解 iOS 设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvzmo7j&amp;aid=10088&amp;nid=174" target="_blank" rel="noopener">你了解 CSS 设计模式吗？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1f5d0d&amp;aid=9203&amp;nid=161" target="_blank" rel="noopener">iOS 设计模式资料整理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj99pg0&amp;aid=8947&amp;nid=158" target="_blank" rel="noopener">使用微服务架构重构支付网关</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyphsdo&amp;aid=8899&amp;nid=157" target="_blank" rel="noopener">当函数成为一等公民时，设计模式的变化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fba1gvr&amp;aid=8275&amp;nid=148" target="_blank" rel="noopener">PHP 完整实战 23 种设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsvue4s&amp;aid=8266&amp;nid=148" target="_blank" rel="noopener">Mybatis 源码解读：设计模式总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9ea82e&amp;aid=7024&amp;nid=129" target="_blank" rel="noopener">[译] 深入理解 React &amp; Redux 原理套路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Figxyp5&amp;aid=6781&amp;nid=125" target="_blank" rel="noopener">用设计模式解析 RecyclerView</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmw1p2q&amp;aid=6560&amp;nid=122" target="_blank" rel="noopener">别人再问你设计模式，叫他看这篇文章</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fepgdgs&amp;aid=6519&amp;nid=121" target="_blank" rel="noopener">设计模式：PHP 和 Go 语言实现</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwux6na&amp;aid=6415&amp;nid=120" target="_blank" rel="noopener">图说设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F5jrs39&amp;aid=5827&amp;nid=113" target="_blank" rel="noopener">[译] PHP 中的设计模式</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F0jkeod&amp;aid=5665&amp;nid=111" target="_blank" rel="noopener">Java 单例真的写对了么？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Frryx7t&amp;aid=5566&amp;nid=110" target="_blank" rel="noopener">服务化设计模式实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzfu1m1&amp;aid=5237&amp;nid=105" target="_blank" rel="noopener">设计模式实现（Java、C++、Golang）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fukeg6&amp;aid=2700&amp;nid=77" target="_blank" rel="noopener">这就是观察者模式 (@Android月)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqpbmg&amp;aid=2006&amp;nid=64" target="_blank" rel="noopener">Android 源码设计模式分析 (@MrSimp1e)</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp60yz&amp;aid=3&amp;nid=1" target="_blank" rel="noopener">iOS 设计模式解析</a></li>
+</ul>
+<h2 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fzm7h0w&amp;aid=17007&amp;nid=270" target="_blank" rel="noopener">领域驱动设计在马蜂窝优惠中心重构中的实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fp20k50&amp;aid=16887&amp;nid=269" target="_blank" rel="noopener">记一次前端项目重构要点总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fsni80t&amp;aid=16295&amp;nid=262" target="_blank" rel="noopener">快看！原来重构如此简单</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1a73tz&amp;aid=14350&amp;nid=234" target="_blank" rel="noopener">携程国际 BU 的 SEO 重构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F1f9hjy&amp;aid=14289&amp;nid=233" target="_blank" rel="noopener">前端重构范式之 position</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fyw7ikn&amp;aid=14232&amp;nid=232" target="_blank" rel="noopener">面向体验的重构优化</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fxvllvd&amp;aid=14157&amp;nid=231" target="_blank" rel="noopener">[译] 什么是代码整理？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpuxwzs&amp;aid=14066&amp;nid=230" target="_blank" rel="noopener">最佳实践：重构 AppDelegate（iOS）</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fif6kcd&amp;aid=13886&amp;nid=227" target="_blank" rel="noopener">前端重构范式之 float layout</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9808ju&amp;aid=13591&amp;nid=223" target="_blank" rel="noopener">Go 代码重构：23 倍的性能爆增</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpmw8k9&amp;aid=13468&amp;nid=221" target="_blank" rel="noopener">重构 React 组件的实用清单</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4g28uc&amp;aid=11929&amp;nid=199" target="_blank" rel="noopener">IntelliJ IDEA 复杂的重构操作</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm6223t&amp;aid=11839&amp;nid=198" target="_blank" rel="noopener">IntelliJ IDEA 复杂的重构技巧</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2z2c8a&amp;aid=11516&amp;nid=194" target="_blank" rel="noopener">6 个月清洗近千亿条微信支付交易记录，他们要搞什么大事情？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F3s1cb0&amp;aid=11469&amp;nid=193" target="_blank" rel="noopener">电商工作后台首页的商业价值重构与产品化设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F36bkj5&amp;aid=11128&amp;nid=188" target="_blank" rel="noopener">巧用匿名函数重构你的代码</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvii7xj&amp;aid=11077&amp;nid=187" target="_blank" rel="noopener">[译] 微服务从设计到部署（七）：重构单体为微服务</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkoyyyl&amp;aid=10952&amp;nid=186" target="_blank" rel="noopener">系统重构的 10 点经验总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F2bts6n&amp;aid=10888&amp;nid=185" target="_blank" rel="noopener">Spark 技术在唯品会财务系统重构中的实践总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fl0vos2&amp;aid=9898&amp;nid=171" target="_blank" rel="noopener">重构：靠谱程序员的必备技能</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fwrkil7&amp;aid=9618&amp;nid=167" target="_blank" rel="noopener">重构之十六字心法</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fhqoj3c&amp;aid=9324&amp;nid=163" target="_blank" rel="noopener">如何重构 “箭头型” 代码</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F4grbn9&amp;aid=9310&amp;nid=163" target="_blank" rel="noopener">沪江学习 Android 端应用架构重构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fj99pg0&amp;aid=8947&amp;nid=158" target="_blank" rel="noopener">使用微服务架构重构支付网关</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9c7psr&amp;aid=8059&amp;nid=144" target="_blank" rel="noopener">没有单元测试，何谈重构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpq17kb&amp;aid=7739&amp;nid=139" target="_blank" rel="noopener">在重构脚手架中掌握 React / Redux / Webpack2 基本套路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbj8f2u&amp;aid=6724&amp;nid=124" target="_blank" rel="noopener">[PPT] 一次重构引发的分布式服务管理</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fvypknr&amp;aid=6604&amp;nid=123" target="_blank" rel="noopener">如何重构一个大型历史项目：百度经验改版总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fm7pko4&amp;aid=6462&amp;nid=121" target="_blank" rel="noopener">重构过程中的过度设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fmsc7fg&amp;aid=5694&amp;nid=111" target="_blank" rel="noopener">重构的七宗罪</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftsm29i&amp;aid=4926&amp;nid=102" target="_blank" rel="noopener">CSS 代码重构与优化之路</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fkj0g4l&amp;aid=4655&amp;nid=99" target="_blank" rel="noopener">[译] 如何利用 Python 中的 @property 装饰器快速重构代码？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fihikv&amp;aid=2710&amp;nid=77" target="_blank" rel="noopener">前端技能训练：重构一 (@Phodal)</a></li>
+</ul>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><ul>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fpsflvg&amp;aid=16363&amp;nid=263" target="_blank" rel="noopener">Zookeeper 集群如何高可用部署？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F6ywapq&amp;aid=16250&amp;nid=262" target="_blank" rel="noopener">滴滴 Elasticsearch 多集群架构实践</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fbx4tiy&amp;aid=15297&amp;nid=249" target="_blank" rel="noopener">那些年用过的 Redis 集群架构</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ffxnlcx&amp;aid=14485&amp;nid=236" target="_blank" rel="noopener">分布式高性能 Redis 集群线上常见问题</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Flqz7i8&amp;aid=13806&amp;nid=226" target="_blank" rel="noopener">Node.js：浅析高并发与分布式集群</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F9g5txc&amp;aid=13722&amp;nid=225" target="_blank" rel="noopener">你不知道的 RabbitMQ 集群架构全解</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcazqgv&amp;aid=13222&amp;nid=217" target="_blank" rel="noopener">MySQL 高可用集群方案之 PXC</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fqgjwm8&amp;aid=12690&amp;nid=210" target="_blank" rel="noopener">集群资源调度系统设计架构总结</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fg6a3fw&amp;aid=11000&amp;nid=186" target="_blank" rel="noopener">dubbo 源码解析：集群容错架构设计</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2F8ds6fl&amp;aid=10390&amp;nid=178" target="_blank" rel="noopener">微服务注册发现集群搭建：Registrator + Consul + Consul-template + nginx</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fcao9bv&amp;aid=7144&amp;nid=130" target="_blank" rel="noopener">ActiveMQ 高可用集群方案</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Ftbdmv6&amp;aid=5491&amp;nid=109" target="_blank" rel="noopener">如果有 10000 台机器，你想怎么玩？</a></li>
+<li><a href="https://weekly.manong.io/bounce?url=https%3A%2F%2Ftoutiao.io%2Fk%2Fagpnck&amp;aid=5541&amp;nid=109" target="_blank" rel="noopener">Sky Walking：对 Java 分布式应用程序集群业务运行情况进行追踪、告警和分析的系统</a></li>
+</ul>
+<p><br></p>
+<p><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener"><img src="https://i.creativecommons.org/p/zero/1.0/88x31.png" srcset="/img/loading.gif" lazyload="" alt="CC0"></a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/架构/">架构</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/26/go-singleton-design-pattern/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">单例模式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/06/05/markdown/">
+                        <span class="hidden-mobile">markdown语法入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/zkep" target="_blank" rel="nofollow noopener"><span>zkep</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
