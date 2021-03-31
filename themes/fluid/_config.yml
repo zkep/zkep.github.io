@@ -42,7 +42,7 @@ code:
   # 代码高亮
   # Code highlight
   highlight:
-    enable: true
+    enable: false
     # 代码块是否显示行号
     # If true, the code block display line numbers
     line_number: false

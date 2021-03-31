@@ -1,3 +1,10 @@
-node_modules
-books
+.idea/
+.DS_Store
+*.log
+*.iml
+yarn.lock
+package-lock.json
+node_modules/
+public/
+books/
 db.json

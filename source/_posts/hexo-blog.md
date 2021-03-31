@@ -318,8 +318,22 @@ permalink: :abbrlink.html
 > 当然，你也可以自己手动为特殊的文章写链接地址。只要在文章中配置好abbrlink就可以了
 
 ```yaml
-title: go-zero
-abbrlink: go-zero
-date: 2021-03-28 13:42:22
-tags: [go,go-zero]
+  title: go-zero
+  abbrlink: go-zero
+  date: 2021-03-28 13:42:22
+  tags: [go,go-zero]
 ```
+
+### 将本地博客hexo项目部署github
+
+ > 基本做法是保留两个分支，master分支为静态资源，另一个分支则为hexo整个项目,在github上将非master分支设置为default默认分支。
+
+1. 在Github的username.github.io仓库上新建一个xxx分支，并切换到该分支，并在该仓库 ->Settings->Branches->Default branch中将默认分支设为xxx，save保存；然后将该仓库克隆到本地，进入该username.github.io文件目录。
+
+2. 将本地博客的部署文件拷贝进username.github.io文件目录
+  如题，先将本地博客的部署文件（Hexo目录下的全部文件）全部拷贝进username.github.io文件目录中去。
+  接下来，进入username.github.io文件目录下，将该目录下的全部文件提交到xxx分支，提交之前需注意：
+
+* 将themes目录以内中的主题的.git目录删除（如果有），因为一个git仓库中不能包含另一个git仓库，提交主题文件夹会失败。
+* 可能有人会问，删除了themes目录中的.git不就不能git pull更新主题了吗，很简单，需要更新主题时在另一个地方git clone下来该主题的最新版本，然后将内容拷到当前主题目录即可
+* 提交hexo分支，执行git add .、git commit -m 'back up hexo files'（引号内容可改）、git push即可将博客的hexo部署环境提交到GitHub个人仓库的xxx分支。
