@@ -31,7 +31,6 @@ func init() {
 func GetInstance() *Singleton {
     return singleton
 }  
-
 ```
 
 #### 单元测试
@@ -57,7 +56,6 @@ func BenchmarkGetInstanceParallel(b *testing.B) {
         }
     })
 }
-
 ```
 
 ### 懒汉式（双重检测）
