@@ -7,4 +7,5 @@ tags: [go]
 
 1. [单列模式](/singleton.html)
 2. [工厂模式](/factory.html)
-2. [创造者模式](/builder.html)
+3. [创造者模式](/builder.html)
+4. [原型模式](/prototype.html)
