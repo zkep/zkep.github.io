@@ -9,3 +9,4 @@ tags: [go]
 2. [工厂模式](/factory.html)
 3. [创造者模式](/builder.html)
 4. [原型模式](/prototype.html)
+5. [代理模式](/proxy.html)
