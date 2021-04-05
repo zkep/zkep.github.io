@@ -10,4 +10,5 @@ tags: [go]
 3. [创造者模式](/builder.html)
 4. [原型模式](/prototype.html)
 5. [代理模式](/proxy.html)
-5. [桥接模式](/bridge.html)
+6. [桥接模式](/bridge.html)
+7. [装饰器模式](/decorator.html)
