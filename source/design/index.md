@@ -12,3 +12,4 @@ tags: [go]
 5. [代理模式](/proxy.html)
 6. [桥接模式](/bridge.html)
 7. [装饰器模式](/decorator.html)
+8. [适配器模式](/adapter.html)
