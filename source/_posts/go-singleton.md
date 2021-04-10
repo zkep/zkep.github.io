@@ -1,7 +1,7 @@
 ---
 title: 单例模式
 abbrlink: singleton
-date: 2020-03-26 18:51:02
+date: 2021-03-26 18:51:02
 tags: [go]
 ---
 

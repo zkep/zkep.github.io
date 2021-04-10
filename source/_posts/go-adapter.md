@@ -1,7 +1,7 @@
 ---
 title: 适配器模式
 abbrlink: adapter
-date: 2020-04-01 21:01:02
+date: 2021-04-01 21:01:02
 tags: [go]
 ---
 

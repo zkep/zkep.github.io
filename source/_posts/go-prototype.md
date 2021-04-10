@@ -1,7 +1,7 @@
 ---
 title: 原型模式
 abbrlink: prototype
-date: 2020-03-29 22:50:02
+date: 2021-03-29 22:50:02
 tags: [go]
 ---
 

@@ -13,3 +13,6 @@ tags: [go]
 6. [桥接模式](/bridge.html)
 7. [装饰器模式](/decorator.html)
 8. [适配器模式](/adapter.html)
+9. [门面模式](/facade.html)
+10. [组合模式](/composite.html)
+11. [享元模式](/flyweight.html)

@@ -1,7 +1,7 @@
 ---
 title: 装饰器模式
 abbrlink: decorator
-date: 2020-04-01 21:05:02
+date: 2021-04-01 21:05:02
 tags: [go]
 ---
 

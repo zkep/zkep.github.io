@@ -1,7 +1,7 @@
 ---
 title: 工厂模式
 abbrlink: factory
-date: 2020-03-27 18:51:02
+date: 2021-03-27 18:51:02
 tags: [go]
 ---
 
