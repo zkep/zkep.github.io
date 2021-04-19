@@ -16,3 +16,4 @@ tags: [go]
 9. [门面模式](/facade.html)
 10. [组合模式](/composite.html)
 11. [享元模式](/flyweight.html)
+12. [观察者模式](/observer.html)
