@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="接下来会通过 golang 实现静态代理，我们无法比较方便的利用反射实现动态代理，但是我们可以利用 go generate 实现类似的效果，并且这样实现有两个比较大的好处，一个是有静态代码检查，我们在编译期间就可以及早发现问题，第二个是性能会更好。">
+  <meta name="author" content="zkep">
+  <meta name="keywords" content="zkep">
+  
+  <title>代理模式 - 37℃灰</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zkep.github.io.git","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>37℃灰</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-category-fill"></i>
+                Go进阶
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/design/">
+                    <i class="iconfont icon-category-fill"></i>
+                    Go设计模式
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="代理模式">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-30 18:30" pubdate>
+        2021年3月30日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">代理模式</h1>
+            
+            <div class="markdown-body">
+              <p>接下来会通过 golang 实现静态代理，我们无法比较方便的利用反射实现动态代理，但是我们可以利用 go generate 实现类似的效果，并且这样实现有两个比较大的好处，一个是有静态代码检查，我们在编译期间就可以及早发现问题，第二个是性能会更好。<br><a id="more"></a></p>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> design
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"log"</span>
+    <span class="hljs-string">"time"</span>
+)
+
+<span class="hljs-comment">// IUser IUser</span>
+<span class="hljs-keyword">type</span> IUser <span class="hljs-keyword">interface</span> &#123;
+    Login(username, password <span class="hljs-keyword">string</span>) error
+&#125;
+
+<span class="hljs-comment">// User 用户</span>
+<span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> &#123;
+&#125;
+
+<span class="hljs-comment">// Login 用户登录</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(u *User)</span> <span class="hljs-title">Login</span><span class="hljs-params">(username, password <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">error</span></span> &#123;
+    <span class="hljs-comment">// 不实现细节</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+&#125;
+
+<span class="hljs-comment">// UserProxy 代理类</span>
+<span class="hljs-keyword">type</span> UserProxy <span class="hljs-keyword">struct</span> &#123;
+    user *User
+&#125;
+
+<span class="hljs-comment">// NewUserProxy NewUserProxy</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewUserProxy</span><span class="hljs-params">(user *User)</span> *<span class="hljs-title">UserProxy</span></span> &#123;
+    <span class="hljs-keyword">return</span> &amp;UserProxy&#123;
+    user: user,
+    &#125;
+&#125;
+
+<span class="hljs-comment">// Login 登录，和 user 实现相同的接口</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *UserProxy)</span> <span class="hljs-title">Login</span><span class="hljs-params">(username, password <span class="hljs-keyword">string</span>)</span> <span class="hljs-title">error</span></span> &#123;
+    <span class="hljs-comment">// before 这里可能会有一些统计的逻辑</span>
+    start := time.Now()
+
+    <span class="hljs-comment">// 这里是原有的业务逻辑</span>
+    <span class="hljs-keyword">if</span> err := p.user.Login(username, password); err != <span class="hljs-literal">nil</span> &#123;
+        <span class="hljs-keyword">return</span> err
+    &#125;
+
+    <span class="hljs-comment">// after 这里可能也有一些监控统计的逻辑</span>
+    log.Printf(<span class="hljs-string">"user login cost time: %s"</span>, time.Now().Sub(start))
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+&#125;</code></pre></div>
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><div class="code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> design
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"testing"</span>
+    <span class="hljs-string">"github.com/stretchr/testify/require"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestUserProxy_Login</span><span class="hljs-params">(t *testing.T)</span></span> &#123;
+    proxy := NewUserProxy(&amp;User&#123;&#125;)
+    err := proxy.Login(<span class="hljs-string">"test"</span>, <span class="hljs-string">"password"</span>)
+    require.Nil(t, err)
+&#125;</code></pre></div>
+<h2 id="Go-Generate-实现-“动态代理”"><a href="#Go-Generate-实现-“动态代理”" class="headerlink" title="Go Generate 实现 “动态代理”"></a>Go Generate 实现 “动态代理”</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>动态代理相比静态代理主要就是为了解决生产力，将我们从繁杂的重复劳动中解放出来，正好，在 Go 中 Generate 也是干这个活的<br>如下面的代码所示，我们的 generate 会读取 struct 上的注释，如果出现 @proxy 接口名 的注释，我们就会为这个 struct 生成一个 proxy 类，同时实现相同的接口，这个接口就是在注释中指定的接口</p>
+<div class="code-wrapper"><pre><code class="hljs go"><span class="hljs-comment">// User 用户</span>
+<span class="hljs-comment">// @proxy IUser</span>
+<span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> &#123;
+&#125;</code></pre></div>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><p>接来下我们会简单的实现这个需求，由于篇幅和时间的关系，我们会略过一些检查之类的代码，例如 User 是否真正实现了 IUser 这种情况。<br>代码有点长，主要思路:</p>
+<p>读取文件, 获取文件的 ast 语法树</p>
+<ul>
+<li>通过 NewCommentMap 构建 node 和 comment 的关系</li>
+<li>通过 comment 是否包含 @proxy 接口名 的接口，判断该节点是否需要生成代理类</li>
+<li>通过 Lookup 方法找到接口</li>
+<li>循环获取接口的每个方法的，方法名、参数、返回值信息</li>
+<li>将方法信息，包名、需要代理类名传递给构建好的模板文件，生成代理类</li>
+<li>最后用 format 包的方法格式化源代码</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> design
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"bytes"</span>
+    <span class="hljs-string">"fmt"</span>
+    <span class="hljs-string">"go/ast"</span>
+    <span class="hljs-string">"go/format"</span>
+    <span class="hljs-string">"go/parser"</span>
+    <span class="hljs-string">"go/token"</span>
+    <span class="hljs-string">"strings"</span>
+    <span class="hljs-string">"text/template"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">generate</span><span class="hljs-params">(file <span class="hljs-keyword">string</span>)</span> <span class="hljs-params">(<span class="hljs-keyword">string</span>, error)</span></span> &#123;
+    fset := token.NewFileSet() <span class="hljs-comment">// positions are relative to fset</span>
+    f, err := parser.ParseFile(fset, file, <span class="hljs-literal">nil</span>, parser.ParseComments)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>, err
+    &#125;
+
+    <span class="hljs-comment">// 获取代理需要的数据</span>
+    data := proxyData&#123;
+        Package: f.Name.Name,
+    &#125;
+
+    <span class="hljs-comment">// 构建注释和 node 的关系</span>
+    cmap := ast.NewCommentMap(fset, f, f.Comments)
+    <span class="hljs-keyword">for</span> node, group := <span class="hljs-keyword">range</span> cmap &#123;
+        <span class="hljs-comment">// 从注释 @proxy 接口名，获取接口名称</span>
+        name := getProxyInterfaceName(group)
+        <span class="hljs-keyword">if</span> name == <span class="hljs-string">""</span> &#123;
+            <span class="hljs-keyword">continue</span>
+        &#125;
+
+        <span class="hljs-comment">// 获取代理的类名</span>
+        data.ProxyStructName = node.(*ast.GenDecl).Specs[<span class="hljs-number">0</span>].(*ast.TypeSpec).Name.Name
+
+        <span class="hljs-comment">// 从文件中查找接口</span>
+        obj := f.Scope.Lookup(name)
+
+        <span class="hljs-comment">// 类型转换，注意: 这里没有对断言进行判断，可能会导致 panic</span>
+        t := obj.Decl.(*ast.TypeSpec).Type.(*ast.InterfaceType)
+
+        <span class="hljs-keyword">for</span> _, field := <span class="hljs-keyword">range</span> t.Methods.List &#123;
+            fc := field.Type.(*ast.FuncType)
+
+            <span class="hljs-comment">// 代理的方法</span>
+            method := &amp;proxyMethod&#123;
+                Name: field.Names[<span class="hljs-number">0</span>].Name,
+            &#125;
+
+            <span class="hljs-comment">// 获取方法的参数和返回值</span>
+            method.Params, method.ParamNames = getParamsOrResults(fc.Params)
+            method.Results, method.ResultNames = getParamsOrResults(fc.Results)
+
+            data.Methods = <span class="hljs-built_in">append</span>(data.Methods, method)
+        &#125;
+    &#125;
+
+    <span class="hljs-comment">// 生成文件</span>
+    tpl, err := template.New(<span class="hljs-string">""</span>).Parse(proxyTpl)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>, err
+    &#125;
+
+    buf := &amp;bytes.Buffer&#123;&#125;
+    <span class="hljs-keyword">if</span> err := tpl.Execute(buf, data); err != <span class="hljs-literal">nil</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>, err
+    &#125;
+
+    <span class="hljs-comment">// 使用 go fmt 对生成的代码进行格式化</span>
+    src, err := format.Source(buf.Bytes())
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>, err
+    &#125;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">string</span>(src), <span class="hljs-literal">nil</span>
+&#125;
+
+<span class="hljs-comment">// getParamsOrResults 获取参数或者是返回值</span>
+<span class="hljs-comment">// 返回带类型的参数，以及不带类型的参数，以逗号间隔</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getParamsOrResults</span><span class="hljs-params">(fields *ast.FieldList)</span> <span class="hljs-params">(<span class="hljs-keyword">string</span>, <span class="hljs-keyword">string</span>)</span></span> &#123;
+    <span class="hljs-keyword">var</span> (
+        params     []<span class="hljs-keyword">string</span>
+        paramNames []<span class="hljs-keyword">string</span>
+    )
+
+    <span class="hljs-keyword">for</span> i, param := <span class="hljs-keyword">range</span> fields.List &#123;
+        <span class="hljs-comment">// 循环获取所有的参数名</span>
+        <span class="hljs-keyword">var</span> names []<span class="hljs-keyword">string</span>
+        <span class="hljs-keyword">for</span> _, name := <span class="hljs-keyword">range</span> param.Names &#123;
+            names = <span class="hljs-built_in">append</span>(names, name.Name)
+        &#125;
+
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(names) == <span class="hljs-number">0</span> &#123;
+            names = <span class="hljs-built_in">append</span>(names, fmt.Sprintf(<span class="hljs-string">"r%d"</span>, i))
+        &#125;
+
+        paramNames = <span class="hljs-built_in">append</span>(paramNames, names...)
+
+        <span class="hljs-comment">// 参数名加参数类型组成完整的参数</span>
+        param := fmt.Sprintf(<span class="hljs-string">"%s %s"</span>,
+            strings.Join(names, <span class="hljs-string">","</span>),
+            param.Type.(*ast.Ident).Name,
+        )
+        params = <span class="hljs-built_in">append</span>(params, strings.TrimSpace(param))
+    &#125;
+
+    <span class="hljs-keyword">return</span> strings.Join(params, <span class="hljs-string">","</span>), strings.Join(paramNames, <span class="hljs-string">","</span>)
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getProxyInterfaceName</span><span class="hljs-params">(groups []*ast.CommentGroup)</span> <span class="hljs-title">string</span></span> &#123;
+    <span class="hljs-keyword">for</span> _, commentGroup := <span class="hljs-keyword">range</span> groups &#123;
+        <span class="hljs-keyword">for</span> _, comment := <span class="hljs-keyword">range</span> commentGroup.List &#123;
+            <span class="hljs-keyword">if</span> strings.Contains(comment.Text, <span class="hljs-string">"@proxy"</span>) &#123;
+                interfaceName := strings.TrimLeft(comment.Text, <span class="hljs-string">"// @proxy "</span>)
+                <span class="hljs-keyword">return</span> strings.TrimSpace(interfaceName)
+            &#125;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">""</span>
+&#125;
+
+<span class="hljs-comment">// 生成代理类的文件模板</span>
+<span class="hljs-keyword">const</span> proxyTpl = <span class="hljs-string">`
+package &#123;&#123;.Package&#125;&#125;
+
+type &#123;&#123; .ProxyStructName &#125;&#125;Proxy struct &#123;
+ child *&#123;&#123; .ProxyStructName &#125;&#125;
+&#125;
+
+func New&#123;&#123; .ProxyStructName &#125;&#125;Proxy(child *&#123;&#123; .ProxyStructName &#125;&#125;) *&#123;&#123; .ProxyStructName &#125;&#125;Proxy &#123;
+ return &amp;&#123;&#123; .ProxyStructName &#125;&#125;Proxy&#123;child: child&#125;
+&#125;
+
+&#123;&#123; range .Methods &#125;&#125;
+func (p *&#123;&#123;$.ProxyStructName&#125;&#125;Proxy) &#123;&#123; .Name &#125;&#125; (&#123;&#123; .Params &#125;&#125;) (&#123;&#123; .Results &#125;&#125;) &#123;
+ // before 这里可能会有一些统计的逻辑
+ start := time.Now()
+
+ &#123;&#123; .ResultNames &#125;&#125; = p.child.&#123;&#123; .Name &#125;&#125;(&#123;&#123; .ParamNames &#125;&#125;)
+
+ // after 这里可能也有一些监控统计的逻辑
+ log.Printf("user login cost time: %s", time.Now().Sub(start))
+
+ return &#123;&#123; .ResultNames &#125;&#125;
+&#125;
+&#123;&#123; end &#125;&#125;
+`</span>
+
+<span class="hljs-keyword">type</span> proxyData <span class="hljs-keyword">struct</span> &#123;
+    <span class="hljs-comment">// 包名</span>
+    Package <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 需要代理的类名</span>
+    ProxyStructName <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 需要代理的方法</span>
+    Methods []*proxyMethod
+&#125;
+
+<span class="hljs-comment">// proxyMethod 代理的方法</span>
+<span class="hljs-keyword">type</span> proxyMethod <span class="hljs-keyword">struct</span> &#123;
+    <span class="hljs-comment">// 方法名</span>
+    Name <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 参数，含参数类型</span>
+    Params <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 参数名</span>
+    ParamNames <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 返回值</span>
+    Results <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 返回值名</span>
+    ResultNames <span class="hljs-keyword">string</span>
+&#125;</code></pre></div>
+<h3 id="单元测试-1"><a href="#单元测试-1" class="headerlink" title="单元测试"></a>单元测试</h3><div class="code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> design
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"testing"</span>
+
+    <span class="hljs-string">"github.com/stretchr/testify/assert"</span>
+    <span class="hljs-string">"github.com/stretchr/testify/require"</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Test_generate</span><span class="hljs-params">(t *testing.T)</span></span> &#123;
+ want := <span class="hljs-string">`package proxy
+
+    type UserProxy struct &#123;
+        child *User
+    &#125;
+
+    func NewUserProxy(child *User) *UserProxy &#123;
+        return &amp;UserProxy&#123;child: child&#125;
+    &#125;
+
+    func (p *UserProxy) Login(username, password string) (r0 error) &#123;
+        // before 这里可能会有一些统计的逻辑
+        start := time.Now()
+
+        r0 = p.child.Login(username, password)
+
+        // after 这里可能也有一些监控统计的逻辑
+        log.Printf("user login cost time: %s", time.Now().Sub(start))
+
+        return r0
+    &#125;
+`</span>
+    got, err := generate(<span class="hljs-string">"./proxy.go"</span>)
+    require.Nil(t, err)
+    assert.Equal(t, want, got)
+&#125;</code></pre></div>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/go/">go</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/bridge.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">桥接模式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/prototype.html">
+                        <span class="hidden-mobile">原型模式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/zkep" target="_blank" rel="nofollow noopener"><span>zkep</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+  <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
