@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="Love Your Life">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Love Your Life">
+    <meta name="keyword"  content="zkep,go">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        建造者模式 - zkep日常
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> zkep‘s blog </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="https://avatars.githubusercontent.com/u/36965534" />    
+        </div>
+        <div class="name">
+            <i>zkep</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">建造者模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go-%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9"><span class="toc-text">Go 常用的参数传递方</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-1"><span class="toc-text">单元测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> zkep‘s blog </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        建造者模式
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-03-28 18:51:02</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#go" title="go">go</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>其实在 Golang 中对于创建类参数比较多的对象的时候，我们常见的做法是必填参数直接传递，可选参数通过传递可变的方法进行创建。</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h3><p>  通过下面可以看到，使用 Go 编写建造者模式的代码其实会很长，这些是它的一个缺点，所以如果不是参数的校验逻辑很复杂的情况下一般我们在 Go 中不会采用这种方式，而会采用后面的另外一种方式</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    defaultMaxTotal = <span class="number">10</span></span><br><span class="line">    defaultMaxIdle  = <span class="number">9</span></span><br><span class="line">    defaultMinIdle  = <span class="number">1</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ResourcePoolConfig resource pool</span></span><br><span class="line"><span class="keyword">type</span> ResourcePoolConfig <span class="keyword">struct</span> &#123;</span><br><span class="line">    name     <span class="type">string</span></span><br><span class="line">    maxTotal <span class="type">int</span></span><br><span class="line">    maxIdle  <span class="type">int</span></span><br><span class="line">    minIdle  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ResourcePoolConfigBuilder 用于构建 ResourcePoolConfig</span></span><br><span class="line"><span class="keyword">type</span> ResourcePoolConfigBuilder <span class="keyword">struct</span> &#123;</span><br><span class="line">    name     <span class="type">string</span></span><br><span class="line">    maxTotal <span class="type">int</span></span><br><span class="line">    maxIdle  <span class="type">int</span></span><br><span class="line">    minIdle  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetName SetName</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *ResourcePoolConfigBuilder)</span></span> SetName(name <span class="type">string</span>) <span class="type">error</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> name == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;name can not be empty&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    b.name = name</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetMinIdle SetMinIdle</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *ResourcePoolConfigBuilder)</span></span> SetMinIdle(minIdle <span class="type">int</span>) <span class="type">error</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> minIdle &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;max tatal cannot &lt; 0, input: %d&quot;</span>, minIdle)</span><br><span class="line">    &#125;</span><br><span class="line">    b.minIdle = minIdle</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetMaxIdle SetMaxIdle</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *ResourcePoolConfigBuilder)</span></span> SetMaxIdle(maxIdle <span class="type">int</span>) <span class="type">error</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> maxIdle &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;max tatal cannot &lt; 0, input: %d&quot;</span>, maxIdle)</span><br><span class="line">    &#125;</span><br><span class="line">    b.maxIdle = maxIdle</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetMaxTotal SetMaxTotal</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *ResourcePoolConfigBuilder)</span></span> SetMaxTotal(maxTotal <span class="type">int</span>) <span class="type">error</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> maxTotal &lt;= <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;max tatal cannot &lt;= 0, input: %d&quot;</span>, maxTotal)</span><br><span class="line">    &#125;</span><br><span class="line">    b.maxTotal = maxTotal</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Build Build</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *ResourcePoolConfigBuilder)</span></span> Build() (*ResourcePoolConfig, <span class="type">error</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> b.name == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;name can not be empty&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置默认值</span></span><br><span class="line">    <span class="keyword">if</span> b.minIdle == <span class="number">0</span> &#123;</span><br><span class="line">        b.minIdle = defaultMinIdle</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> b.maxIdle == <span class="number">0</span> &#123;</span><br><span class="line">        b.maxIdle = defaultMaxIdle</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> b.maxTotal == <span class="number">0</span> &#123;</span><br><span class="line">        b.maxTotal = defaultMaxTotal</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> b.maxTotal &lt; b.maxIdle &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;max total(%d) cannot &lt; max idle(%d)&quot;</span>, b.maxTotal, b.maxIdle)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> b.minIdle &gt; b.maxIdle &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;max idle(%d) cannot &lt; min idle(%d)&quot;</span>, b.maxIdle, b.minIdle)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &amp;ResourcePoolConfig&#123;</span><br><span class="line">        name:     b.name,</span><br><span class="line">        maxTotal: b.maxTotal,</span><br><span class="line">        maxIdle:  b.maxIdle,</span><br><span class="line">        minIdle:  b.minIdle,</span><br><span class="line">     &#125;, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;github.com/stretchr/testify/assert&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/stretchr/testify/require&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestResourcePoolConfigBuilder_Build</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line"> tests := []<span class="keyword">struct</span> &#123;</span><br><span class="line">        name    <span class="type">string</span></span><br><span class="line">        builder *ResourcePoolConfigBuilder</span><br><span class="line">        want    *ResourcePoolConfig</span><br><span class="line">        wantErr <span class="type">bool</span></span><br><span class="line">    &#125;&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&quot;name empty&quot;</span>,</span><br><span class="line">        builder: &amp;ResourcePoolConfigBuilder&#123;</span><br><span class="line">            name:     <span class="string">&quot;&quot;</span>,</span><br><span class="line">            maxTotal: <span class="number">0</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        want:    <span class="literal">nil</span>,</span><br><span class="line">        wantErr: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&quot;maxIdle &lt; minIdle&quot;</span>,</span><br><span class="line">        builder: &amp;ResourcePoolConfigBuilder&#123;</span><br><span class="line">            name:     <span class="string">&quot;test&quot;</span>,</span><br><span class="line">            maxTotal: <span class="number">0</span>,</span><br><span class="line">            maxIdle:  <span class="number">10</span>,</span><br><span class="line">            minIdle:  <span class="number">20</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        want:    <span class="literal">nil</span>,</span><br><span class="line">        wantErr: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">        builder: &amp;ResourcePoolConfigBuilder&#123;</span><br><span class="line">            name: <span class="string">&quot;test&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        want: &amp;ResourcePoolConfig&#123;</span><br><span class="line">            name:     <span class="string">&quot;test&quot;</span>,</span><br><span class="line">            maxTotal: defaultMaxTotal,</span><br><span class="line">            maxIdle:  defaultMaxIdle,</span><br><span class="line">            minIdle:  defaultMinIdle,</span><br><span class="line">        &#125;,</span><br><span class="line">        wantErr: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">for</span> _, tt := <span class="keyword">range</span> tests &#123;</span><br><span class="line">    t.Run(tt.name, <span class="function"><span class="keyword">func</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">        got, err := tt.builder.Build()</span><br><span class="line">        require.Equalf(t, tt.wantErr, err != <span class="literal">nil</span>, <span class="string">&quot;Build() error = %v, wantErr %v&quot;</span>, err, tt.wantErr)</span><br><span class="line">        assert.Equal(t, tt.want, got)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Go-常用的参数传递方"><a href="#Go-常用的参数传递方" class="headerlink" title="Go 常用的参数传递方"></a>Go 常用的参数传递方</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// ResourcePoolConfigOption option</span></span><br><span class="line"><span class="keyword">type</span> ResourcePoolConfigOption <span class="keyword">struct</span> &#123;</span><br><span class="line">    maxTotal <span class="type">int</span></span><br><span class="line">    maxIdle  <span class="type">int</span></span><br><span class="line">    minIdle  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ResourcePoolConfigOptFunc to set option</span></span><br><span class="line"><span class="keyword">type</span> ResourcePoolConfigOptFunc <span class="function"><span class="keyword">func</span><span class="params">(option *ResourcePoolConfigOption)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// NewResourcePoolConfig NewResourcePoolConfig</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewResourcePoolConfig</span><span class="params">(name <span class="type">string</span>, opts ...ResourcePoolConfigOptFunc)</span></span> (*ResourcePoolConfig, <span class="type">error</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> name == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;name can not be empty&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    option := &amp;ResourcePoolConfigOption&#123;</span><br><span class="line">            maxTotal: <span class="number">10</span>,</span><br><span class="line">            maxIdle:  <span class="number">9</span>,</span><br><span class="line">            minIdle:  <span class="number">1</span>,</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, opt := <span class="keyword">range</span> opts &#123;</span><br><span class="line">        opt(option)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> option.maxTotal &lt; <span class="number">0</span> || option.maxIdle &lt; <span class="number">0</span> || option.minIdle &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;args err, option: %v&quot;</span>, option)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> option.maxTotal &lt; option.maxIdle || option.minIdle &gt; option.maxIdle &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;args err, option: %v&quot;</span>, option)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &amp;ResourcePoolConfig&#123;</span><br><span class="line">        name:     name,</span><br><span class="line">        maxTotal: option.maxTotal,</span><br><span class="line">        maxIdle:  option.maxIdle,</span><br><span class="line">        minIdle:  option.minIdle,</span><br><span class="line">        &#125;, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="单元测试-1"><a href="#单元测试-1" class="headerlink" title="单元测试"></a>单元测试</h4><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> design</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;github.com/stretchr/testify/assert&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/stretchr/testify/require&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestNewResourcePoolConfig</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">    <span class="keyword">type</span> args <span class="keyword">struct</span> &#123;</span><br><span class="line">        name <span class="type">string</span></span><br><span class="line">        opts []ResourcePoolConfigOptFunc</span><br><span class="line">    &#125;</span><br><span class="line">    tests := []<span class="keyword">struct</span> &#123;</span><br><span class="line">        name    <span class="type">string</span></span><br><span class="line">        args    args</span><br><span class="line">        want    *ResourcePoolConfig</span><br><span class="line">        wantErr <span class="type">bool</span></span><br><span class="line">    &#125;&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&quot;name empty&quot;</span>,</span><br><span class="line">        args: args&#123;</span><br><span class="line">            name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        want:    <span class="literal">nil</span>,</span><br><span class="line">        wantErr: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">        args: args&#123;</span><br><span class="line">            name: <span class="string">&quot;test&quot;</span>,</span><br><span class="line">            opts: []ResourcePoolConfigOptFunc&#123;</span><br><span class="line">                <span class="function"><span class="keyword">func</span><span class="params">(option *ResourcePoolConfigOption)</span></span> &#123;</span><br><span class="line">                    option.minIdle = <span class="number">2</span></span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        want: &amp;ResourcePoolConfig&#123;</span><br><span class="line">            name:     <span class="string">&quot;test&quot;</span>,</span><br><span class="line">            maxTotal: <span class="number">10</span>,</span><br><span class="line">            maxIdle:  <span class="number">9</span>,</span><br><span class="line">            minIdle:  <span class="number">2</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        wantErr: <span class="literal">false</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, tt := <span class="keyword">range</span> tests &#123;</span><br><span class="line">        t.Run(tt.name, <span class="function"><span class="keyword">func</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">            got, err := NewResourcePoolConfig(tt.args.name, tt.args.opts...)</span><br><span class="line">            require.Equalf(t, tt.wantErr, err != <span class="literal">nil</span>, <span class="string">&quot;error = %v, wantErr %v&quot;</span>, err, tt.wantErr)</span><br><span class="line">            assert.Equal(t, tt.want, got)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>其实可以看到，绝大多数情况下直接使用后面的这种方式就可以了，并且在编写公共库的时候，强烈建议入口的参数都可以这么传递，这样可以最大程度的保证我们公共库的兼容性，避免在后续的更新的时候出现破坏性的更新的情况。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <!-- <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span> -->
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

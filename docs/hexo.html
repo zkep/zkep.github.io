@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="Love Your Life">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Love Your Life">
+    <meta name="keyword"  content="zkep,go">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        hexo搭建github博客 - zkep日常
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> zkep‘s blog </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="https://avatars.githubusercontent.com/u/36965534" />    
+        </div>
+        <div class="name">
+            <i>zkep</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8github-pages%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="toc-text">使用github pages服务搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2"><span class="toc-text">搭建github博客</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="toc-text">创建仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="toc-text">绑定域名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESSH-key"><span class="toc-text">配置SSH key</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="toc-text">测试是否成功</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8hexo%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-text">使用hexo写博客</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#hexo%E7%AE%80%E4%BB%8B"><span class="toc-text">hexo简介</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-text">修改主题</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E4%B9%8B%E5%89%8D"><span class="toc-text">上传之前</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%88%B0github"><span class="toc-text">上传到github</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8hexo%E5%91%BD%E4%BB%A4"><span class="toc-text">常用hexo命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#config-yml"><span class="toc-text">_config.yml</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-text">写博客</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A9%E5%8D%9A%E6%96%87%E5%88%97%E8%A1%A8%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%85%A8%E9%83%A8%E5%86%85%E5%AE%B9"><span class="toc-text">如何让博文列表不显示全部内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo%E5%AE%89%E8%A3%85mermaid-diagrams"><span class="toc-text">Hexo安装mermaid diagrams</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">修改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#js%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9"><span class="toc-text">js文件修改</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo%E5%8D%9A%E5%AE%A2%E9%93%BE%E6%8E%A5%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-text">hexo博客链接持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2hexo%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2%E9%83%A8%E7%BD%B2github"><span class="toc-text">将本地博客hexo静态页面部署github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node%E7%89%88%E6%9C%AC%E5%A4%AA%E9%AB%98%E5%AF%BC%E8%87%B4%E7%9A%84hexo-d-%E5%91%BD%E4%BB%A4%E7%94%9F%E6%88%90%E4%BA%86%E7%A9%BA%E7%99%BD%E9%A1%B5%E9%9D%A2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-text">node版本太高导致的hexo d 命令生成了空白页面解决方法</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> zkep‘s blog </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        hexo搭建github博客
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-03-02 16:51:15</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="使用github-pages服务搭建博客"><a href="#使用github-pages服务搭建博客" class="headerlink" title="使用github pages服务搭建博客"></a>使用github pages服务搭建博客</h3><pre><code>全是静态文件，访问速度快；
+免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；
+可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；
+数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；
+博客内容可以轻松打包、转移、发布到其它平台；
+等等；
+</code></pre>
+<span id="more"></span>
+
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>在开始一切之前，你必须已经：<br>有一个<a class="link"   target="_blank" rel="noopener" href="https://github.com/" >github<i class="fas fa-external-link-alt"></i></a>账号，没有的话去注册一个；<br>安装了node.js、npm，并了解相关基础知识；</p>
+<h4 id="搭建github博客"><a href="#搭建github博客" class="headerlink" title="搭建github博客"></a>搭建github博客</h4><h5 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h5><p>新建一个名为你的用户名.github.io的仓库，比如说，如果你的github用户名是test，那么你就新建test.github.io的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a class="link"   target="_blank" rel="noopener" href="http://test.github.io/" >http://test.github.io<i class="fas fa-external-link-alt"></i></a> 了，是不是很方便？<br>由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。<br>几个注意的地方：<br>注册的邮箱一定要验证，否则不会成功；<br>仓库名字必须是：username.github.io，其中username是你的用户名；<br>仓库创建成功不会立即生效，需要过一段时间，大概10-30分钟，或者更久，我的等了半个小时才生效；<br>创建成功后，默认会在你这个仓库里生成一些示例页面，以后你的网站所有代码都是放在这个仓库里啦。</p>
+<h5 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h5><p>当然，你不绑定域名肯定也是可以的，就用默认的 xxx.github.io 来访问，如果你想更个性一点，想拥有一个属于自己的域名，那也是OK的。</p>
+<p>首先你要注册一个域名，域名注册以前总是推荐去godaddy，现在觉得其实国内的阿里云也挺不错的，价格也不贵，毕竟是大公司，放心！</p>
+<p>绑定域名分2种情况：带www和不带www的。</p>
+<p>域名配置最常见有2种方式，CNAME和A记录，CNAME填写域名，A记录填写IP，由于不带www方式只能采用A记录，所以必须先ping一下你的用户名.github.io的IP，然后到你的域名DNS设置页，将A记录指向你ping出来的IP，将CNAME指向你的用户名.github.io，这样可以保证无论是否添加www都可以访问</p>
+<h5 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h5><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
+<p>用git bash执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/. ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br></pre></td></tr></table></figure>
+
+<p>如果提示：No such file or directory 说明你是第一次使用git。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;邮件地址&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：</p>
+<p>将刚复制的内容粘贴到key那里，title随便填，保存。</p>
+<h5 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com <span class="comment"># 注意邮箱地址不用改</span></span><br></pre></td></tr></table></figure>
+
+<p>如果提示Are you sure you want to continue connecting (yes&#x2F;no)?，输入yes，然后会看到：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Hi xxx! You’ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<p>看到这个信息说明SSH已配置成功！<br>此时你还需要配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;zkep&quot;</span>// 你的github用户名，非昵称</span><br><span class="line">git config --global user.email  <span class="string">&quot;xxx@qq.com&quot;</span>// 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用hexo写博客"><a href="#使用hexo写博客" class="headerlink" title="使用hexo写博客"></a>使用hexo写博客</h4><h5 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h5><p><a class="link"   target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" >Hexo<i class="fas fa-external-link-alt"></i></a>是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题。</p>
+<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><p>安装之前先来说几个注意事项：</p>
+<p>很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；<br>hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；<br>hexo有2种_config.yml文件，一个是根目录下的全局的_config.yml，一个是各个theme下的；</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo  <span class="comment"># 全局安装</span></span><br><span class="line"><span class="built_in">cd</span> /home/test.github.io   <span class="comment"># 在指定目录下新建项目文件夹</span></span><br><span class="line">hexo init</span><br><span class="line">hexo g <span class="comment"># 生成</span></span><br><span class="line">hexo s <span class="comment"># 启动服务</span></span><br></pre></td></tr></table></figure>
+
+<p>hexo s是开启本地预览服务，打开浏览器访问 <a class="link"   target="_blank" rel="noopener" href="http://localhost:4000/" >http://localhost:4000<i class="fas fa-external-link-alt"></i></a> 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故</p>
+<h5 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h5><p>既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/themes/" >官方主题<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>个人比较喜欢的2个主题：<a class="link"   target="_blank" rel="noopener" href="https://github.com/pinggod/hexo-theme-jekyll" >hexo-theme-jekyll<i class="fas fa-external-link-alt"></i></a> 和 <a class="link"   target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia" >hexo-theme-yilia<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>首先下载这个主题,放到项目的themes目录</p>
+<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。</p>
+<p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
+<h5 id="上传之前"><a href="#上传之前" class="headerlink" title="上传之前"></a>上传之前</h5><p>在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。</p>
+<h5 id="上传到github"><a href="#上传到github" class="headerlink" title="上传到github"></a>上传到github</h5><p>如果你一切都配置好了，发布上传很容易，一句hexo d就搞定，当然关键还是你要把所有东西配置好。</p>
+<p>首先，ssh key肯定要配置好。</p>
+<p>其次，配置_config.yml中有关deploy的部分：</p>
+<p>正确写法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:xxx/xxx.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>此时直接执行hexo d的话一般会报如下错误：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Deployer not found: github 或者 Deployer not found: git</span><br></pre></td></tr></table></figure>
+
+<p>原因是还需要安装一个插件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h5 id="常用hexo命令"><a href="#常用hexo命令" class="headerlink" title="常用hexo命令"></a>常用hexo命令</h5><p>常见命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;postName&quot;</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">&quot;pageName&quot;</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，&#x27;ctrl + c&#x27;关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#部署到GitHub</span></span><br><span class="line">hexo <span class="built_in">help</span>  <span class="comment"># 查看帮助</span></span><br><span class="line">hexo version  <span class="comment">#查看Hexo的版本</span></span><br></pre></td></tr></table></figure>
+
+<p>缩写：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>组合命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s -g <span class="comment">#生成并本地预览</span></span><br><span class="line">hexo d -g <span class="comment">#生成并上传</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h5><p>这里面都是一些全局配置，每个参数的意思都比较简单明了，所以就不作详细介绍了。</p>
+<p>需要特别注意的地方是，冒号后面必须有一个空格，否则可能会出问题。</p>
+<h5 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h5><p>定位到我们的hexo根目录，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;my-first-blog&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>hexo会帮我们在_posts下生成相关md文件：</p>
+<p>我们只需要打开这个文件就可以开始写博客了，默认生成如下内容：<br>一般完整格式如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title<span class="punctuation">:</span> postName #文章页面上的显示名称，一般是中文</span><br><span class="line">date<span class="punctuation">:</span> <span class="number">2013</span><span class="number">-12</span><span class="number">-02</span> <span class="number">15</span><span class="punctuation">:</span><span class="number">30</span><span class="punctuation">:</span><span class="number">16</span> #文章生成时间，一般不改，当然也可以任意修改</span><br><span class="line">categories<span class="punctuation">:</span> 默认分类 #分类</span><br><span class="line">tags<span class="punctuation">:</span> <span class="punctuation">[</span>tag1<span class="punctuation">,</span>tag2<span class="punctuation">,</span>tag3<span class="punctuation">]</span> #文章标签，可空，多标签请用格式，注意<span class="punctuation">:</span>后面有个空格</span><br><span class="line">description<span class="punctuation">:</span> 附加一段文章摘要，字数最好在<span class="number">140</span>字以内，会出现在meta的description里面</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">以下是正文</span><br></pre></td></tr></table></figure>
+
+<p>那么hexo new page ‘postName’命令和hexo new ‘postName’有什么区别呢？<br>最终部署时生成：hexo\public\my-second-blog\index.html，但是它不会作为文章出现在博文目录。</p>
+<h5 id="如何让博文列表不显示全部内容"><a href="#如何让博文列表不显示全部内容" class="headerlink" title="如何让博文列表不显示全部内容"></a>如何让博文列表不显示全部内容</h5><p>默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？</p>
+<p>答案是在合适的位置加上<code>&lt;!--more--&gt;</code>即可，例如：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"># 前言</span><br><span class="line"></span><br><span class="line">使用github pages服务搭建博客的好处有：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 全是静态文件，访问速度快；</span><br><span class="line"><span class="number">2.</span> 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</span><br><span class="line"><span class="number">3.</span> 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</span><br><span class="line"><span class="number">5.</span> 博客内容可以轻松打包、转移、发布到其它平台；</span><br><span class="line"><span class="number">6.</span> 等等；</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Hexo安装mermaid-diagrams"><a href="#Hexo安装mermaid-diagrams" class="headerlink" title="Hexo安装mermaid diagrams"></a>Hexo安装<a class="link"   target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/" >mermaid diagrams<i class="fas fa-external-link-alt"></i></a></h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-filter-mermaid-diagrams</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>在hexo的_config.yml文件（根目录的并非主题的）中，添加以下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mermaid chart</span></span><br><span class="line"><span class="attr">mermaid:</span> <span class="comment">## mermaid url https://github.com/knsv/mermaid</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># default true</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">&quot;7.1.2&quot;</span> <span class="comment"># default v7.1.2</span></span><br><span class="line">  <span class="attr">options:</span>  <span class="comment"># find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js</span></span><br><span class="line">    <span class="comment">#startOnload: true  // default true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="js文件修改"><a href="#js文件修改" class="headerlink" title="js文件修改"></a>js文件修改</h4><ol>
+<li>修改位置 （fluid主题为例）</li>
+</ol>
+<blockquote>
+<p>themes&#x2F;fluid&#x2F;layout&#x2F;_partials&#x2F;footer.ejs</p>
+</blockquote>
+<ol start="2">
+<li>根据footer的格式不同，添加的内容不同。<br>格式有after_footer.pug , after-footer.ejs ,footer.swig等。<br>以下是在next的footer.swig添加的内容。其他格式参考<a class="link"   target="_blank" rel="noopener" href="https://github.com/webappdevelp/hexo-filter-mermaid-diagrams" >github: hexo-filter-mermaid-diagrams<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">&quot;text-center mt-5 py-3&quot;</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">&lt;% if (theme.mermaid.enable) &#123; %&gt;</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;https://unpkg.com/mermaid@&lt;%= theme.mermaid.version %&gt;/dist/mermaid.min.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">mermaid</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      mermaid.<span class="title function_">initialize</span>(&#123;<span class="attr">theme</span>: <span class="string">&#x27;forest&#x27;</span>&#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hexo博客链接持久化"><a href="#hexo博客链接持久化" class="headerlink" title="hexo博客链接持久化"></a>hexo博客链接持久化</h3><ol>
+<li>安装hexo-abbrlink插件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置</li>
+</ol>
+<p>在根目录下的配置_config.yml里的配置:permalink</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:abbrlink.html</span></span><br></pre></td></tr></table></figure>
+
+<p>生成之后的效果是这样的了<a class="link"   target="_blank" rel="noopener" href="http://url/abbrlink.html" >http://url/abbrlink.html<i class="fas fa-external-link-alt"></i></a></p>
+<ol start="3">
+<li>说明</li>
+</ol>
+<blockquote>
+<p>如果文章头中存在abbrlink，则不会做任何处理。<br>如查文章头中不存在abbrlink，则会et title根据配置的alg算法来成生abbrlink字符串。<br>当然，你也可以自己手动为特殊的文章写链接地址。只要在文章中配置好abbrlink就可以了</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">go-zero</span></span><br><span class="line"><span class="attr">abbrlink:</span> <span class="string">go-zero</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2021-03-28 13:42:22</span></span><br><span class="line"><span class="attr">tags:</span> [<span class="string">go</span>,<span class="string">go-zero</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="将本地博客hexo静态页面部署github"><a href="#将本地博客hexo静态页面部署github" class="headerlink" title="将本地博客hexo静态页面部署github"></a>将本地博客hexo静态页面部署github</h3><blockquote>
+<p>基本做法是git上新建两个仓库 ，一个私有仓库存放markdown这些源代码（暂时定为blog吧），一个公开访问仓库的username.github.io存放生成的页面</p>
+</blockquote>
+<ol>
+<li><p>在Github的 blog 仓库上新建一个xxx分支，并切换到该分支，并在该仓库 -&gt;Settings-&gt;Branches-&gt;Default branch中将默认分支设为xxx，save保存；然后将该仓库克隆到本地，进入该blog文件目录。</p>
+</li>
+<li><p>将本地博客的部署文件拷贝进blog文件目录<br>  如题，先将本地博客的部署文件（Hexo目录下的全部文件）全部拷贝进blog文件目录中去。<br>  接下来，进入blog文件目录下，将该目录下的全部文件提交到xxx分支，提交之前需注意：</p>
+</li>
+</ol>
+<ul>
+<li>将themes目录以内中的主题的.git目录删除（如果有），因为一个git仓库中不能包含另一个git仓库，提交主题文件夹会失败。</li>
+<li>可能有人会问，删除了themes目录中的.git不就不能git pull更新主题了吗，很简单，需要更新主题时在另一个地方git clone下来该主题的最新版本，然后将内容拷到当前主题目录即可</li>
+<li>提交hexo分支，执行git add .、git commit -m ‘back up hexo files’（引号内容可改）、git push即可将博客的hexo部署环境提交到GitHub个人仓库的xxx分支。</li>
+</ul>
+<blockquote>
+<p>配置_config.yml的deploy</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/zkep/zkep.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  message: </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这样blog私有仓库git的正常的commit，push都会提交到私有仓库。hexo d 的命令则会把生成的.deploy_git目录里的静态页面提交到username.github.io仓库</p>
+</blockquote>
+<h3 id="node版本太高导致的hexo-d-命令生成了空白页面解决方法"><a href="#node版本太高导致的hexo-d-命令生成了空白页面解决方法" class="headerlink" title="node版本太高导致的hexo d 命令生成了空白页面解决方法"></a>node版本太高导致的hexo d 命令生成了空白页面解决方法</h3><blockquote>
+<p> hexo-deployer-git 插件对node版本比较挑剔</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看本地node版本</span></span><br><span class="line">node -v</span><br><span class="line"><span class="comment"># 如果版本大于v12.16.2，建议降低版本到v12.16.2试试</span></span><br><span class="line"><span class="comment"># 开始下n来管理node的版本。</span></span><br><span class="line">sudo npm i -g n</span><br><span class="line"><span class="comment"># 替换node版本到v12.16.2</span></span><br><span class="line">sudo n v12.16.2</span><br><span class="line"><span class="comment"># 再次在hexo代码目录执行</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># 再次查看生成的public文件夹中index.html，就正常了</span></span><br></pre></td></tr></table></figure>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <!-- <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span> -->
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

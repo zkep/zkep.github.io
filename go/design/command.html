@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="Love Your Life">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Love Your Life">
+    <meta name="keyword"  content="zkep,go">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        命令模式 - zkep日常
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> zkep‘s blog </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="https://avatars.githubusercontent.com/u/36965534" />    
+        </div>
+        <div class="name">
+            <i>zkep</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">命令模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> zkep‘s blog </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        命令模式
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-04-15 19:14:02</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#go" title="go">go</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><blockquote>
+<p>定义：命令模式将请求（命令）封装为一个对象，可以使用不同的请求参数化其他对象（将不同请求注入到其他对象），冰能够支持请求（命令）的排队执行，记录日志，撤销等（附加控制）功能</p>
+</blockquote>
+<span id="more"></span>
+
+
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Package command 命令模式</span></span><br><span class="line"><span class="comment">// 这是示例二，采用将直接返回一个函数，不用对象</span></span><br><span class="line"><span class="comment">// 示例说明:</span></span><br><span class="line"><span class="comment">// 假设现在有一个游戏服务，我们正在实现一个游戏后端</span></span><br><span class="line"><span class="comment">// 使用一个 goroutine 不断接收来自客户端请求的命令，并且将它放置到一个队列当中</span></span><br><span class="line"><span class="comment">// 然后我们在另外一个 goroutine 中来执行它</span></span><br><span class="line"><span class="keyword">package</span> command</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ICommand 命令</span></span><br><span class="line"><span class="keyword">type</span> ICommand <span class="keyword">interface</span> &#123;</span><br><span class="line">	Execute() <span class="type">error</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// StartCommand 游戏开始运行</span></span><br><span class="line"><span class="keyword">type</span> StartCommand <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NewStartCommand NewStartCommand</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewStartCommand</span><span class="params">( /*正常情况下这里会有一些参数*/ )</span></span> *StartCommand &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;StartCommand&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Execute Execute</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *StartCommand)</span></span> Execute() <span class="type">error</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;game start&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ArchiveCommand 游戏存档</span></span><br><span class="line"><span class="keyword">type</span> ArchiveCommand <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NewArchiveCommand NewArchiveCommand</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewArchiveCommand</span><span class="params">( /*正常情况下这里会有一些参数*/ )</span></span> *ArchiveCommand &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;ArchiveCommand&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Execute Execute</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *ArchiveCommand)</span></span> Execute() <span class="type">error</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;game archive&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Command 命令</span></span><br><span class="line"><span class="keyword">type</span> Command <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// StartCommandFunc 返回一个 Command 命令</span></span><br><span class="line"><span class="comment">// 是因为正常情况下不会是这么简单的函数</span></span><br><span class="line"><span class="comment">// 一般都会有一些参数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">StartCommandFunc</span><span class="params">()</span></span> Command &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">error</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;game start&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ArchiveCommandFunc ArchiveCommandFunc</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ArchiveCommandFunc</span><span class="params">()</span></span> Command &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">error</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;game archive&quot;</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> command</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestDemo</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 用于测试，模拟来自客户端的事件</span></span><br><span class="line">	eventChan := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">string</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		events := []<span class="type">string</span>&#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;archive&quot;</span>, <span class="string">&quot;start&quot;</span>, <span class="string">&quot;archive&quot;</span>, <span class="string">&quot;start&quot;</span>, <span class="string">&quot;start&quot;</span>&#125;</span><br><span class="line">		<span class="keyword">for</span> _, e := <span class="keyword">range</span> events &#123;</span><br><span class="line">			eventChan &lt;- e</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="keyword">defer</span> <span class="built_in">close</span>(eventChan)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使用命令队列缓存命令</span></span><br><span class="line">	commands := <span class="built_in">make</span>(<span class="keyword">chan</span> ICommand, <span class="number">1000</span>)</span><br><span class="line">	<span class="keyword">defer</span> <span class="built_in">close</span>(commands)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			<span class="comment">// 从请求或者其他地方获取相关事件参数</span></span><br><span class="line">			event, ok := &lt;-eventChan</span><br><span class="line">			<span class="keyword">if</span> !ok &#123;</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">var</span> command ICommand</span><br><span class="line">			<span class="keyword">switch</span> event &#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">&quot;start&quot;</span>:</span><br><span class="line">				command = NewStartCommand()</span><br><span class="line">			<span class="keyword">case</span> <span class="string">&quot;archive&quot;</span>:</span><br><span class="line">				command = NewArchiveCommand()</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 将命令入队</span></span><br><span class="line">			commands &lt;- command</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> c := &lt;-commands:</span><br><span class="line">			c.Execute()</span><br><span class="line">		<span class="keyword">case</span> &lt;-time.After(<span class="number">1</span> * time.Second):</span><br><span class="line">			fmt.Println(<span class="string">&quot;timeout 1s&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestDemoFunc</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 用于测试，模拟来自客户端的事件</span></span><br><span class="line">	eventChan := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">string</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		events := []<span class="type">string</span>&#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;archive&quot;</span>, <span class="string">&quot;start&quot;</span>, <span class="string">&quot;archive&quot;</span>, <span class="string">&quot;start&quot;</span>, <span class="string">&quot;start&quot;</span>&#125;</span><br><span class="line">		<span class="keyword">for</span> _, e := <span class="keyword">range</span> events &#123;</span><br><span class="line">			eventChan &lt;- e</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="keyword">defer</span> <span class="built_in">close</span>(eventChan)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使用命令队列缓存命令</span></span><br><span class="line">	commands := <span class="built_in">make</span>(<span class="keyword">chan</span> Command, <span class="number">1000</span>)</span><br><span class="line">	<span class="keyword">defer</span> <span class="built_in">close</span>(commands)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			<span class="comment">// 从请求或者其他地方获取相关事件参数</span></span><br><span class="line">			event, ok := &lt;-eventChan</span><br><span class="line">			<span class="keyword">if</span> !ok &#123;</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">var</span> command Command</span><br><span class="line">			<span class="keyword">switch</span> event &#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">&quot;start&quot;</span>:</span><br><span class="line">				command = StartCommandFunc()</span><br><span class="line">			<span class="keyword">case</span> <span class="string">&quot;archive&quot;</span>:</span><br><span class="line">				command = ArchiveCommandFunc()</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 将命令入队</span></span><br><span class="line">			commands &lt;- command</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> c := &lt;-commands:</span><br><span class="line">			c()</span><br><span class="line">		<span class="keyword">case</span> &lt;-time.After(<span class="number">1</span> * time.Second):</span><br><span class="line">			fmt.Println(<span class="string">&quot;timeout 1s&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <!-- <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span> -->
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
