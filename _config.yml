@@ -101,4 +101,6 @@ theme: cactus-white
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: 'git'
+  repository: https://github.com/zkep/zkep.github.io.git
+  branch: gh-pages
