@@ -96,11 +96,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: cactuswhite
+theme: cactus-white
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repository: https://github.com/zkep/zkep.github.io.git
-  branch: gh-pages
+  repository:
+  branch:
