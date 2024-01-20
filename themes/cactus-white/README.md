@@ -56,7 +56,7 @@ Setup the navigation menu in the theme's `_config.yml`:
     Home: /
     About: /about/
     Writing: /posts/
-    Projects: http://github.com/sergodeeva
+    Projects: http://github.com/zkep
   ```
 
 ### Blog posts list on home page

@@ -2,6 +2,7 @@ nav:
   Home: /
   About: /about/
   Writing: /posts/
+  Search: /search/
   Projects: http://github.com/zkep
 
 projects_url: http://github.com/zkep
@@ -34,7 +35,7 @@ customize:
   highlight: pojoaque
 
 # RSS
-rss: false
+rss: true
 
 # Plugins
 plugins:

@@ -9,7 +9,7 @@ description: 'Hi, I am zkep, a server engineer'
 keywords: zkep, go
 author: zkep
 language: zh
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -24,7 +24,7 @@ pretty_urls:
 source_dir: source
 public_dir: public
 tag_dir: tags
-archive_dir: archives
+archive_dir: posts
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
