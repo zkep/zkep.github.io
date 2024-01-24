@@ -2,8 +2,12 @@
 title: hexo搭建github博客
 abbrlink: hexo
 date: 2018-03-02 16:51:15
-tags: [hexo]
-categories: [hexo]
+tags: 
+  - hexo
+  - blog
+categories: 
+  - hexo
+  - blog
 sticky: 1
 ---
 

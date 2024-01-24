@@ -30,7 +30,7 @@ customize:
       gravator: false
   social_links:
     github: http://github.com/zkep
-  show_all_posts: true
+  show_all_posts: false
   post_count: 10
   highlight: pojoaque
 
