@@ -1,5 +1,5 @@
 ---
-title: windows开启OpenSHH远程访问
+title: windows开启OpenSSH远程访问
 abbrlink: 40508
 date: 2024-02-05 16:42:21
 tags: [windows,wls]
