@@ -12,7 +12,7 @@ tags:
 具体介绍，参考官方文档 [ZeroTier文档](https://docs.zerotier.com/)
 
 ### 应用场景
-   家里有基于树莓派基于openwrt实现的旁路由，树莓派还连接了usb的硬盘盒来实现资源存储,没有公网IP的情况下随时随地能够被访问到， 以往的做法是整一台vps或ecs提供内网穿透服务，比如使用大名鼎鼎的 [frp](https://github.com/fatedier/frp)。 但是有了ZeroTier后，只需要注册一个账号，就可以访问到的虚拟网络中的局域网络
+   如何在没有公网IP的情况下让各种设备随时随地能够被访问到， 以往的做法是整一台vps或ecs提供内网穿透服务，比如使用大名鼎鼎的 [frp](https://github.com/fatedier/frp)。 但是有了ZeroTier后，只需要注册一个账号，就可以访问到的虚拟网络中的局域网络
 
 ### 开始使用
 
@@ -104,3 +104,45 @@ zerotier-cli listnetworks
 信息依次是：网络 ID、名称、本机的虚拟 IP 地址，和网络状态
 
 网络状态 OK 表示正常，REQUEST_CONFIGURATION 表示没有uPNP连不上，ACCESS_DENIED 表示还没有授权
+
+#### v2ray 
+将v2ray 服务端和客户端都加入到zerotier网络中
+客户端链接的服务端ip从之前的公网ip换成服务端的局域网ip，即可在国内无法访问的情况下实现网络畅通，从而解决节点不稳定的烦恼
+
+#### 加速ZeroTier One之间的连接(可选)
+
+两个ZeroTier One客户端之间是通过p2p连接的, 但是设备A要首先连接到ZeroTier的行星根服务器(地球 Earth), 去获取到设备B的信息, 才能在两者之间进行通信, 而ZeroTier的全球唯一行星根服务器有可能离我们很遥远, 导致在某些时候"A-根服务器-B"这一过程速度会很慢, 这个时候可以通过在自己的公网服务器中架设根服务器(月球 Moons), 来加快"A-根服务器-B"这一过程.
+
+1. 在公网服务器中安装ZeroTier
+```shell
+curl -s https://install.zerotier.com/ | sudo bash
+```
+2. 在ZeroTier安装目录, 生成配置文件
+```shell
+cd /var/lib/zerotier-one
+sudo zerotier-idtool initmoon identity.public > moon.json
+```
+3. 修改moon.json配置文件, 找到对应的那一行, 添加你的公网服务器的ip
+```shell
+"stableEndpoints": [ "123.123.123.123/9993" ]
+```
+4. 生成文件
+```shell
+sudo zerotier-idtool genmoon moon.json
+```
+会在当前目录生成一个名字类似0000009b30156f58.moon的文件
+
+5. 创建名为moons.d的文件夹, 并且将上面的moon文件移动进去
+```shell
+mv 0000009b30156f58.moon moons.d
+```
+6. 重启服务
+```shell
+service zerotier-one restart
+```
+这个时候, 你的公网服务器就已经成为moon服务器了, 客户端想要加入moon, 只需要用管理员powershell执行下面命令,
+即可看到设备已经添加了moon节点. 后面那段字符是moon文件生成的文件名去掉开头的6个0.
+```shell
+zerotier-cli orbit 9b30156f58 9b30156f58
+zerotier-cli listpeers
+```
