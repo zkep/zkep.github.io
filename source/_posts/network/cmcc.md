@@ -27,9 +27,9 @@ arp -a
 ### 开启telnet
 telnet 是命令行明文登录设备的方式
 
-1. 在浏览器访问,参数key就是上面获取的MAC地址
+在浏览器访问,参数key就是上面获取的MAC地址
 ```shell
-http:/192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CFCFD0217A0
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CFCFD0217A0
 
 # 访问浏览器后正常可以看到 “telnet开启” 表示成功
 # “操作错误”，则表示MAC地址获取的不对
@@ -56,14 +56,13 @@ Escape character is '^]'.
 Login:
 ```
 
-获取超级管理密码
-
+获取超级管理密码， 命令行依次输入如下命令
 ```shell
 load_cli factory
 show admin_name
 show admin_pwd
 ```
-显示如下：
+如下是完整的交互式输入输出：
 ```shell
 root@zkep:/home/zkep# telnet 192.168.1.1
 Trying 192.168.1.1...
@@ -83,6 +82,10 @@ Config\factorydir#
 超管密码： aDm8H%MdAD!5Vz2Hh
 
 访问http://192.168.1.1 将上面获取到的 账户名和密码输入，就进入超管的路由器界面了。
+
+
+### [kuafu](https://github.com/uaxe/kuafu)
+    kuafu（夸父）是基于go实现的小工具，可以很方便的可以获取超管密码
 
 
 
