@@ -2,7 +2,7 @@
 title: git多用户配置
 abbrlink: 55384
 date: 2024-02-05 17:55:04
-tags:
+tags: [git]
 ---
 
 ### 场景

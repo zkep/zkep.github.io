@@ -85,7 +85,8 @@ Config\factorydir#
 
 
 ### [kuafu](https://github.com/uaxe/kuafu)
-    kuafu（夸父）是基于go实现的小工具，可以很方便的可以获取超管密码
+
+[kuafu（夸父）](https://github.com/uaxe/kuafu) 是基于go实现的小工具，可以很方便的可以获取超管密码
 
 
 
