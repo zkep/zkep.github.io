@@ -49,3 +49,12 @@ miscellaneous:
     fb_admins:
     twitter_id:
     google_plus:
+
+
+# mermaid chart
+mermaid: ## mermaid url https://github.com/mermaid-js/mermaid
+  enable: true  # default true
+  version: "10.8.0" # default v10.8.0
+  options:  # find more api options from https://mermaid.js.org/config/schema-docs/config.html
+  # Available themes: default | dark | forest | neutral
+  theme: default

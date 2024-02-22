@@ -266,12 +266,12 @@ npm install hexo-filter-mermaid-diagrams
 
 ```yaml
 # mermaid chart
-mermaid: ## mermaid url https://github.com/knsv/mermaid
+mermaid: ## mermaid url https://github.com/mermaid-js/mermaid
   enable: true  # default true
-  version: "7.1.2" # default v7.1.2
-  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
-    #startOnload: true  // default true
-
+  version: "10.8.0" # default v10.8.0
+  options:  # find more api options from https://mermaid.js.org/config/schema-docs/config.html
+  # Available themes: default | dark | forest | neutral
+  theme: default
 ```
 
 #### js文件修改
