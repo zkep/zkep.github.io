@@ -5,7 +5,7 @@
   <div class="footer-right">
     <nav>
       <ul>
-        <% for (var i in theme.nav) { %> 
+        <% for (var i in theme.nav) { %>
           <li><a href="<%- url_for(theme.nav[i]) %>"><%= i %></a></li>
         <% } %>
       </ul>
@@ -13,7 +13,7 @@
   </div>
 </footer>
 <% if (theme.mermaid.enable) { %>
-  <script src='https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js'></script>
+  <script src="<%= theme.mermaid.cdn %>"></script>
   <script>
     if (window.mermaid) {
       mermaid.initialize({theme: 'forest'});

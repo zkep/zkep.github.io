@@ -54,7 +54,8 @@ miscellaneous:
 # mermaid chart
 mermaid: ## mermaid url https://github.com/mermaid-js/mermaid
   enable: true  # default true
-  version: "10.8.0" # default v10.8.0
+  version: "11.0.0-alpha.1" # default v11.4.1
   options:  # find more api options from https://mermaid.js.org/config/schema-docs/config.html
   # Available themes: default | dark | forest | neutral
   theme: default
+  cdn: https://cdn.bootcdn.net/ajax/libs/mermaid/11.0.0-alpha.1/mermaid.min.js

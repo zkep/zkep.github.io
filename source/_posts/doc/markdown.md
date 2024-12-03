@@ -28,7 +28,7 @@ Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。
 
 类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题），例如：
 
-```json
+```
 This is an H1
 =============
 
@@ -40,18 +40,17 @@ This is an H2
 
 类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：
 
-```json
+```
 # 这是 H1
 
 ## 这是 H2
 
 ###### 这是 H6
-
 ```
 
 你可以选择性地「闭合」类 atx 样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上 #，而行尾的 # 数量也不用和开头一样（行首的井字符数量决定标题的阶数）：
 
-```json
+```
 # 这是 H1 #
 
 ## 这是 H2 ##
@@ -64,7 +63,7 @@ This is an H2
 
 Markdown 标记区块引用是使用类似 email 中用 > 的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 > ：
 
-```json
+```
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 > Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
@@ -84,7 +83,7 @@ Markdown 标记区块引用是使用类似 email 中用 > 的引用方式。如�
 
 Markdown 也允许你偷懒只在整个段落的第一行最前面加上 > ：
 
-```json
+```
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
@@ -102,7 +101,7 @@ id sem consectetuer libero luctus adipiscing.
 
 区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 > ：
 
-```json
+```
  This is the first level of quoting.
 >
 > > This is nested blockquote.
@@ -118,7 +117,7 @@ id sem consectetuer libero luctus adipiscing.
 
 引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：
 
-```json
+```
 > 
 > 1.   这是第一行列表项。
 > 2.   这是第二行列表项。
@@ -143,7 +142,7 @@ Markdown 支持有序列表和无序列表。
 
 无序列表使用星号、加号或是减号作为列表标记：
 
-```json
+```
 *   Red
 *   Green
 *   Blue
@@ -165,7 +164,7 @@ Markdown 支持有序列表和无序列表。
 
 有序列表则使用数字接着一个英文句点：
 
-```json
+```
 1.  Bird
 2.  McHale
 3.  Parish
@@ -177,7 +176,7 @@ Markdown 支持有序列表和无序列表。
 
 很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果，上面的列表所产生的 HTML 标记为：
 
-```json
+```
 <ol>
 <li>Bird</li>
 <li>McHale</li>
@@ -187,7 +186,7 @@ Markdown 支持有序列表和无序列表。
 
 如果你的列表标记写成：
 
-```json
+```
 1.  Bird
 1.  McHale
 1.  Parish
@@ -207,7 +206,7 @@ Markdown 支持有序列表和无序列表。
 
 要让列表看起来更漂亮，你可以把内容用固定的缩进整理好：
 
-```json
+```
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
     Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
     viverra nec, fringilla in, laoreet vitae, risus.
@@ -218,7 +217,7 @@ Markdown 支持有序列表和无序列表。
 
 但是如果你懒，那也行：
 
-```json
+```
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
 viverra nec, fringilla in, laoreet vitae, risus.
@@ -234,7 +233,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 <p> 标签包起来，举例来说：
 
-```json
+```
 *   Bird
 *   Magic
 ```
@@ -244,7 +243,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 会被转换为：
 
-```json
+```
 <ul>
 <li>Bird</li>
 <li>Magic</li>
@@ -253,7 +252,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 但是这个：
 
-```json
+```
 *   Bird
 
 *   Magic
@@ -261,7 +260,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 会被转换为：
 
-```json
+```
 <ul>
 <li><p>Bird</p></li>
 <li><p>Magic</p></li>
@@ -270,7 +269,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：
 
-```json
+```
 1.  This is a list item with two paragraphs. Lorem ipsum dolor
     sit amet, consectetuer adipiscing elit. Aliquam hendrerit
     mi posuere lectus.
@@ -294,7 +293,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 如果你每行都有缩进，看起来会看好很多，当然，再次地，如果你很懒惰，Markdown 也允许：
 
-```json
+```
 *   This is a list item with two paragraphs.
 
     This is the second paragraph in the list item. You're
@@ -314,7 +313,7 @@ sit amet, consectetuer adipiscing elit.
 
 如果要在列表项目内放进引用，那 > 就需要缩进：
 
-```json
+```
 *   A list item with a blockquote:
 
     > This is a blockquote
@@ -328,7 +327,7 @@ sit amet, consectetuer adipiscing elit.
 
 如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符：
 
-```json
+```
 *   一列表项包含一个列表区块：
 
         <代码写在这>
@@ -342,7 +341,7 @@ sit amet, consectetuer adipiscing elit.
 1986. What a great season.
 换句话说，也就是在行首出现数字-句点-空白，要避免这样的状况，你可以在句点前面加上反斜杠。
 
-```json
+```
 1986\. What a great season.
 ```
 
@@ -354,7 +353,7 @@ sit amet, consectetuer adipiscing elit.
 
 要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以，例如，下面的输入：
 
-```json
+```
 这是一个普通段落：
 
     这是一个代码区块。
@@ -367,7 +366,7 @@ sit amet, consectetuer adipiscing elit.
 
 Markdown 会转换成：
 
-```json
+```
 <p>这是一个普通段落：</p>
 
 <pre><code>这是一个代码区块。
@@ -376,7 +375,7 @@ Markdown 会转换成：
 
 这个每行一阶的缩进（4 个空格或是 1 个制表符），都会被移除，例如：
 
-```json
+```
 
 Here is an example of AppleScript:
 
@@ -393,7 +392,7 @@ Here is an example of AppleScript:
 
 会被转换为：
 
-```json
+```
 <p>Here is an example of AppleScript:</p>
 
 <pre><code>tell application "Foo"
@@ -417,7 +416,7 @@ end tell
 
 会被转换为：
 
-```json
+```
 <pre><code>&lt;div class="footer"&gt;
     &amp;copy; 2004 Foo Corporation
 &lt;/div&gt;
@@ -430,7 +429,7 @@ end tell
 
 你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：
 
-```json
+```
 * * *
 
 ***
@@ -463,7 +462,7 @@ Markdown 支持两种形式的链接语法： 行内式和参考式两种形式�
 
 要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：
 
-```json
+```
 This is [an example](http://example.com/ "Title") inline link.
 
 [This link](http://example.net/) has no title attribute.
@@ -475,7 +474,7 @@ This is [an example](http://example.com/ "Title") inline link.
 
 会产生：
 
-```json
+```
 <p>This is <a href="http://example.com/" title="Title">
 an example</a> inline link.</p>
 
@@ -485,13 +484,13 @@ title attribute.</p>
 
 如果你是要链接到同样主机的资源，你可以使用相对路径：
 
-```json
+```
 See my [About](/about/) page for details.
 ```
 
 参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：
 
-```json
+```
 This is [an example][id] reference-style link.
 ```
 
@@ -499,13 +498,13 @@ This is [an example][id] reference-style link.
 
 你也可以选择性地在两个方括号中间加上一个空格：
 
-```json
+```
 This is [an example] [id] reference-style link.
 ```
 
 接着，在文件的任意处，你可以把这个标记的链接内容定义出来：
 
-```json
+```
 [id]: http://example.com/  "Optional Title Here"
 ```
 
@@ -520,7 +519,7 @@ This is [an example] [id] reference-style link.
 选择性地接着 title 内容，可以用单引号、双引号或是括弧包着
 下面这三种链接的定义都是相同：
 
-```json
+```
 [foo]: http://example.com/  "Optional Title Here"
 [foo]: http://example.com/  'Optional Title Here'
 [foo]: http://example.com/  (Optional Title Here)
@@ -530,13 +529,13 @@ This is [an example] [id] reference-style link.
 
 链接网址也可以用方括号包起来：
 
-```json
+```
 [id]: "Optional Title Here"
 ```
 
 你也可以把 title 属性放到下一行，也可以加一些缩进，若网址太长的话，这样会比较好看：
 
-```json
+```
 [id]: http://example.com/longish/path/to/resource/here
     "Optional Title Here"
 ```
@@ -548,7 +547,7 @@ This is [an example] [id] reference-style link.
 
 链接辨别标签可以有字母、数字、空白和标点符号，但是并不区分大小写，因此下面两个链接是一样的：
 
-```json
+```
 [link text][a]
 [link text][A]
 ```
@@ -558,7 +557,7 @@ This is [an example] [id] reference-style link.
 
 隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字，要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 "Google" 链接到 google.com，你可以简化成：
 
-```json
+```
 [Google][]
 
 然后定义链接内容：
@@ -568,13 +567,13 @@ This is [an example] [id] reference-style link.
 
 由于链接文字可能包含空白，所以这种简化型的标记内也许包含多个单词：
 
-```json
+```
 Visit [Daring Fireball][] for more information.
 ```
 
 然后接着定义链接
 
-```json
+```
 [Daring Fireball]: http://daringfireball.net/
 ```
 
@@ -582,7 +581,7 @@ Visit [Daring Fireball][] for more information.
 
 下面是一个参考式链接的范例：
 
-```json
+```
 I get 10 times more traffic from [Google] [1] than from
 [Yahoo] [2] or [MSN] [3].
 
@@ -593,7 +592,7 @@ I get 10 times more traffic from [Google] [1] than from
 
 如果改成用链接名称的方式写：
 
-```json
+```
 I get 10 times more traffic from [Google][] than from
 [Yahoo][] or [MSN][].
 
@@ -611,7 +610,7 @@ I get 10 times more traffic from [Google][] than from
 
 上面两种写法都会产生下面的 HTML。
 
-```json
+```
 <p>I get 10 times more traffic from <a href="http://google.com/"
 title="Google">Google</a> than from
 <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a>
@@ -620,7 +619,7 @@ or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
 
 下面是用行内式写的同样一段内容的 Markdown 文件，提供作为比较之用：
 
-```json
+```
 I get 10 times more traffic from [Google](http://google.com/ "Google")
 than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
 [MSN](http://search.msn.com/ "MSN Search").
@@ -634,7 +633,7 @@ than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
 
 Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被* 或 _包围的字词会被转成用 <em> 标签包围，用两个 * 或_ 包起来的话，则会被转成 <strong>，例如
 
-```json
+```
 *single asterisks*
 
 _single underscores_
@@ -668,7 +667,7 @@ __double underscores__
 
 强调也可以直接插在文字中间：
 
-```json
+```
 un*frigging*believable
 ```
 
@@ -678,7 +677,7 @@ un*frigging*believable
 
 如果要在文字前后直接插入普通的星号或底线，你可以用反斜线：
 
-```json
+```
 \*this text is surrounded by literal asterisks\*
 
 ```
@@ -689,25 +688,25 @@ un*frigging*believable
 
 如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如
 
-```json
+```
 Use the `printf()` function.
 ```
 
 会产生：
 
-```json
+```
 <p>Use the <code>printf()</code> function.</p>
 ```
 
 如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：
 
-```json
+```
 ``There is a literal backtick (`) here.``
 ```
 
 这段语法会产生：
 
-```json
+```
 <p><code>There is a literal backtick (`) here.</code></p>
 ```
 
@@ -715,7 +714,7 @@ Use the `printf()` function.
 
 代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：
 
-```json
+```
 A single backtick in a code span: `` ` ``
 
 A backtick-delimited string in a code span: `` `foo` ``
@@ -723,7 +722,7 @@ A backtick-delimited string in a code span: `` `foo` ``
 
 会产生：
 
-```json
+```
 <p>A single backtick in a code span: <code>`</code></p>
 
 <p>A backtick-delimited string in a code span: <code>`foo`</code></p>
@@ -731,19 +730,19 @@ A backtick-delimited string in a code span: `` `foo` ``
 
 在代码区段内，& 和方括号都会被自动地转成 HTML 实体，这使得插入 HTML 原始码变得很容易，Markdown 会把下面这段：
 
-```json
+```
 Please don't use any `<blink>` tags.
 ```
 
 转为：
 
-```json
+```
 <p>Please don't use any <code><blink></code> tags.</p>
 ```
 
 你也可以这样写：
 
-```json
+```
 `&#8212;` is the decimal-encoded equivalent of `&mdash;`.
 
 ```
@@ -853,7 +852,7 @@ Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔�
 
 语法格式如下：
 
-```json
+```
 |  表头   | 表头  |
 |  ----  | ----  |
 | 单元格  | 单元格 |
@@ -869,7 +868,7 @@ Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔�
 
 使用4个反引号开始并关闭
 
-````json
+````
 ```go
     var (
        mark = "markdown" 
@@ -885,15 +884,14 @@ Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔�
 
 #### 横向流程图源码格式
 
-```json
-...mermaid #由于渲染问题，请自行将 · 替换为 `
+````
   graph LR
   A[方形] -->B(圆角)
     B --> C{条件a}
     C -->|a=1| D[结果1]
     C -->|a=2| E[结果2]
    F[横向流程图]
-```
+````
 
 ```mermaid
   graph LR
@@ -906,15 +904,14 @@ Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔�
 
 #### 竖向流程图源码格式
 
-```json
-...mermaid #由于渲染问题，请自行将 · 替换为 `
+````
 graph TD
 A[方形] --> B(圆角)
     B --> C{条件a}
     C --> |a=1| D[结果1]
     C --> |a=2| E[结果2]
     F[竖向流程图]
-```
+````
 
 ```mermaid
 graph TD
@@ -925,114 +922,9 @@ A[方形] --> B(圆角)
     F[竖向流程图]
 ```
 
-#### 标准流程图源码格式
-
-```json
-...flow #由于渲染问题，请自行将 · 替换为 `
-    st=>start: 开始框
-    op=>operation: 处理框
-    cond=>condition: 判断框(是或否?)
-    sub1=>subroutine: 子流程
-    io=>inputoutput: 输入输出框
-    e=>end: 结束框
-    st->op->cond
-    cond(yes)->io->e
-    cond(no)->sub1(right)->op
-```
-
-```flow
-    st=>start: 开始框
-    op=>operation: 处理框
-    cond=>condition: 判断框(是或否?)
-    sub1=>subroutine: 子流程
-    io=>inputoutput: 输入输出框
-    e=>end: 结束框
-    st->op->cond
-    cond(yes)->io->e
-    cond(no)->sub1(right)->op
-```
-
-#### 标准流程图源码格式（横向）
-
-```json
-...flow #由于渲染问题，请自行将 · 替换为 `
-st=>start: 开始框
-op=>operation: 处理框
-cond=>condition: 判断框(是或否?)
-sub1=>subroutine: 子流程
-io=>inputoutput: 输入输出框
-e=>end: 结束框
-st(right)->op(right)->cond
-cond(yes)->io(bottom)->e
-cond(no)->sub1(right)->op
-```
-
-```flow
-    st=>start: 开始框
-    op=>operation: 处理框
-    cond=>condition: 判断框(是或否?)
-    sub1=>subroutine: 子流程
-    io=>inputoutput: 输入输出框
-    e=>end: 结束框
-    st(right)->op(right)->cond
-    cond(yes)->io(bottom)->e
-    cond(no)->sub1(right)->op
-```
-
-#### UML时序图源码样例
-
-```json
-...sequence #由于渲染问题，请自行将 · 替换为 `
-对象A->对象B: 对象B你好吗?（请求）
-Note right of 对象B: 对象B的描述
-Note left of 对象A: 对象A的描述(提示)
-对象B-->对象A: 我很好(响应)
-对象A->对象B: 你真的好吗？
-```
-
-```sequence
-    对象A->对象B: 对象B你好吗?（请求）
-    Note right of 对象B: 对象B的描述
-    Note left of 对象A: 对象A的描述(提示)
-    对象B-->对象A: 我很好(响应)
-    对象A->对象B: 你真的好吗？
-```
-
-#### UML时序图源码复杂样例
-
-```json
-...sequence #由于渲染问题，请自行将 · 替换为 `
-Title: 标题：复杂使用
-对象A->对象B: 对象B你好吗?（请求）
-Note right of 对象B: 对象B的描述
-Note left of 对象A: 对象A的描述(提示)
-对象B-->对象A: 我很好(响应)
-对象B->小三: 你好吗
-小三-->>对象A: 对象B找我了
-对象A->对象B: 你真的好吗？
-Note over 小三,对象B: 我们是朋友
-participant C
-Note right of C: 没人陪我玩
-```
-
-```sequence
-    Title: 标题：复杂使用
-    对象A->对象B: 对象B你好吗?（请求）
-    Note right of 对象B: 对象B的描述
-    Note left of 对象A: 对象A的描述(提示)
-    对象B-->对象A: 我很好(响应)
-    对象B->小三: 你好吗
-    小三-->>对象A: 对象B找我了
-    对象A->对象B: 你真的好吗？
-    Note over 小三,对象B: 我们是朋友
-    participant C
-    Note right of C: 没人陪我玩
-```
-
 #### UML标准时序图样例
 
-```json
-...mermaid #由于渲染问题，请自行将 · 替换为 `
+````
 %% 时序图例子,-> 直线，-->虚线，->>实线箭头
   sequenceDiagram
     participant 张三
@@ -1045,7 +937,7 @@ Note right of C: 没人陪我玩
     李四-->>张三: 很好!
     王五->李四: 你怎么样?
     李四-->王五: 很好!
-```
+````
 
 ```mermaid
 %% 时序图例子,-> 直线，-->虚线，->>实线箭头
@@ -1064,8 +956,7 @@ Note right of C: 没人陪我玩
 
 #### 甘特图样例
 
-```json
-...mermaid #由于渲染问题，请自行将 · 替换为 `
+````
 %% 语法示例
         gantt
         dateFormat  YYYY-MM-DD
@@ -1085,7 +976,7 @@ Note right of C: 没人陪我玩
         功能测试                              :active, a1, after des3, 3d
         压力测试                               :after a1  , 20h
         测试报告                               : 48h
-```
+````
 
 ```mermaid
 %% 语法示例
@@ -1126,7 +1017,7 @@ Github 项目地址：<https://github.com/knsv/mermaid>
 
 Mermaid 支持多种图表的方向，语法如下：
 
-```json
+```
 graph 方向描述
     图表中的其他语句...
 ```
@@ -1157,22 +1048,22 @@ graph 方向描述
 
 ##### 节点间的连线
 
-| 表述 | 说明 |
-| --- | ---  |
-| > | 添加尾部箭头|
-| - | 不添加尾部箭头|
-| -- | 单线|
-| --text-- | 单线上加文字|
-| == | 粗线|
-| ==text== | 粗线加文字|
-| -.- | 虚线
-| -.text.- | 虚线加文字|
+| 表述       | 说明      |
+|----------|---------|
+| >        | 添加尾部箭头  |
+| -        | 不添加尾部箭头 |
+| --       | 单线      |
+| --text-- | 单线上加文字  |
+| ==       | 粗线      |
+| ==text== | 粗线加文字   |
+| -.-      | 虚线      |
+| -.text.- | 虚线加文字   |
 
 ##### 子图表
 
 使用以下语法添加子图表
 
-```json
+```
 subgraph 子图表名称
     子图表中的描述语句...
 end
@@ -1182,7 +1073,7 @@ end
 
 使用 fa: #图表名称# 的语法添加 fontawesome。
 
-```json
+```
 graph TB
     id1(圆角矩形)--普通线-->id2[矩形]
     subgraph 子图表
@@ -1196,7 +1087,7 @@ graph TB
 
 使用以下语法开始序列图
 
-```json
+```
 sequenceDiagram
     [参与者1][消息线][参与者2]:消息体
     ...
@@ -1204,7 +1095,7 @@ sequenceDiagram
 
 例如
 
-```json
+```
 sequenceDiagram
     张三->>李四: 吃了吗？
     李四->>张三: 吃了
@@ -1214,7 +1105,7 @@ sequenceDiagram
 
 上例中的张三、李四都是参与者，上例中的语法是最简单的，也可以明显表明参与者有哪些
 
-```json
+```
 sequenceDiagram
     participant 参与者 1
     participant 参与者 2
@@ -1240,7 +1131,7 @@ sequenceDiagram
 
 或者使用以下语法直接说明某个参与者进入“处理中”状态
 
-```json
+```
 activate 参与者
 ```
 
@@ -1248,7 +1139,7 @@ activate 参与者
 
 语法如下
 
-```json
+```
 Note 位置表述 参与者: 标注文字
 ```
 
@@ -1264,7 +1155,7 @@ Note 位置表述 参与者: 标注文字
 
 语法
 
-```json
+```
 loop 循环的条件
     循环体描述语句
 end
@@ -1272,7 +1163,7 @@ end
 
 ##### 判断
 
-```json
+```
 alt 条件 1 描述
     分支 1 描述语句
 else 条件 2 描述 # else 分支可选
@@ -1284,7 +1175,7 @@ end
 
 如果遇到可选的情况，即没有 else 分支的情况，使用如下语法：
 
-```json
+```
 opt 条件描述
     分支描述语句
 end
@@ -1292,7 +1183,7 @@ end
 
 例如
 
-```json
+```mermaid
 sequenceDiagram
     participant z as 张三
     participant l as 李四
